@@ -1,5 +1,7 @@
+import Game.BoardGame;
+
 public class main {
     public static void main(String[] args) {
-        new Border();
+        new BoardGame();
     }
 }

@@ -1,9 +1,11 @@
+package Game;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class Data extends JPanel {
+public class DataPlayer extends JPanel {
 
-    public Data(){
+    public DataPlayer(){
         JLabel label = new JLabel("test0");
         label.setVisible(true);
         label.setSize(100,100);
