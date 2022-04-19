@@ -6,15 +6,18 @@ import java.awt.*;
 public class DataPlayer extends JPanel {
 
     public DataPlayer(){
-        JLabel label = new JLabel("test0");
-        label.setVisible(true);
-        label.setSize(100,100);
-    }
-    @Override
-    protected void paintComponent(Graphics g) {
+        BoxLayout boxLayout = new BoxLayout(this, BoxLayout.Y_AXIS);
+        setLayout(boxLayout);
+        JLabel labelTextNamePlayer1 = new JLabel("Premier Joueur :");
+        add(labelTextNamePlayer1);
+        JLabel labelNamePlayer1 = new JLabel("Nom Joueur 1", JLabel.CENTER);
+        add(labelNamePlayer1);
+        JLabel labelTextNamePlayer2 = new JLabel("Deuxième Joueur :", JLabel.CENTER);
+        add(labelTextNamePlayer2);
+        JLabel labelNamePlayer2 = new JLabel("Nom Joueur 2", JLabel.CENTER);
+        add(labelNamePlayer2);
 
-        JLabel label = new JLabel("test0");
-        label.setVisible(true);
-        label.setSize(100,100);
+        setSize(100, 500);
+        setVisible(true);
     }
 }
