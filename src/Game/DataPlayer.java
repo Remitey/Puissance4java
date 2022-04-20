@@ -2,8 +2,10 @@ package Game;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Observable;
+import java.util.Observer;
 
-public class DataPlayer extends JPanel {
+public class DataPlayer extends JPanel implements Observer {
 
     public DataPlayer(){
         BoxLayout boxLayout = new BoxLayout(this, BoxLayout.Y_AXIS);
@@ -19,5 +21,11 @@ public class DataPlayer extends JPanel {
 
         setSize(100, 500);
         setVisible(true);
+    }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        Window window = SwingUtilities.windowForComponent(this);
+        JOptionPane.showMessageDialog(window, "c'est au tour de " + arg.toString());
     }
 }
