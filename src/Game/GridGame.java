@@ -4,10 +4,7 @@ import Util.Pair;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Observable;
-import java.util.Observer;
+import java.util.*;
 
 public class GridGame extends Observable implements Observer {
     private final int rows;
@@ -21,11 +18,15 @@ public class GridGame extends Observable implements Observer {
         this.col = col;
 
         jPanel = new JPanel();
-        player = 0;
+
         Dimension dFrame = new Dimension(rows * 100, col * 100);
         Dimension dBox = new Dimension(100, 100);
 
         tab = new HashMap<>();
+
+        Random random = new Random();
+        player = random.nextInt(2);
+
 
         jPanel.setLayout(new GridLayout(rows, col));
         jPanel.setSize(dFrame);
@@ -91,13 +92,20 @@ public class GridGame extends Observable implements Observer {
             }
         }
 
-        if (player == 1){
-            player = 0;
+        DataGameBox dataGameBox = new DataGameBox(false);
+        if(!tab.containsValue(dataGameBox)){
+            JOptionPane.showMessageDialog(jPanel, "no one win");
+            SwingUtilities.getWindowAncestor(jPanel).dispose();
         }
-        else {
-            player = 1;
+        else{
+            if (player == 1){
+                player = 0;
+            }
+            else {
+                player = 1;
+            }
+            setChanged();
+            notifyObservers(player);
         }
-        setChanged();
-        notifyObservers(player);
     }
 }

@@ -44,9 +44,9 @@ public class BoardGameBox extends JPanel implements MouseListener{
 
             System.out.println("ca pose");
             tab.get(location).setUsed(true);
-            tab.get(location).update(location);
 
             drawCircle(Color.blue, tab.get(location).getPlayer());
+            tab.get(location).update(location);
         }
     }
 

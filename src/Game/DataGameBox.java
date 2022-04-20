@@ -1,5 +1,6 @@
 package Game;
 
+import java.util.Objects;
 import java.util.Observable;
 
 public class DataGameBox extends Observable {
@@ -34,5 +35,18 @@ public class DataGameBox extends Observable {
 
     public boolean check(int player){
         return isUsed && this.player == player;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DataGameBox that = (DataGameBox) o;
+        return isUsed == that.isUsed;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(isUsed, player);
     }
 }
