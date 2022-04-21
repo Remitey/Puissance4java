@@ -18,11 +18,9 @@ public class ShowMenu extends Frame implements ActionListener{
 
         ShowMenu(){
 
-
             this.setLayout(new FlowLayout());
 
-
-            play.setBounds(270,100,200,75);
+            play.setBounds(270, 100, 200, 75);
             data.setBounds(270,200,200,75);
             credits.setBounds(270,300,200,75); //https://www.javatpoint.com/java-jbutton
 
@@ -42,7 +40,6 @@ public class ShowMenu extends Frame implements ActionListener{
             panel.setLayout(null);
 
             frame.setVisible(true);
-
 
         }
         @Override

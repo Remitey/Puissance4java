@@ -1,4 +1,5 @@
 package GestionUtilisateur;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.awt.event.ActionEvent;
@@ -17,18 +18,18 @@ public class BorderLayout extends Frame implements ActionListener {
     JPanel panel = new JPanel();
 
 
-     BorderLayout(){
+    BorderLayout() {
 
-       // final JTextField text = new JTextField();
+        // final JTextField text = new JTextField();
 
         this.setLayout(new FlowLayout());
 
-        hello.setBounds(270,-50,500,300);
+        hello.setBounds(270, -50, 500, 300);
         panel.add(hello);
 
-        button2.setBounds(270,150,200,75);
-        button3.setBounds(270,250,200,75);
-        button4.setBounds(270,350,200,75); //https://www.javatpoint.com/java-jbutton
+        button2.setBounds(270, 150, 200, 75);
+        button3.setBounds(270, 250, 200, 75);
+        button4.setBounds(270, 350, 200, 75); //https://www.javatpoint.com/java-jbutton
 
         panel.add(button4);
         panel.add(button3);
@@ -40,24 +41,23 @@ public class BorderLayout extends Frame implements ActionListener {
 
         button2.setFocusable(false);
 
-
-
-      frame.setSize(800,500);
-      frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-      frame.add(panel);
-      panel.setLayout(null);
+        frame.setSize(800, 500);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.add(panel);
+        panel.setLayout(null);
 
         frame.setVisible(true);
 
 
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource()==button2){
+        if (e.getSource() == button2) {
             frame.dispose();
             Connection connection = new Connection();
         }
-        if (e.getSource()==button3) {
+        if (e.getSource() == button3) {
             frame.dispose();
             CreateAccount createAccount = new CreateAccount();
         }
