@@ -13,7 +13,6 @@ public class Play extends Frame implements ActionListener {
     JButton multiplayer = new JButton(" Multiplayer");
     JButton oneplayer = new JButton(" One player");
     JButton back = new JButton(" Back");
-
     JPanel panel = new JPanel();
 
     Play() {

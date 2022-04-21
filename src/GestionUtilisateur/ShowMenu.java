@@ -12,7 +12,6 @@ public class ShowMenu extends Frame implements ActionListener{
         JButton play = new JButton(" Play");
         JButton data = new JButton(" Data");
         JButton credits = new JButton(" Credits");
-
         JPanel panel = new JPanel();
 
 
