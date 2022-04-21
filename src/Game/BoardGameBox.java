@@ -13,7 +13,7 @@ import java.util.Observer;
 public class BoardGameBox extends JPanel implements MouseListener{
 
     private final Dimension dim;
-    private Map<Pair, DataGameBox> tab;
+    private final Map<Pair, DataGameBox> tab;
 
     public BoardGameBox(Dimension dim, Map<Pair, DataGameBox> tab){
         this.dim = dim;
@@ -45,8 +45,8 @@ public class BoardGameBox extends JPanel implements MouseListener{
             System.out.println("ca pose");
             tab.get(location).setUsed(true);
 
-            drawCircle(Color.blue, tab.get(location).getPlayer());
             tab.get(location).update(location);
+            drawCircle(Color.blue, tab.get(location).getPlayer());
         }
     }
 
