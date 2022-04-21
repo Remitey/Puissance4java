@@ -23,14 +23,12 @@ public class BorderLayout extends Frame implements ActionListener {
 
         this.setLayout(new FlowLayout());
 
-        hello.setBounds(250,-50,500,300);
+        hello.setBounds(270,-50,500,300);
         panel.add(hello);
 
-
-
-        button2.setBounds(250,150,200,75);
-        button3.setBounds(250,250,200,75);
-        button4.setBounds(250,350,200,75); //https://www.javatpoint.com/java-jbutton
+        button2.setBounds(270,150,200,75);
+        button3.setBounds(270,250,200,75);
+        button4.setBounds(270,350,200,75); //https://www.javatpoint.com/java-jbutton
 
         panel.add(button4);
         panel.add(button3);
