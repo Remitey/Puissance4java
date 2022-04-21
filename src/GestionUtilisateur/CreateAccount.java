@@ -104,7 +104,7 @@ public class CreateAccount implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==buttonconnection) {
-            //Game game = new GameWindow();
+            ShowMenu shomenu = new ShowMenu();
         }
     }
 }
