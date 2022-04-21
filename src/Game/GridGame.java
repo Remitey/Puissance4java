@@ -12,6 +12,7 @@ public class GridGame extends Observable implements Observer {
     private final Map<Pair, DataGameBox> tab;
     private JPanel jPanel;
     private int player;
+    private AlgoMinMax algoMinMax;
 
     public GridGame(int rows, int col) {
         this.rows = rows;
@@ -45,6 +46,8 @@ public class GridGame extends Observable implements Observer {
             tab.put(new Pair(rows, j), new DataGameBox(true));
         }
         jPanel.setVisible(true);
+
+        algoMinMax = new AlgoMinMax(rows, col, tab, player);
     }
 
     public JPanel getjPanel(){
@@ -103,6 +106,7 @@ public class GridGame extends Observable implements Observer {
             }
             else {
                 player = 1;
+                //System.out.println(algoMinMax.algoMinMAx(tab, 3, player));
             }
             setChanged();
             notifyObservers(player);

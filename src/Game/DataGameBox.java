@@ -12,6 +12,11 @@ public class DataGameBox extends Observable {
         player = 0;
     }
 
+    DataGameBox(boolean bool, int player){
+        isUsed = bool;
+        this.player = player;
+    }
+
     public boolean isUsed() {
         return isUsed;
     }

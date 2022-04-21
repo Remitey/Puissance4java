@@ -14,12 +14,7 @@ public class BoardGameBox extends JPanel implements MouseListener{
 
     private final Dimension dim;
     private final Map<Pair, DataGameBox> tab;
-    public Color whit = new Color(255,255,255);
-    public Color r = new Color(255,0,0);
-    public int x,y,d;
-    public BoardGameBox boardGameBox;
-    public Color j = new Color(255,255,0);
-    public Color base;
+    public Color base = null;
 
     public BoardGameBox(Dimension dim, Map<Pair, DataGameBox> tab){
         this.dim = dim;
@@ -31,15 +26,22 @@ public class BoardGameBox extends JPanel implements MouseListener{
     @Override
     public void paintComponent(Graphics g){
         if (base == null){
-            base= whit;
+            base = Color.white;
+            g.setColor(base);
+            if(getSize().height > getSize().width){
+                g.fillOval(5,5, getSize().width - 10, getSize().width - 10);
+            }else{
+                g.fillOval(5,5, getSize().height - 10, getSize().height - 10);
+            }
+        }else{
+            g.setColor(base);
+            if(getSize().height > getSize().width){
+                g.fillOval(4,4, getSize().width - 5, getSize().width - 5);
+            }else{
+                g.fillOval(4,4, getSize().height - 5, getSize().height - 5);
+            }
         }
 
-        g.setColor(whit);
-        if(getSize().height > getSize().width){
-            g.fillOval(5,5, getSize().width - 10, getSize().width - 10);
-        }else{
-            g.fillOval(5,5, getSize().height - 10, getSize().height - 10);
-        }
     }
 
     @Override
@@ -47,9 +49,7 @@ public class BoardGameBox extends JPanel implements MouseListener{
         int x = (int) getLocation().getX() / getWidth();
         int y = (int) getLocation().getY() / getHeight();
 
-        paintComponent(getGraphics());
-
-        if (!tab.get(new Pair(y+1, x)).isUsed()){
+        if (!tab.get(new Pair(y+1, x)).isUsed() || tab.get(new Pair(y, x)).isUsed()){
             System.out.println("ca pose pas");
         }else{
             Pair location = new Pair(y, x);
@@ -59,7 +59,15 @@ public class BoardGameBox extends JPanel implements MouseListener{
 
             tab.get(location).update(location);
 
-            drawCircle(Color.blue, tab.get(location).getPlayer());
+            if(tab.get(location).getPlayer() == 0){
+                base = Color.red;
+            }else {
+                base = Color.yellow;
+            }
+
+            paintComponent(getGraphics());
+
+            //drawCircle(Color.blue, tab.get(location).getPlayer());
         }
     }
 
