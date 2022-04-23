@@ -11,6 +11,7 @@ public class Connection implements ActionListener {
     JLabel connect = new JLabel(" please enter your username and password");
     JLabel username = new JLabel("Username : ");
     JLabel password = new JLabel("Password : ");
+    JLabel error = new JLabel("Username or password incorect please try again");
     JTextField user = new JTextField();
     JPasswordField pass = new JPasswordField();
     JButton buttonconnection = new JButton("Connection");
@@ -34,6 +35,9 @@ public class Connection implements ActionListener {
         username.setBounds(150,115,200,200);
         username.setFont(new Font(null, Font.PLAIN,17));
         frame.add(username);
+        error.setBounds(150,115,200,200);
+        error.setFont(new Font(null, Font.PLAIN,17));
+
 
         //button
         buttonconnection.setBounds(300,400,200,40);
@@ -52,7 +56,11 @@ public class Connection implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==buttonconnection) {
+            //if connection possible
             ShowMenu shomenu = new ShowMenu();
+            //else
+            //frame.add(error);
+
         }
     }
 }

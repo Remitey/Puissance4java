@@ -15,6 +15,7 @@ public class Play extends Frame implements ActionListener {
     JButton back = new JButton(" Back");
     JPanel panel = new JPanel();
 
+
     Play() {
 
 
@@ -28,6 +29,7 @@ public class Play extends Frame implements ActionListener {
         panel.add(back);
         panel.add(oneplayer);
         panel.add(multiplayer);
+
 
         multiplayer.addActionListener(this);
         oneplayer.addActionListener(this);

@@ -22,6 +22,8 @@ public class CreateAccount implements ActionListener {
     JTextField lastt = new JTextField();
     JTextField usernamee = new JTextField();
 
+    JLabel error = new JLabel("error in creating account please try again");
+
     JPasswordField pass = new JPasswordField();
     JPasswordField confpass = new JPasswordField();
 
@@ -79,6 +81,9 @@ public class CreateAccount implements ActionListener {
         confirmpassword.setFont(new Font(null, Font.PLAIN,15));
         frame.add(confirmpassword);
 
+        error.setBounds(150,400,100,100);
+        error.setFont(new Font(null, Font.PLAIN,15));
+
 
 
         //button
@@ -104,7 +109,11 @@ public class CreateAccount implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==buttonconnection) {
-            ShowMenu shomenu = new ShowMenu();
+            // if connection existe
+            ShowMenu showmenu = new ShowMenu();
+            frame.dispose();
+            //else :
+            //frame.add(error);
         }
     }
 }

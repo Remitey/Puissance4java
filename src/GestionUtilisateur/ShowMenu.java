@@ -13,15 +13,21 @@ public class ShowMenu extends Frame implements ActionListener{
         JButton data = new JButton(" Data");
         JButton credits = new JButton(" Credits");
         JPanel panel = new JPanel();
+        JLabel welcome = new JLabel("Welcome" ); //+ username
 
 
         ShowMenu(){
 
             this.setLayout(new FlowLayout());
 
+
+            welcome.setBounds(300,-50,200,200);
+            welcome.setFont(new Font(null, Font.PLAIN,15));
+            frame.add(welcome);
+
             play.setBounds(270, 100, 200, 75);
             data.setBounds(270,200,200,75);
-            credits.setBounds(270,300,200,75); //https://www.javatpoint.com/java-jbutton
+            credits.setBounds(270,300,200,75);
 
             panel.add(credits);
             panel.add(data);
@@ -50,6 +56,11 @@ public class ShowMenu extends Frame implements ActionListener{
             if (e.getSource()== data) {
                 frame.dispose();
                // Data data = new Data();
+
+            }
+            if (e.getSource()== credits) {
+                frame.dispose();
+                Credits credits = new Credits();
             }
         }
     }
