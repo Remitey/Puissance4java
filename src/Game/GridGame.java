@@ -9,14 +9,17 @@ import java.util.*;
 public class GridGame extends Observable implements Observer {
     private final int rows;
     private final int col;
-    private final Map<Pair, DataGameBox> tab;
-    private JPanel jPanel;
+    private final Map<Pair<Integer>, DataGameBox> tab;
+    private final JPanel jPanel;
     private int player;
-    private AlgoMinMax algoMinMax;
+    private final AlgoMinMax algoMinMax;
+    private final boolean ia;
 
-    public GridGame(int rows, int col) {
+    public GridGame(int rows, int col, boolean ia) {
         this.rows = rows;
         this.col = col;
+        this.ia = ia;
+        this.algoMinMax = new AlgoMinMax(rows, col);
 
         jPanel = new JPanel();
 
@@ -36,21 +39,19 @@ public class GridGame extends Observable implements Observer {
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < col; j++) {
-                tab.put(new Pair(i, j), new DataGameBox(false));
-                tab.get(new Pair(i, j)).addObserver(this);
-                BoardGameBox boardGameBox = new BoardGameBox(dBox, tab);
+                tab.put(new Pair<>(i, j), new DataGameBox(false));
+                tab.get(new Pair<>(i, j)).addObserver(this);
+                BoardGameBox boardGameBox = new BoardGameBox(tab);
                 jPanel.add(boardGameBox);
             }
         }
         for (int j = 0; j < col; j++) {
-            tab.put(new Pair(rows, j), new DataGameBox(true));
+            tab.put(new Pair<>(rows, j), new DataGameBox(true));
         }
         jPanel.setVisible(true);
-
-        algoMinMax = new AlgoMinMax(rows, col, tab, player);
     }
 
-    public JPanel getjPanel(){
+    public JPanel getjPanel() {
         return jPanel;
     }
 
@@ -58,14 +59,51 @@ public class GridGame extends Observable implements Observer {
     public void update(Observable o, Object arg) {
         System.out.println("Updating");
 
-        if (arg instanceof Pair<?>){
-            System.out.println(arg);
+        if (arg instanceof Pair<?>) {
+            //System.out.println(arg);
             tab.get(arg).setPlayer(player);
         }
 
+        winCondition();
+        isPath();
+
+        if (ia) {
+            player = 0;
+            setChanged();
+            notifyObservers("IA");
+            Pair<Integer> pair = algoMinMax.algoMinMAx(3, tab, player);
+            System.out.println(pair);
+            int number = rows * pair.getFirst() + 1 + pair.getSecond();
+            System.out.println(number);
+
+            BoardGameBox boardGameBox = (BoardGameBox) jPanel.getComponent(number);
+
+            tab.get(pair).setUsed(true);
+            tab.get(pair).setPlayer(0);
+
+            //boardGameBox.verifyAndDraw(pair.getFirst(), pair.getSecond(), true);
+            boardGameBox.base = Color.red;
+            boardGameBox.paintComponent(boardGameBox.getGraphics());
+            System.out.println(boardGameBox.base);
+
+            player = 1;
+            setChanged();
+            notifyObservers(player);
+        } else {
+            if (player == 1) {
+                player = 0;
+            } else {
+                player = 1;
+            }
+            setChanged();
+            notifyObservers(player);
+        }
+    }
+
+    public void winCondition() {
         for (int i = 0; i < rows; i++) { // line conditions
             for (int j = 0; j < col - 3; j++) {
-                if (tab.get(new Pair(i, j)).check(player) && tab.get(new Pair(i, j + 1)).check(player) && tab.get(new Pair(i, j + 2)).check(player) && tab.get(new Pair(i, j + 3)).check(player)) {
+                if (tab.get(new Pair<>(i, j)).check(player) && tab.get(new Pair<>(i, j + 1)).check(player) && tab.get(new Pair<>(i, j + 2)).check(player) && tab.get(new Pair<>(i, j + 3)).check(player)) {
                     JOptionPane.showMessageDialog(jPanel, "win line");
                     Win win = new Win();
                 }
@@ -74,7 +112,7 @@ public class GridGame extends Observable implements Observer {
 
         for (int i = 0; i < rows - 3; i++) { // col conditions
             for (int j = 0; j < col; j++) {
-                if (tab.get(new Pair(i, j)).check(player) && tab.get(new Pair(i + 1, j)).check(player) && tab.get(new Pair(i + 2, j)).check(player) && tab.get(new Pair(i + 3, j)).check(player)) {
+                if (tab.get(new Pair<>(i, j)).check(player) && tab.get(new Pair<>(i + 1, j)).check(player) && tab.get(new Pair<>(i + 2, j)).check(player) && tab.get(new Pair<>(i + 3, j)).check(player)) {
                     JOptionPane.showMessageDialog(jPanel, "win col");
                     Win win = new Win();
                 }
@@ -83,37 +121,28 @@ public class GridGame extends Observable implements Observer {
 
         for (int i = 0; i < rows - 3; i++) { // diagonale 1 conditions
             for (int j = 0; j < col - 3; j++) {
-                if (tab.get(new Pair(i, j)).check(player) && tab.get(new Pair(i + 1, j + 1)).check(player) && tab.get(new Pair(i + 2, j + 2)).check(player) && tab.get(new Pair(i + 3, j + 3)).check(player)) {
+                if (tab.get(new Pair<>(i, j)).check(player) && tab.get(new Pair<>(i + 1, j + 1)).check(player) && tab.get(new Pair<>(i + 2, j + 2)).check(player) && tab.get(new Pair<>(i + 3, j + 3)).check(player)) {
                     JOptionPane.showMessageDialog(jPanel, "win diagonal 1");
                     Win win = new Win();
                 }
             }
         }
-
         for (int i = 3; i < rows; i++) { // diagonale 2 conditions
             for (int j = 0; j < col - 3; j++) {
-                if (tab.get(new Pair(i, j)).check(player) && tab.get(new Pair(i - 1, j + 1)).check(player) && tab.get(new Pair(i - 2, j + 2)).check(player) && tab.get(new Pair(i - 3, j + 3)).check(player)) {
+                if (tab.get(new Pair<>(i, j)).check(player) && tab.get(new Pair<>(i - 1, j + 1)).check(player) && tab.get(new Pair<>(i - 2, j + 2)).check(player) && tab.get(new Pair<>(i - 3, j + 3)).check(player)) {
                     JOptionPane.showMessageDialog(jPanel, "win diagonal 2");
                     Win win = new Win();
                 }
             }
         }
+    }
 
+
+    public void isPath() {
         DataGameBox dataGameBox = new DataGameBox(false);
-        if(!tab.containsValue(dataGameBox)){
+        if (!tab.containsValue(dataGameBox)) {
             JOptionPane.showMessageDialog(jPanel, "no one win");
             SwingUtilities.getWindowAncestor(jPanel).dispose();
-        }
-        else{
-            if (player == 1){
-                player = 0;
-            }
-            else {
-                player = 1;
-                //System.out.println(algoMinMax.algoMinMAx(tab, 3, player));
-            }
-            setChanged();
-            notifyObservers(player);
         }
     }
 }

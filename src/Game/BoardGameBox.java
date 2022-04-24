@@ -10,16 +10,13 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
-public class BoardGameBox extends JPanel implements MouseListener{
+public class BoardGameBox extends JPanel implements MouseListener {
 
-    private final Dimension dim;
-    private final Map<Pair, DataGameBox> tab;
+    private final Map<Pair<Integer>, DataGameBox> tab;
     public Color base = null;
 
-    public BoardGameBox(Dimension dim, Map<Pair, DataGameBox> tab){
-        this.dim = dim;
+    public BoardGameBox(Map<Pair<Integer>, DataGameBox> tab){
         this.tab = tab;
-
         addMouseListener(this);
     }
 
@@ -44,20 +41,19 @@ public class BoardGameBox extends JPanel implements MouseListener{
 
     }
 
-    @Override
-    public void mouseClicked(MouseEvent e){
-        int x = (int) getLocation().getX() / getWidth();
-        int y = (int) getLocation().getY() / getHeight();
-
-        if (!tab.get(new Pair(y+1, x)).isUsed() || tab.get(new Pair(y, x)).isUsed()){
+    public void verifyAndDraw(int x, int y, boolean isIA){
+        if (!tab.get(new Pair<>(y+1, x)).isUsed() || tab.get(new Pair<>(y, x)).isUsed()){
             System.out.println("ca pose pas");
         }else{
-            Pair location = new Pair(y, x);
+            Pair<Integer> location = new Pair<>(y, x);
 
             System.out.println("ca pose");
+
             tab.get(location).setUsed(true);
 
-            tab.get(location).update(location);
+            if(!isIA){
+                tab.get(location).update(location);
+            }
 
             if(tab.get(location).getPlayer() == 0){
                 base = Color.red;
@@ -66,21 +62,15 @@ public class BoardGameBox extends JPanel implements MouseListener{
             }
 
             paintComponent(getGraphics());
-
-            //drawCircle(Color.blue, tab.get(location).getPlayer());
         }
     }
 
-    public void drawCircle(Color color, int player){
-        getGraphics().setColor(color);
-        if(dim.height > dim.width){
-            getGraphics().fillOval(4,4, dim.width + 5, dim.width + 5);
-        }else{
+    @Override
+    public void mouseClicked(MouseEvent e){
+        int x = (int) getLocation().getX() / getWidth();
+        int y = (int) getLocation().getY() / getHeight();
 
-            getGraphics().fillOval(4,4, dim.height - 10, dim.height - 10);
-        }
-        String str = String.valueOf(player);
-        getGraphics().drawString(str, 10, 10);
+        verifyAndDraw(x, y, false);
     }
 
     @Override
