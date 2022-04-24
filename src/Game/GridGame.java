@@ -67,6 +67,7 @@ public class GridGame extends Observable implements Observer {
             for (int j = 0; j < col - 3; j++) {
                 if (tab.get(new Pair(i, j)).check(player) && tab.get(new Pair(i, j + 1)).check(player) && tab.get(new Pair(i, j + 2)).check(player) && tab.get(new Pair(i, j + 3)).check(player)) {
                     JOptionPane.showMessageDialog(jPanel, "win line");
+                    Win win = new Win();
                 }
             }
         }
@@ -75,6 +76,7 @@ public class GridGame extends Observable implements Observer {
             for (int j = 0; j < col; j++) {
                 if (tab.get(new Pair(i, j)).check(player) && tab.get(new Pair(i + 1, j)).check(player) && tab.get(new Pair(i + 2, j)).check(player) && tab.get(new Pair(i + 3, j)).check(player)) {
                     JOptionPane.showMessageDialog(jPanel, "win col");
+                    Win win = new Win();
                 }
             }
         }
@@ -83,6 +85,7 @@ public class GridGame extends Observable implements Observer {
             for (int j = 0; j < col - 3; j++) {
                 if (tab.get(new Pair(i, j)).check(player) && tab.get(new Pair(i + 1, j + 1)).check(player) && tab.get(new Pair(i + 2, j + 2)).check(player) && tab.get(new Pair(i + 3, j + 3)).check(player)) {
                     JOptionPane.showMessageDialog(jPanel, "win diagonal 1");
+                    Win win = new Win();
                 }
             }
         }
@@ -91,6 +94,7 @@ public class GridGame extends Observable implements Observer {
             for (int j = 0; j < col - 3; j++) {
                 if (tab.get(new Pair(i, j)).check(player) && tab.get(new Pair(i - 1, j + 1)).check(player) && tab.get(new Pair(i - 2, j + 2)).check(player) && tab.get(new Pair(i - 3, j + 3)).check(player)) {
                     JOptionPane.showMessageDialog(jPanel, "win diagonal 2");
+                    Win win = new Win();
                 }
             }
         }

@@ -16,7 +16,7 @@ public class ShowMenu extends Frame implements ActionListener{
         JLabel welcome = new JLabel("Welcome" ); //+ username
 
 
-        ShowMenu(){
+        public ShowMenu(){
 
             this.setLayout(new FlowLayout());
 

@@ -16,7 +16,7 @@ public class Play extends Frame implements ActionListener {
     JPanel panel = new JPanel();
 
 
-    Play() {
+    public Play() {
 
 
         this.setLayout(new FlowLayout());
