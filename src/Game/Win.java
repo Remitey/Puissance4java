@@ -1,9 +1,5 @@
 package Game;
-
-import GestionUtilisateur.Credits;
-import GestionUtilisateur.Play;
-import GestionUtilisateur.ShowMenu;
-
+import GestionUtilisateur.*;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -11,7 +7,7 @@ import java.awt.event.ActionListener;
 
 public class Win implements ActionListener {
     JFrame frame = new JFrame();
-    JButton play = new JButton(" Play again");
+    JButton play = new JButton(" Data Stats");
     JButton menu = new JButton(" Menu");
     JPanel panel = new JPanel();
     JLabel welcome = new JLabel("Player X has won the game" ); //+ username
@@ -29,7 +25,8 @@ public class Win implements ActionListener {
         panel.add(menu);
         panel.add(play);
 
-
+        menu.addActionListener(this);
+        play.addActionListener(this);
         play.setFocusable(false);
 
         frame.setSize(800,500);
@@ -42,13 +39,13 @@ public class Win implements ActionListener {
     }
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource()== play){
+        if (e.getSource() == play){
             frame.dispose();
-            Play play = new Play();
+            new Play();
         }
-        if (e.getSource()== menu) {
-            ShowMenu showMenu = new ShowMenu();
+        if (e.getSource() == menu) {
             frame.dispose();
+            new ShowMenu();
             // Data data = new Data();
         }
     }

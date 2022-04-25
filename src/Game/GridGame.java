@@ -64,8 +64,15 @@ public class GridGame extends Observable implements Observer {
             tab.get(arg).setPlayer(player);
         }
 
-        winCondition();
-        isPath();
+        if (winCondition() || isPath()) {
+            SwingUtilities.getWindowAncestor(jPanel).dispose();
+
+            new Win();
+            JOptionPane.showMessageDialog(jPanel, "joueur X a win");
+
+
+        }
+
 
         if (ia) {
             player = 0;
@@ -100,12 +107,12 @@ public class GridGame extends Observable implements Observer {
         }
     }
 
-    public void winCondition() {
+    public boolean winCondition() {
+        boolean isWin = false;
         for (int i = 0; i < rows; i++) { // line conditions
             for (int j = 0; j < col - 3; j++) {
                 if (tab.get(new Pair<>(i, j)).check(player) && tab.get(new Pair<>(i, j + 1)).check(player) && tab.get(new Pair<>(i, j + 2)).check(player) && tab.get(new Pair<>(i, j + 3)).check(player)) {
-                    JOptionPane.showMessageDialog(jPanel, "win line");
-                    Win win = new Win();
+                   isWin = true;
                 }
             }
         }
@@ -113,8 +120,8 @@ public class GridGame extends Observable implements Observer {
         for (int i = 0; i < rows - 3; i++) { // col conditions
             for (int j = 0; j < col; j++) {
                 if (tab.get(new Pair<>(i, j)).check(player) && tab.get(new Pair<>(i + 1, j)).check(player) && tab.get(new Pair<>(i + 2, j)).check(player) && tab.get(new Pair<>(i + 3, j)).check(player)) {
-                    JOptionPane.showMessageDialog(jPanel, "win col");
-                    Win win = new Win();
+                    isWin = true;
+
                 }
             }
         }
@@ -122,27 +129,28 @@ public class GridGame extends Observable implements Observer {
         for (int i = 0; i < rows - 3; i++) { // diagonale 1 conditions
             for (int j = 0; j < col - 3; j++) {
                 if (tab.get(new Pair<>(i, j)).check(player) && tab.get(new Pair<>(i + 1, j + 1)).check(player) && tab.get(new Pair<>(i + 2, j + 2)).check(player) && tab.get(new Pair<>(i + 3, j + 3)).check(player)) {
-                    JOptionPane.showMessageDialog(jPanel, "win diagonal 1");
-                    Win win = new Win();
+                    isWin = true;
                 }
             }
         }
         for (int i = 3; i < rows; i++) { // diagonale 2 conditions
             for (int j = 0; j < col - 3; j++) {
                 if (tab.get(new Pair<>(i, j)).check(player) && tab.get(new Pair<>(i - 1, j + 1)).check(player) && tab.get(new Pair<>(i - 2, j + 2)).check(player) && tab.get(new Pair<>(i - 3, j + 3)).check(player)) {
-                    JOptionPane.showMessageDialog(jPanel, "win diagonal 2");
-                    Win win = new Win();
+                    isWin = true;
+
                 }
             }
         }
+        return isWin;
     }
 
 
-    public void isPath() {
+    public boolean isPath() {
         DataGameBox dataGameBox = new DataGameBox(false);
         if (!tab.containsValue(dataGameBox)) {
             JOptionPane.showMessageDialog(jPanel, "no one win");
             SwingUtilities.getWindowAncestor(jPanel).dispose();
         }
+        return false;
     }
 }

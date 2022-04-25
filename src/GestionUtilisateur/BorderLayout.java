@@ -6,7 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
 
-public class BorderLayout extends Frame implements ActionListener {
+public class BorderLayout implements ActionListener {
 
     JFrame frame = new JFrame();
     JButton button2 = new JButton(" Connection");
@@ -21,8 +21,6 @@ public class BorderLayout extends Frame implements ActionListener {
     BorderLayout() {
 
         // final JTextField text = new JTextField();
-
-        this.setLayout(new FlowLayout());
 
         hello.setBounds(270, -50, 500, 300);
         panel.add(hello);
