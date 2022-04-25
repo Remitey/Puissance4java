@@ -2,7 +2,7 @@ package BaseDeDonnee;
 
 public class Player {
     
-    private Integer id; //
+    private Integer id = 0; //
 
     private String username;
 
