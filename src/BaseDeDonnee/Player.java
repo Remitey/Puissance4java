@@ -2,7 +2,7 @@ package BaseDeDonnee;
 
 public class Player {
     
-    private static Integer id; //
+    private Integer id; //
 
     private String username;
 
@@ -12,6 +12,13 @@ public class Player {
 
     private Integer permission;
 
+/*
+    public enum permission {
+        Admin,
+        Inter,
+        Basic
+    };
+*/
     public Player(){
 
     }
@@ -24,7 +31,7 @@ public class Player {
         this.permission = permission;
     }
 
-    public static Integer getId() {
+    public Integer getId() {
         return id;
     }
 

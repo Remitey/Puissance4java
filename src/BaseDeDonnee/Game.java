@@ -6,11 +6,11 @@ public class Game {
 
     private Integer id;
 
-    private Integer player_1_id = Player.getId();
+    private Integer player_1; //
 
-    private Integer player_2_id;//
+    private Integer player_2;//
 
-    private Integer cpu_level_id;//
+    private Integer cpu_level_id ;//
 
     private Integer grid_size_row ;
 
@@ -29,10 +29,10 @@ public class Game {
 
     }
 
-    public Game(Integer id, Integer player_1_id, Integer player_2_id, Integer cpu_level_id, Integer grid_size_row, Integer grid_size_col, Integer result, LocalDateTime time, Duration duration) {
+    public Game(Integer id, Integer player_1, Integer player_2, Integer cpu_level_id, Integer grid_size_row, Integer grid_size_col, Integer result, LocalDateTime time, Duration duration) {
         this.id = id;
-        this.player_1_id = player_1_id;
-        this.player_2_id = player_2_id;
+        this.player_1 = player_1;
+        this.player_2 = player_2;
         this.cpu_level_id = cpu_level_id;
         this.grid_size_row = grid_size_row;
         this.grid_size_col = grid_size_col;
@@ -51,19 +51,19 @@ public class Game {
     }
 
     public Integer getPlayer_1_id() {
-        return player_1_id;
+        return player_1;
     }
 
-    public void setPlayer_1_id(Integer player_1_id) {
-        this.player_1_id = player_1_id;
+    public void setPlayer_1_id(Integer player_1) {
+        this.player_1 = player_1;
     }
 
     public Integer getPlayer_2_id() {
-        return player_2_id;
+        return player_2;
     }
 
-    public void setPlayer_2_id(Integer player_2_id) {
-        this.player_2_id = player_2_id;
+    public void setPlayer_2_id(Integer player_2) {
+        this.player_2 = player_2;
     }
 
     public Integer getCpu_level_id() {
