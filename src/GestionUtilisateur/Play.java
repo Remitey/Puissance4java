@@ -53,7 +53,7 @@ public class Play implements ActionListener {
         }
         if (e.getSource() == multipayer) {
             frame.dispose();
-            new BoardGame();
+            new Multiplayer();
             // Oneplayer oneplayer = new Oneplayer();
         }
         if (e.getSource() == back) {

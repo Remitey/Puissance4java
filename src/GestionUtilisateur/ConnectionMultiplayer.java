@@ -1,26 +1,24 @@
 package GestionUtilisateur;
 
 import Game.BoardGame;
-import GestionUtilisateur.ShowMenu;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class Multiplayer implements ActionListener {
+public class ConnectionMultiplayer implements ActionListener {
 
     JFrame frame = new JFrame();
-    JLabel connect = new JLabel(" PLayer 2/guest please enter your username and password");
+    JLabel connect = new JLabel(" please enter your username and password");
     JLabel username = new JLabel("Username : ");
     JLabel password = new JLabel("Password : ");
     JLabel error = new JLabel("Username or password incorect please try again");
     JTextField user = new JTextField();
     JPasswordField pass = new JPasswordField();
     JButton buttonconnection = new JButton("Connection");
-    JButton createaccountguest = new JButton("Guest doesn't have an account? click here");
 
-    Multiplayer() {
+    ConnectionMultiplayer() {
 
         //phrase
         connect.setBounds(250,-50,500,300);
@@ -48,10 +46,6 @@ public class Multiplayer implements ActionListener {
         buttonconnection.setFocusable(false);
         buttonconnection.addActionListener(this);
         frame.add(buttonconnection);
-        createaccountguest.setBounds(500,400,70,40);
-        createaccountguest.setFocusable(false);
-        createaccountguest.addActionListener(this);
-        frame.add(createaccountguest);
 
         //tout
         frame.setSize(800,500);
@@ -65,13 +59,11 @@ public class Multiplayer implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==buttonconnection) {
             //if connection possible
+            frame.dispose();
             new BoardGame();
             //else
             //frame.add(error);
 
-        }
-        if (e.getSource()==createaccountguest) {
-            new CreateAccount();
         }
     }
 }
