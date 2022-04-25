@@ -1,41 +1,39 @@
 package GestionUtilisateur;
 
+import Game.BoardGame;
+
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 
-public class Play extends Frame implements ActionListener {
+public class Play implements ActionListener {
+
 
 
     JFrame frame = new JFrame();
-    JButton multiplayer = new JButton(" Multiplayer");
-    JButton oneplayer = new JButton(" One player");
+    JButton oneplayer = new JButton(" One player ");
+    JButton multipayer = new JButton(" Multiplayer");
     JButton back = new JButton(" Back");
     JPanel panel = new JPanel();
 
 
     public Play() {
 
-
-        this.setLayout(new FlowLayout());
-
-
-        multiplayer.setBounds(400, 150, 200, 75);
-        oneplayer.setBounds(150, 150, 200, 75);
+        oneplayer.setBounds(400, 150, 200, 75);
+        multipayer.setBounds(150, 150, 200, 75);
         back.setBounds(320, 350, 100, 37); //https://www.javatpoint.com/java-jbutton
 
         panel.add(back);
+        panel.add(multipayer);
         panel.add(oneplayer);
-        panel.add(multiplayer);
 
 
-        multiplayer.addActionListener(this);
         oneplayer.addActionListener(this);
+        multipayer.addActionListener(this);
         back.addActionListener(this);
 
-        multiplayer.setFocusable(false);
+        oneplayer.setFocusable(false);
 
         frame.setSize(800, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -49,12 +47,13 @@ public class Play extends Frame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == multiplayer) {
-            frame.dispose();
-            Multiplayer multiplayer = new Multiplayer();
-        }
         if (e.getSource() == oneplayer) {
             frame.dispose();
+           new Oneplayer();
+        }
+        if (e.getSource() == multipayer) {
+            frame.dispose();
+            new BoardGame();
             // Oneplayer oneplayer = new Oneplayer();
         }
         if (e.getSource() == back) {

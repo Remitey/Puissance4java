@@ -5,7 +5,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ShowMenu extends Frame implements ActionListener{
+public class ShowMenu implements ActionListener{
 
 
         JFrame frame = new JFrame();
@@ -18,7 +18,7 @@ public class ShowMenu extends Frame implements ActionListener{
 
         public ShowMenu(){
 
-            this.setLayout(new FlowLayout());
+           // this.setLayout(new FlowLayout());
 
 
             welcome.setBounds(300,-50,200,200);
