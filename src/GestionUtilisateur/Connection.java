@@ -58,6 +58,7 @@ public class Connection implements ActionListener {
         if(e.getSource()==buttonconnection) {
             //if connection possible
             ShowMenu shomenu = new ShowMenu();
+            frame.dispose();
             //else
             //frame.add(error);
 

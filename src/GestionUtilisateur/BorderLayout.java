@@ -1,7 +1,5 @@
 package GestionUtilisateur;
 
-import java.awt.*;
-import java.awt.event.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.*;
@@ -53,7 +51,7 @@ public class BorderLayout implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == button2) {
             frame.dispose();
-            Connection connection = new Connection();
+            ConnectionMultiplayer connection = new ConnectionMultiplayer();
         }
         if (e.getSource() == button3) {
             frame.dispose();
