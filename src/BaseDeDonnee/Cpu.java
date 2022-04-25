@@ -12,4 +12,33 @@ public class Cpu {
 
     }
 
+    public Cpu(Integer id, String description, Integer depth){
+        this.id = id;
+        this.description = description;
+        this.depth = depth;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Integer getDepth() {
+        return depth;
+    }
+
+    public void setDepth(Integer depth) {
+        this.depth = depth;
+    }
 }
