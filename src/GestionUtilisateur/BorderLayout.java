@@ -51,7 +51,7 @@ public class BorderLayout implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == button2) {
             frame.dispose();
-            ConnectionMultiplayer connection = new ConnectionMultiplayer();
+            new Connection();
         }
         if (e.getSource() == button3) {
             frame.dispose();

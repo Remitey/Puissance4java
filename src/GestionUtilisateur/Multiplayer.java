@@ -66,12 +66,14 @@ public class Multiplayer implements ActionListener {
         if(e.getSource()==buttonconnection) {
             //if connection possible
             new BoardGame();
+            frame.dispose();
             //else
             //frame.add(error);
 
         }
         if (e.getSource()==createaccountguest) {
             new CreateAccount();
+            frame.dispose();
         }
     }
 }
