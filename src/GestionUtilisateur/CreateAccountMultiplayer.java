@@ -1,10 +1,12 @@
 package GestionUtilisateur;
+import Game.BoardGame;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class CreateAccount implements ActionListener {
+public class CreateAccountMultiplayer implements ActionListener {
 
     JFrame frame = new JFrame();
     JLabel connect = new JLabel(" please enter following information");
@@ -30,7 +32,7 @@ public class CreateAccount implements ActionListener {
     JButton buttonconnection = new JButton("Connection");
     JButton buttonconnectionback = new JButton("Back");
 
-    CreateAccount() {
+    CreateAccountMultiplayer() {
 
         String[] list = {"--Select gender--","Man", "Woman", "Nothing"};
         JComboBox cbg1 = new JComboBox<>(list);
@@ -92,7 +94,6 @@ public class CreateAccount implements ActionListener {
         buttonconnection.setFocusable(false);
         buttonconnection.addActionListener(this);
         frame.add(buttonconnection);
-
         buttonconnectionback.setBounds(500,500,200,40);
         buttonconnectionback.setFocusable(false);
         buttonconnectionback.addActionListener(this);
@@ -116,14 +117,14 @@ public class CreateAccount implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==buttonconnection) {
             // if connection existe
-            ShowMenu showmenu = new ShowMenu();
+            new BoardGame();
             frame.dispose();
             //else :
             //frame.add(error);
         }
         if (e.getSource() == buttonconnectionback) {
             frame.dispose();
-            new BorderLayout();
+            new Multiplayer();
         }
     }
 }

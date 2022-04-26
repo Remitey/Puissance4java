@@ -15,10 +15,11 @@ public class Multiplayer implements ActionListener {
     JLabel username = new JLabel("Username : ");
     JLabel password = new JLabel("Password : ");
     JLabel error = new JLabel("Username or password incorect please try again");
+    JLabel guest = new JLabel("Guest doesn't have an account?");
     JTextField user = new JTextField();
     JPasswordField pass = new JPasswordField();
     JButton buttonconnection = new JButton("Connection");
-    JButton createaccountguest = new JButton("Guest doesn't have an account? click here");
+    JButton createaccountguest = new JButton("Create Account");
 
     Multiplayer() {
 
@@ -41,14 +42,16 @@ public class Multiplayer implements ActionListener {
         frame.add(username);
         error.setBounds(150,115,200,200);
         error.setFont(new Font(null, Font.PLAIN,17));
+        guest.setBounds(150,375,250,100);
+        frame.add(guest);
 
 
         //button
-        buttonconnection.setBounds(300,400,200,40);
+        buttonconnection.setBounds(300,340,200,40);
         buttonconnection.setFocusable(false);
         buttonconnection.addActionListener(this);
         frame.add(buttonconnection);
-        createaccountguest.setBounds(500,400,70,40);
+        createaccountguest.setBounds(360,395,140,40);
         createaccountguest.setFocusable(false);
         createaccountguest.addActionListener(this);
         frame.add(createaccountguest);
@@ -72,7 +75,7 @@ public class Multiplayer implements ActionListener {
 
         }
         if (e.getSource()==createaccountguest) {
-            new CreateAccount();
+            new CreateAccountMultiplayer();
             frame.dispose();
         }
     }
