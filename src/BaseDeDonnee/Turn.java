@@ -1,12 +1,13 @@
 package BaseDeDonnee;
 
+
 public class Turn {
 
-    private Integer game_id; //
+    private Game game;
 
     private Integer turn;
 
-    private Integer player_id; //
+    private Player player;
 
     private Integer x;
 
@@ -16,20 +17,20 @@ public class Turn {
 
     }
 
-    public Turn(Integer game_id, Integer turn, Integer player_id, Integer x, Integer y){
-        this.game_id = game_id;
+    public Turn(Game game, Integer turn, Player player, Integer x, Integer y){
+        this.game = game;
         this.turn = turn;
-        this.player_id = player_id;
+        this.player = player;
         this.x = x;
         this.y = y;
     }
 
-    public Integer getId() {
-        return game_id;
+    public Game getGame() {
+        return game;
     }
 
-    public void setId(Integer id) {
-        this.game_id = game_id;
+    public void setGame(Game game) {
+        this.game = game;
     }
 
     public Integer getTurn() {
@@ -40,12 +41,12 @@ public class Turn {
         this.turn = turn;
     }
 
-    public Integer getPlayer_id() {
-        return player_id;
+    public Player getPlayer_id() {
+        return player;
     }
 
-    public void setPlayer_id(Integer player_id) {
-        this.player_id = player_id;
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     public Integer getX() {
@@ -62,5 +63,16 @@ public class Turn {
 
     public void setY(Integer y) {
         this.y = y;
+    }
+
+    @Override
+    public String toString() {
+        return "Turn{" +
+                "game=" + game +
+                ", turn=" + turn +
+                ", player=" + player +
+                ", x=" + x +
+                ", y=" + y +
+                '}';
     }
 }

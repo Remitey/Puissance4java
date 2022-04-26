@@ -6,11 +6,11 @@ public class Game {
 
     private Integer id;
 
-    private Integer player_1; //
+    private Integer player_1;
 
-    private Integer player_2;//
+    private Integer player_2;
 
-    private Integer cpu_level_id ;//
+    private Integer cpu ;
 
     private Integer grid_size_row ;
 
@@ -29,11 +29,10 @@ public class Game {
 
     }
 
-    public Game(Integer id, Integer player_1, Integer player_2, Integer cpu_level_id, Integer grid_size_row, Integer grid_size_col, Integer result, LocalDateTime time, Duration duration) {
+    public Game(Integer id, Integer player_1, Integer player_2, Integer grid_size_row, Integer grid_size_col, Integer result, LocalDateTime time, Duration duration) {
         this.id = id;
         this.player_1 = player_1;
         this.player_2 = player_2;
-        this.cpu_level_id = cpu_level_id;
         this.grid_size_row = grid_size_row;
         this.grid_size_col = grid_size_col;
         this.result = result;
@@ -41,6 +40,40 @@ public class Game {
         this.duration = duration;
     }
 
+   /* public Game(Integer id, Integer player_1,Integer cpu, Integer grid_size_row, Integer grid_size_col, Integer result, LocalDateTime time, Duration duration){
+        this.id = id;
+        this.player_1 = player_1;
+        this.cpu = cpu;
+        this.grid_size_row = grid_size_row;
+        this.grid_size_col = grid_size_col;
+        this.result = result;
+        this.time = time;
+        this.duration = duration;
+    }
+*/
+ /*   public void GameMulti(Integer id, Player player_1, Player player_2, Integer grid_size_row, Integer grid_size_col, Integer result, LocalDateTime time, Duration duration) {
+        this.id = id;
+        this.player_1 = player_1;
+        this.player_2 = player_2;
+        this.grid_size_row = grid_size_row;
+        this.grid_size_col = grid_size_col;
+        this.result = result;
+        this.time = time;
+        this.duration = duration;
+    }
+
+    public void GameAlone(Integer id, Player player_1, Cpu cpu, Integer grid_size_row, Integer grid_size_col, Integer result, LocalDateTime time, Duration duration){
+        this.id = id;
+        this.player_1 = player_1;
+        this.cpu = cpu;
+        this.grid_size_row = grid_size_row;
+        this.grid_size_col = grid_size_col;
+        this.result = result;
+        this.time = time;
+        this.duration = duration;
+    }
+
+*/
 
     public Integer getId() {
         return id;
@@ -50,30 +83,29 @@ public class Game {
         this.id = id;
     }
 
-    public Integer getPlayer_1_id() {
+    public Integer getPlayer_1() {
         return player_1;
     }
 
-    public void setPlayer_1_id(Integer player_1) {
+    public void setPlayer_1(Integer player_1) {
         this.player_1 = player_1;
     }
 
-    public Integer getPlayer_2_id() {
+    public Integer getPlayer_2() {
         return player_2;
     }
 
-    public void setPlayer_2_id(Integer player_2) {
+    public void setPlayer_2(Integer player_2) {
         this.player_2 = player_2;
     }
 
-    public Integer getCpu_level_id() {
-        return cpu_level_id;
+    public Integer getCpu() {
+        return cpu;
     }
 
-    public void setCpu_level_id(Integer cpu_level_id) {
-        this.cpu_level_id = cpu_level_id;
+    public void setCpu(Integer cpu) {
+        this.cpu = cpu;
     }
-
     public Integer getGrid_size_row() {
         return grid_size_row;
     }
@@ -112,5 +144,20 @@ public class Game {
 
     public void setDuration(Duration duration) {
         this.duration = duration;
+    }
+
+    @Override
+    public String toString() {
+        return "Game{" +
+                "id=" + id +
+                ", player_1=" + player_1 +
+                ", player_2=" + player_2 +
+                ", cpu_level_id=" + cpu +
+                ", grid_size_row=" + grid_size_row +
+                ", grid_size_col=" + grid_size_col +
+                ", result=" + result +
+                ", time=" + time +
+                ", duration=" + duration +
+                '}';
     }
 }

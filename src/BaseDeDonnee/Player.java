@@ -2,7 +2,7 @@ package BaseDeDonnee;
 
 public class Player {
     
-    private Integer id = 0; //
+    private Integer id ;
 
     private String username;
 
@@ -12,13 +12,6 @@ public class Player {
 
     private Integer permission;
 
-/*
-    public enum permission {
-        Admin,
-        Inter,
-        Basic
-    };
-*/
     public Player(){
 
     }

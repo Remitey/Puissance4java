@@ -41,4 +41,13 @@ public class Cpu {
     public void setDepth(Integer depth) {
         this.depth = depth;
     }
+
+    @Override
+    public String toString() {
+        return "Cpu{" +
+                "id=" + id +
+                ", description='" + description + '\'' +
+                ", depth=" + depth +
+                '}';
+    }
 }
