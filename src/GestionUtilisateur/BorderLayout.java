@@ -1,15 +1,22 @@
 package GestionUtilisateur;
 
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 
 public class BorderLayout implements ActionListener {
 
+    public Color colorText =new Color(162,170,214);
     JFrame frame = new JFrame();
-    JButton button2 = new JButton(" Connection");
-    JButton button3 = new JButton(" Create an account");
-    JButton button4 = new JButton(" Credits");
+    Icon connectionImage = new ImageIcon("..\\Puissance4java\\src\\image\\connexionBouton.png");
+    Icon createImage = new ImageIcon("..\\Puissance4java\\src\\image\\createBouton.png");
+    JButton connexion = new JButton(connectionImage);
+    JButton createaccount = new JButton(createImage);
     //regles?
 
     JLabel hello = new JLabel("Welcome to the game");
@@ -20,27 +27,37 @@ public class BorderLayout implements ActionListener {
 
         // final JTextField text = new JTextField();
 
-        hello.setBounds(270, -50, 500, 300);
-        panel.add(hello);
+        try {
+            BufferedImage background = ImageIO.read(new File("..\\Puissance4java\\src\\image\\background10.jpg"));
+            frame.setContentPane(new BackGround(background));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        button2.setBounds(270, 150, 200, 75);
-        button3.setBounds(270, 250, 200, 75);
-        button4.setBounds(270, 350, 200, 75); //https://www.javatpoint.com/java-jbutton
+        hello.setBounds(270, -50, 600, 300);
+        hello.setFont(new Font("Arial",Font.BOLD,20));
+        hello.setForeground(colorText);
+        frame.add(hello);
+        connexion.setContentAreaFilled(false);
+        createaccount.setContentAreaFilled(false);
 
-        panel.add(button4);
-        panel.add(button3);
-        frame.add(button2);
+        connexion.setBounds(270, 150, 200, 75);
+        createaccount.setBounds(270, 250, 200, 75);//https://www.javatpoint.com/java-jbutton
 
-        button2.addActionListener(this);
-        button3.addActionListener(this);
-        button4.addActionListener(this);
 
-        button2.setFocusable(false);
+        frame.add(createaccount);
+        frame.add(connexion);
+
+        connexion.addActionListener(this);
+        createaccount.addActionListener(this);
+
+
+        connexion.setFocusable(false);
 
         frame.setSize(800, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
-        panel.setLayout(null);
+        frame.setLayout(null);
 
         frame.setVisible(true);
 
@@ -49,11 +66,11 @@ public class BorderLayout implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == button2) {
+        if (e.getSource() == connexion) {
             frame.dispose();
-            new Connection();
+            Connection connection = new Connection();
         }
-        if (e.getSource() == button3) {
+        if (e.getSource() == createaccount) {
             frame.dispose();
             CreateAccount createAccount = new CreateAccount();
         }

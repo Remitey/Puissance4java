@@ -2,9 +2,13 @@ package GestionUtilisateur;
 
 import Game.BoardGame;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 
 public class Play implements ActionListener {
@@ -12,21 +16,34 @@ public class Play implements ActionListener {
 
 
     JFrame frame = new JFrame();
-    JButton oneplayer = new JButton(" One player ");
-    JButton multipayer = new JButton(" Multiplayer");
-    JButton back = new JButton(" Back");
+    Icon oneplayerImage = new ImageIcon("..\\Puissance4java\\src\\image\\oneplayerBouton.png");
+    Icon multiplayerImage = new ImageIcon("..\\Puissance4java\\src\\image\\multiplayerBouton.png");
+    JButton oneplayer = new JButton(oneplayerImage);
+    JButton multipayer = new JButton(multiplayerImage);
+    Icon backImage = new ImageIcon("..\\Puissance4java\\src\\image\\backBouton.png");
+    JButton back = new JButton(backImage);
     JPanel panel = new JPanel();
 
 
     public Play() {
 
-        oneplayer.setBounds(400, 150, 200, 75);
-        multipayer.setBounds(150, 150, 200, 75);
-        back.setBounds(320, 350, 100, 37); //https://www.javatpoint.com/java-jbutton
+        try {
+            BufferedImage background = ImageIO.read(new File("..\\Puissance4java\\src\\image\\background5.jpg"));
+            frame.setContentPane(new BackGround(background));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
-        panel.add(back);
-        panel.add(multipayer);
-        panel.add(oneplayer);
+        oneplayer.setBounds(400, 150, 200, 75);
+        oneplayer.setContentAreaFilled(false);
+        multipayer.setBounds(150, 150, 200, 75);
+        multipayer.setContentAreaFilled(false);
+        back.setBounds(320, 350, 100, 37); //https://www.javatpoint.com/java-jbutton
+        back.setContentAreaFilled(false);
+
+        frame.add(back);
+        frame.add(multipayer);
+        frame.add(oneplayer);
 
 
         oneplayer.addActionListener(this);
@@ -38,7 +55,7 @@ public class Play implements ActionListener {
         frame.setSize(800, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
-        panel.setLayout(null);
+        frame.setLayout(null);
 
         frame.setVisible(true);
 

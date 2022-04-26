@@ -3,14 +3,20 @@ package GestionUtilisateur;
 import Game.BoardGame;
 import GestionUtilisateur.ShowMenu;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class Multiplayer implements ActionListener {
 
     JFrame frame = new JFrame();
+    public Color colorText =new Color(162,170,214);
+    public Font fontText= new Font(null, Font.PLAIN,17);
     JLabel connect = new JLabel(" PLayer 2/guest please enter your username and password");
     JLabel username = new JLabel("Username : ");
     JLabel password = new JLabel("Password : ");
@@ -18,13 +24,25 @@ public class Multiplayer implements ActionListener {
     JLabel guest = new JLabel("Guest doesn't have an account?");
     JTextField user = new JTextField();
     JPasswordField pass = new JPasswordField();
-    JButton buttonconnection = new JButton("Connection");
-    JButton createaccountguest = new JButton("Create Account");
+    Icon connectionImage = new ImageIcon("..\\Puissance4java\\src\\image\\connexionBoutonbis.png");
+    Icon createImage = new ImageIcon("..\\Puissance4java\\src\\image\\createBoutonbis.png");
+    JButton buttonconnection = new JButton(connectionImage);
+    JButton createaccountguest = new JButton(createImage);
 
     Multiplayer() {
 
+
+        try {
+            BufferedImage background = ImageIO.read(new File("..\\Puissance4java\\src\\image\\background6.jpg"));
+            frame.setContentPane(new BackGround(background));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
         //phrase
         connect.setBounds(250,-50,500,300);
+        connect.setForeground(colorText);
+        password.setFont(new Font(null, Font.BOLD,20));
         frame.add(connect);
 
         //ecriture
@@ -35,14 +53,19 @@ public class Multiplayer implements ActionListener {
 
         //text
         password.setBounds(150,260,100,100);
-        password.setFont(new Font(null, Font.PLAIN,17));
+        password.setFont(fontText);
+        password.setForeground(colorText);
         frame.add(password);
         username.setBounds(150,115,200,200);
-        username.setFont(new Font(null, Font.PLAIN,17));
+        username.setFont(fontText);
+        username.setForeground(colorText);
         frame.add(username);
         error.setBounds(150,115,200,200);
-        error.setFont(new Font(null, Font.PLAIN,17));
+        error.setFont(fontText);
+        error.setForeground(colorText);
         guest.setBounds(150,375,250,100);
+        guest.setFont(new Font(null, Font.PLAIN,13));
+        guest.setForeground(colorText);
         frame.add(guest);
 
 

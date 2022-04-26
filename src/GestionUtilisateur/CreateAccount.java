@@ -1,13 +1,19 @@
 package GestionUtilisateur;
+import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class CreateAccount implements ActionListener {
 
     JFrame frame = new JFrame();
-    JLabel connect = new JLabel(" please enter following information");
+    public Color colorText = new Color(162,170,214);
+    public Font fontText =new Font(null, Font.PLAIN,15);
+    JLabel connect = new JLabel(" Please enter following information");
     JLabel firstname = new JLabel("First Name : ");
     JLabel lastname = new JLabel("Last Name : ");
     JLabel email = new JLabel("email adress : ");
@@ -27,11 +33,20 @@ public class CreateAccount implements ActionListener {
     JPasswordField pass = new JPasswordField();
     JPasswordField confpass = new JPasswordField();
 
-    JButton buttonconnection = new JButton("Connection");
-    JButton buttonconnectionback = new JButton("Back");
+    Icon connectionImage = new ImageIcon("..\\Puissance4java\\src\\image\\connexionBoutonAccount.png");
+    Icon backImage = new ImageIcon("..\\Puissance4java\\src\\image\\backBoutonAccount.png");
+
+    JButton buttonconnection = new JButton(connectionImage);
+    JButton buttonconnectionback = new JButton(backImage);
 
     CreateAccount() {
 
+        try {
+            BufferedImage background = ImageIO.read(new File("..\\Puissance4java\\src\\image\\background11bis.jpg"));
+            frame.setContentPane(new BackGround(background));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         String[] list = {"--Select gender--","Man", "Woman", "Nothing"};
         JComboBox cbg1 = new JComboBox<>(list);
 
@@ -40,7 +55,10 @@ public class CreateAccount implements ActionListener {
 
         //phrase
         connect.setBounds(250,-100,500,300);
+        connect.setForeground(colorText);
+        connect.setFont(new Font(null,Font.BOLD,20));
         frame.add(connect);
+        connect.setForeground(new Color(162,170,214));
 
         //ecriture
         firstt.setBounds(300,90,200,30);
@@ -58,42 +76,52 @@ public class CreateAccount implements ActionListener {
 
         //text
         firstname.setBounds(150,50,100,100);
-        firstname.setFont(new Font(null, Font.PLAIN,15));
+        firstname.setFont(fontText);
+        firstname.setForeground(colorText);
         frame.add(firstname);
         lastname.setBounds(150,100,100,100);
-        lastname.setFont(new Font(null, Font.PLAIN,15));
+        lastname.setFont(fontText);
+        lastname.setForeground(colorText);
         frame.add(lastname);
         email.setBounds(150,150,100,100);
-        email.setFont(new Font(null, Font.PLAIN,15));
+        email.setFont(fontText);
+        email.setForeground(colorText);
         frame.add(email);
         gender.setBounds(150,200,100,100);
-        gender.setFont(new Font(null, Font.PLAIN,15));
+        gender.setFont(fontText);
+        gender.setForeground(colorText);
         frame.add(gender);
         country.setBounds(150,250,100,100);
-        country.setFont(new Font(null, Font.PLAIN,15));
+        country.setFont(fontText);
+        country.setForeground(colorText);
         frame.add(country);
         username.setBounds(150,300,100,100);
-        username.setFont(new Font(null, Font.PLAIN,15));
+        username.setFont(fontText);
+        username.setForeground(colorText);
         frame.add(username);
         password.setBounds(150,350,100,100);
-        password.setFont(new Font(null, Font.PLAIN,15));
+        password.setFont(fontText);
+        password.setForeground(colorText);
         frame.add(password);
         confirmpassword.setBounds(150,400,100,100);
-        confirmpassword.setFont(new Font(null, Font.PLAIN,15));
+        confirmpassword.setFont(fontText);
+        confirmpassword.setForeground(colorText);
         frame.add(confirmpassword);
 
         error.setBounds(150,400,100,100);
-        error.setFont(new Font(null, Font.PLAIN,15));
+        error.setFont(fontText);
 
 
 
         //button
         buttonconnection.setBounds(300,500,200,40);
+        buttonconnection.setContentAreaFilled(false);
         buttonconnection.setFocusable(false);
         buttonconnection.addActionListener(this);
         frame.add(buttonconnection);
 
         buttonconnectionback.setBounds(500,500,200,40);
+        buttonconnectionback.setContentAreaFilled(false);
         buttonconnectionback.setFocusable(false);
         buttonconnectionback.addActionListener(this);
         frame.add(buttonconnectionback);
