@@ -52,6 +52,7 @@ public class Credits implements ActionListener {
         if(e.getSource()==buttonBack) {
             //if connection possible
             ShowMenu shomenu = new ShowMenu();
+            frame.dispose();
         }
     }
 }
