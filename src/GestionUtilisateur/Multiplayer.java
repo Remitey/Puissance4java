@@ -24,8 +24,8 @@ public class Multiplayer implements ActionListener {
     JLabel guest = new JLabel("Guest doesn't have an account?");
     JTextField user = new JTextField();
     JPasswordField pass = new JPasswordField();
-    Icon connectionImage = new ImageIcon("..\\Puissance4java\\src\\image\\connexionBoutonbis.png");
-    Icon createImage = new ImageIcon("..\\Puissance4java\\src\\image\\createBoutonbis.png");
+    Icon connectionImage = new ImageIcon("..\\Puissance4java\\src\\image\\connexionBoutonAccount.png");
+    Icon createImage = new ImageIcon("..\\Puissance4java\\src\\image\\createBoutonMultiplayer.png");
     JButton buttonconnection = new JButton(connectionImage);
     JButton createaccountguest = new JButton(createImage);
 
@@ -71,10 +71,12 @@ public class Multiplayer implements ActionListener {
 
         //button
         buttonconnection.setBounds(300,340,200,40);
+        buttonconnection.setContentAreaFilled(false);
         buttonconnection.setFocusable(false);
         buttonconnection.addActionListener(this);
         frame.add(buttonconnection);
         createaccountguest.setBounds(360,395,140,40);
+        createaccountguest.setContentAreaFilled(false);
         createaccountguest.setFocusable(false);
         createaccountguest.addActionListener(this);
         frame.add(createaccountguest);

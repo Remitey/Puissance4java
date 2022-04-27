@@ -17,7 +17,7 @@ public class Credits implements ActionListener {
     JLabel equipe = new JLabel(" Notre graphiste international Rere le meilleur, le Gestionnaire de la base de données internationale ThoTHhhhhhhhhhhhho ");
     JLabel dodo = new JLabel("L'homme qui a fait le moins mais qu'on aime quand meme DOdDO");
     JLabel titi = new JLabel("Et le dernier le Thithri celui qui a tout fait");
-    Icon backImage = new ImageIcon("..\\Puissance4java\\src\\image\\backBouton.png");
+    Icon backImage = new ImageIcon("..\\Puissance4java\\src\\image\\backBoutonAccount.png");
     JButton buttonBack = new JButton(backImage);
 
     Credits() {

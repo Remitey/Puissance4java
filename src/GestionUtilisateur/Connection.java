@@ -58,7 +58,7 @@ public class Connection implements ActionListener {
 
 
         //button
-        buttonconnection.setBounds(300,400,200,30);
+        buttonconnection.setBounds(300,400,200,40);
         buttonconnection.setContentAreaFilled(false);
         buttonconnection.setFocusable(false);
         buttonconnection.addActionListener(this);

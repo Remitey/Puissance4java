@@ -22,7 +22,7 @@ public class ConnectionMultiplayer implements ActionListener {
     JLabel error = new JLabel("Username or password incorect please try again");
     JTextField user = new JTextField();
     JPasswordField pass = new JPasswordField();
-    Icon connectionImage = new ImageIcon("..\\Puissance4java\\src\\image\\connexionBouton.png");
+    Icon connectionImage = new ImageIcon("..\\Puissance4java\\src\\image\\connexionBoutonAccount.png");
     JButton buttonconnection = new JButton(connectionImage);
 
     ConnectionMultiplayer() {

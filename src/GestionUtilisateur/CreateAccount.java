@@ -33,7 +33,7 @@ public class CreateAccount implements ActionListener {
     JPasswordField pass = new JPasswordField();
     JPasswordField confpass = new JPasswordField();
 
-    Icon connectionImage = new ImageIcon("..\\Puissance4java\\src\\image\\connexionBoutonAccount.png");
+    Icon connectionImage = new ImageIcon("..\\Puissance4java\\src\\image\\createBoutonAccount.png");
     Icon backImage = new ImageIcon("..\\Puissance4java\\src\\image\\backBoutonAccount.png");
 
     JButton buttonconnection = new JButton(connectionImage);

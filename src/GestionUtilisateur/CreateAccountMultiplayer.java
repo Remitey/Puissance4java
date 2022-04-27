@@ -127,9 +127,9 @@ public class CreateAccountMultiplayer implements ActionListener {
         buttonconnectionback.addActionListener(this);
         frame.add(buttonconnectionback);
 
-        cbg1.setBounds(300,240,200,30);
+        cbg1.setBounds(300,240,200,40);
         frame.add(cbg1);
-        cbg2.setBounds(300,290,200,30);
+        cbg2.setBounds(300,290,200,40);
         frame.add(cbg2);
 
 
