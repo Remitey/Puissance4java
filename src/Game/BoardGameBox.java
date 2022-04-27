@@ -7,8 +7,6 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Map;
-import java.util.Observable;
-import java.util.Observer;
 
 public class BoardGameBox extends JPanel implements MouseListener {
 

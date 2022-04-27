@@ -2,16 +2,12 @@ package Game;
 
 import Util.Pair;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Observable;
-import java.util.Random;
+import java.util.*;
 
 public class AlgoMinMax {
     private final int rows;
     private final int col;
-    //private int playValue;
-    //private int playCurrentValue;
+    private int player;
 
     public AlgoMinMax(int rows, int col) {
         this.rows = rows;
@@ -19,16 +15,21 @@ public class AlgoMinMax {
     }
 
     public Pair<Integer> algoMinMAx(int depth, Map<Pair<Integer>, DataGameBox> grid, int player){
-        Map<Pair<Integer>, DataGameBox> copieGrid = copie(grid);
-        Random rand = new Random();
-        int column = rand.nextInt(col);
-        int currentChanceToWin = 0;
+        this.player = player;
+        //Random rand = new Random();
+        int column = 0;// = rand.nextInt(col);
+        int currentChanceToWin;
         int chanceToWin = 0;
+
         for (int i = 0; i < col; i++) {
-            currentChanceToWin = algo(depth, chanceToWin, copieGrid, player);
-            if (currentChanceToWin < chanceToWin){
-                currentChanceToWin = chanceToWin;
-                column = i;
+            if (!grid.get(new Pair<>(0, i)).isUsed()){
+                Map<Pair<Integer>, DataGameBox> copieGrid = copie(grid);
+                copieGrid = play(copieGrid, i, player);
+                currentChanceToWin = algo(depth, copieGrid, player);
+                if (currentChanceToWin > chanceToWin){
+                    chanceToWin = currentChanceToWin;
+                    column = i;
+                }
             }
         }
         return new Pair<>(getLine(grid, column), column);
@@ -42,7 +43,7 @@ public class AlgoMinMax {
         return j;
     }
 
-    public int algo(int depth, int value, Map<Pair<Integer>, DataGameBox> grid, int player){
+    /*public int algo(int depth, int value, Map<Pair<Integer>, DataGameBox> grid, int player){
         if(depth <= 0 || !grid.containsValue(new DataGameBox(false))){
             return heuristic(grid, player);
         }
@@ -51,7 +52,16 @@ public class AlgoMinMax {
 
                 Map<Pair<Integer>, DataGameBox> copieGrid = copie(grid);
                 copieGrid = play(copieGrid, i, player);
-                int buffer = algo(depth--, value, copieGrid, otherPlayer(player));
+                int buffer;
+
+                if(player == this.player){
+                    buffer = 1000;
+                    value = Math.max(buffer, algo(depth--, value, copieGrid, otherPlayer(player)));
+                }
+                else{
+                    buffer = -1000;
+                    value = Math.min(value, algo(depth--, value, copieGrid, otherPlayer(player)));
+                }
 
                 if (buffer > value){
                     value = buffer;
@@ -59,6 +69,27 @@ public class AlgoMinMax {
             }
         }
         return value;
+    }*/
+    public int algo(int depth, Map<Pair<Integer>, DataGameBox> grid, int player){
+        if(depth <= 0 || !grid.containsValue(new DataGameBox(false))){
+            return heuristic(grid, player);
+        }
+        List<Integer> list = new ArrayList<>(col);
+        for (int i = 0; i < col; i++) {
+            if (!grid.get(new Pair<>(0, i)).isUsed()){ // check if the column is not full
+                Map<Pair<Integer>, DataGameBox> copieGrid = copie(grid);
+                copieGrid = play(copieGrid, i, player);
+
+                list.add(algo(depth--, copieGrid, otherPlayer(player)));
+            }
+        }
+
+        if(player == this.player){
+            return Collections.max(list);
+        }
+        else{
+            return Collections.min(list);
+        }
     }
 
     public int heuristic(Map<Pair<Integer>, DataGameBox> grid, int player){
@@ -75,7 +106,7 @@ public class AlgoMinMax {
                 value += findCountAlignToken(grid, new Pair<>(i, j), -1, -1, player);
             }
         }
-        return 0;
+        return value;
     }
 
     public int findCountAlignToken(Map<Pair<Integer>, DataGameBox> grid, Pair<Integer> pair, int lineAlignment, int colAlignment, int player){
@@ -88,43 +119,16 @@ public class AlgoMinMax {
             count ++;
         }
         if (count == 2){
-            return count;
+            return 0;
         }
         if (count == 3){
-            return 3 * count;
+            return 25 * count;
         }
-        if (count == 4){
-            return 9 * count;
+        if (count >= 4){
+            return 250 * count;
         }
         return count;
     }
-
-    /*public int algoMinMAx(Map<Pair<Integer>, DataGameBox> tab, int depth, int player) {
-        if (depth <= 0) {
-            return playColumn;
-        }
-        for (int i = 0; i < col; i++) {
-            if (!tab.get(new Pair<>(0, i)).isUsed()) {
-
-                //Map<Pair, DataGameBox> copieTab = copie(play(tab, i));
-                if (player == 0) {
-                    playValue = Integer.MAX_VALUE;
-                } else {
-                    playValue = Integer.MIN_VALUE;
-                }
-
-               // playCurrentValue = Math.min(playValue, algoMinMAx(copieTab, depth - 1, otherPlayer(player)));
-
-                if(playCurrentValue >= playValue){
-                    playValue = playCurrentValue;
-                    playColumn = i;
-                }
-            }
-        }
-        return 0;
-    }
-*/
-
 
     public int otherPlayer(int player) {
         if (player == 0) {

@@ -12,11 +12,11 @@ public class BoardGame extends JFrame{
 
         setLayout(new BorderLayout());
 
-        GridGame gridGame = new GridGame(rows, col, false);
+        GridGame gridGame = new GridGame(rows, col, true);
         DataPlayer dataPlayer = new DataPlayer();
         gridGame.addObserver(dataPlayer);
 
-        add(gridGame.getjPanel(), "Center");
+        add(gridGame.getPanel(), "Center");
         add(dataPlayer, "East");
 
         this.setSize(600, 600);
