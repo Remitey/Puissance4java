@@ -56,7 +56,7 @@ public class Play implements ActionListener {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.add(panel);
         frame.setLayout(null);
-
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
 

@@ -137,6 +137,7 @@ public class CreateAccountMultiplayer implements ActionListener {
         frame.setSize(900,600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
     }

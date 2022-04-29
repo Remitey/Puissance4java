@@ -85,6 +85,7 @@ public class Multiplayer implements ActionListener {
         frame.setSize(800,500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
     }
