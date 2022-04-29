@@ -3,7 +3,7 @@ package BaseDeDonnee;
 
 public class Turn {
 
-    private Game game;
+    private Integer game;
 
     private Integer turn;
 
@@ -17,7 +17,7 @@ public class Turn {
 
     }
 
-    public Turn(Game game, Integer turn, Player player, Integer x, Integer y){
+    public Turn(Integer game, Integer turn, Player player, Integer x, Integer y){
         this.game = game;
         this.turn = turn;
         this.player = player;
@@ -25,11 +25,11 @@ public class Turn {
         this.y = y;
     }
 
-    public Game getGame() {
+    public Integer getGame() {
         return game;
     }
 
-    public void setGame(Game game) {
+    public void setGame(Integer game) {
         this.game = game;
     }
 
