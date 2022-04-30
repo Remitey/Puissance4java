@@ -98,6 +98,11 @@ public class Connection implements ActionListener {
                     ShowMenu shomenu = new ShowMenu();
                     frame.dispose();
 
+                    //if (playerDAO==admin)
+                    // new MenuAdmin();
+                    //      frame.dispose();
+                    //else : showmenu
+
                 }
 
 
