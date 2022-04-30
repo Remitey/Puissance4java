@@ -10,13 +10,17 @@ public class MainDAO {
 
         Player player1 = new Player(10, "Thotho", "lad@yahhoo.fr", "123456", 2);
         Player player8 = new Player(8, "Thotho", "lad@yahhoo.fr", "123456", 2);
+        Player player3 = new Player(3, "shessh", "lad@yahhoo.fr", "okaoak", 2);
+        Player player4 = new Player(6, "unedingz", "lad@yahhoo.fr", "thrugzg", 2);
 
 
 
         PlayerDAO playerDAO = new PlayerDAO();
+        playerDAO.create(player4);
 
 
-        System.out.println(playerDAO.findPlayer("Thotho","123456"));
+
+       System.out.println(playerDAO.findPlayer("unedingz","thrugzg"));
 
        // System.out.println( playerDAO.findPlayer("ok","nik zebi"));
         //System.out.println( playerDAO.findPlayer("nice","tu cocos"));
