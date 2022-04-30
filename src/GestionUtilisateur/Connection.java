@@ -1,5 +1,8 @@
 package GestionUtilisateur;
 
+
+import BaseDeDonnee.PlayerDAO;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -11,8 +14,8 @@ import java.io.IOException;
 
 public class Connection implements ActionListener {
 
-    public Color colorText = new Color(162,170,214);
-    public Font fontText =new Font(null, Font.PLAIN,17);
+    public Color colorText = new Color(162, 170, 214);
+    public Font fontText = new Font(null, Font.PLAIN, 17);
     JFrame frame = new JFrame();
     JLabel connect = new JLabel(" please enter your username and password");
     JLabel username = new JLabel("Username : ");
@@ -22,11 +25,12 @@ public class Connection implements ActionListener {
     JPasswordField pass = new JPasswordField();
     Icon connectionImage = new ImageIcon("..\\Puissance4java\\src\\image\\connexionBoutonAccount.png");
     JButton buttonconnection = new JButton(connectionImage);
+    JPanel jPanel= new JPanel();
 
     Connection() {
 
         //phrase
-        connect.setBounds(250,-50,500,300);
+        connect.setBounds(250, -50, 500, 300);
         connect.setForeground(colorText);
         frame.add(connect);
 
@@ -38,34 +42,34 @@ public class Connection implements ActionListener {
         }
 
         //ecriture
-        user.setBounds(300,200,200,30);
+        user.setBounds(300, 200, 200, 30);
         frame.add(user);
-        pass.setBounds(300,300,200,30);
+        pass.setBounds(300, 300, 200, 30);
         frame.add(pass);
 
         //text
-        password.setBounds(150,260,100,100);
+        password.setBounds(150, 260, 100, 100);
         password.setFont(fontText);
         password.setForeground(colorText);
         frame.add(password);
-        username.setBounds(150,115,200,200);
+        username.setBounds(150, 115, 200, 200);
         username.setFont(fontText);
         username.setForeground(colorText);
         frame.add(username);
-        error.setBounds(150,115,200,200);
+        error.setBounds(150, 115, 200, 200);
         error.setFont(fontText);
         error.setForeground(colorText);
 
 
         //button
-        buttonconnection.setBounds(300,400,200,40);
+        buttonconnection.setBounds(300, 400, 200, 40);
         buttonconnection.setContentAreaFilled(false);
         buttonconnection.setFocusable(false);
         buttonconnection.addActionListener(this);
         frame.add(buttonconnection);
 
         //tout
-        frame.setSize(800,500);
+        frame.setSize(800, 500);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setLayout(null);
         frame.setLocationRelativeTo(null);
@@ -73,15 +77,38 @@ public class Connection implements ActionListener {
 
     }
 
+    public JPanel getPanel() {
+        return jPanel;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource()==buttonconnection) {
-            //if connection possible
-            ShowMenu shomenu = new ShowMenu();
-            frame.dispose();
-            //else
-            //frame.add(error);
+        String userName = user.getText();
+        String password = String.valueOf(pass.getPassword());
+        System.out.println(user.getText());
+        System.out.println(String.valueOf(pass.getPassword()));
+        if (e.getSource() == buttonconnection) {
+
+
+                PlayerDAO playerDAO = new PlayerDAO();
+
+                if (playerDAO.findPlayer(user.getText(), String.valueOf(pass.getPassword())) == null) {
+                    JOptionPane.showMessageDialog(jPanel, "Wrong Username & Password");
+                } else {
+                    ShowMenu shomenu = new ShowMenu();
+                    frame.dispose();
+
+                }
+
+
 
         }
+
+        //if connection possible
+
+        //else
+        //frame.add(error);
+
     }
 }
+
