@@ -147,6 +147,9 @@ public class CreateAccount implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        String pasword = String.valueOf(pass.getPassword());
+        String username = usernamee.getText();
+        String recupemail = emaill.getText();
         if(e.getSource()==buttonconnection) {
             // if connection existe
             ShowMenu showmenu = new ShowMenu(player);
@@ -156,7 +159,9 @@ public class CreateAccount implements ActionListener {
         }
         if (e.getSource() == buttonconnectionback) {
             PlayerDAO playerDAO = new PlayerDAO();
-            playerDAO.create(player);
+            Player player1 = new Player();
+            player1 = new Player(2,username,recupemail, pasword, 2);
+            playerDAO.create(player1);
             frame.dispose();
             new BorderLayout(player);
         }
