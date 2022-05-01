@@ -155,7 +155,7 @@ public class CreateAccount implements ActionListener {
         }
         if (e.getSource() == buttonconnectionback) {
             frame.dispose();
-            new BorderLayout();
+            new BorderLayout(player);
         }
     }
 }

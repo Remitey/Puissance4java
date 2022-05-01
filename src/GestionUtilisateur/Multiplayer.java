@@ -101,7 +101,7 @@ public class Multiplayer implements ActionListener {
 
         }
         if (e.getSource()==createaccountguest) {
-            new CreateAccountMultiplayer();
+            new CreateAccountMultiplayer(player);
             frame.dispose();
         }
     }
