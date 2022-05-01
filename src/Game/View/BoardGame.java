@@ -19,7 +19,7 @@ public class BoardGame extends JFrame{
 
         GridView gridView = new GridView();
 
-        GameController gameController = new GameController(false, gridView);
+        GameController gameController = new GameController(true, gridView);
 
 
         gameController.addObserver(playerView);

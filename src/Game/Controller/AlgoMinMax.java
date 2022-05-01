@@ -10,11 +10,9 @@ import static Game.Model.DataGrid.rows;
 
 public class AlgoMinMax {
     private int player;
-
     public AlgoMinMax(int player) {
         this.player = player;
     }
-
     public Pair<Integer> algoMinMAx(int depth, Map<Pair<Integer>, BoxModel> grid){
         //Random rand = new Random();
         int column = 0;// = rand.nextInt(col);
@@ -34,7 +32,6 @@ public class AlgoMinMax {
         }
         return new Pair<>(getLine(grid, column), column);
     }
-
     public int getLine(Map<Pair<Integer>, BoxModel> grid, int col){
         int j = rows;
         while (grid.get(new Pair<>(j, col)).isUsed()) { //check the line to play
@@ -42,7 +39,6 @@ public class AlgoMinMax {
         }
         return j;
     }
-
     /*public int algo(int depth, int value, Map<Pair<Integer>, DataGameBox> grid, int player){
         if(depth <= 0 || !grid.containsValue(new DataGameBox(false))){
             return heuristic(grid, player);
@@ -91,11 +87,9 @@ public class AlgoMinMax {
             return Collections.min(list);
         }
     }
-
     public int heuristic(Map<Pair<Integer>, BoxModel> grid, int player){
         return countAlignToken(grid, player);
     }
-
     public int countAlignToken(Map<Pair<Integer>, BoxModel> grid, int player){
         int value = 0;
         for (int i = 0; i < rows; i++) {
@@ -108,7 +102,6 @@ public class AlgoMinMax {
         }
         return value;
     }
-
     public int findCountAlignToken(Map<Pair<Integer>, BoxModel> grid, Pair<Integer> pair, int lineAlignment, int colAlignment, int player){
         int count = 1;
         int i = pair.getFirst();
@@ -129,14 +122,12 @@ public class AlgoMinMax {
         }
         return count;
     }
-
     public int otherPlayer(int player) {
         if (player == 0) {
             return 1;
         }
         return 0;
     }
-
     public Map<Pair<Integer>, BoxModel> play(Map<Pair<Integer>, BoxModel> tab, int i, int player) {
         Map<Pair<Integer>, BoxModel> copieTab = copie(tab);
 
@@ -148,7 +139,6 @@ public class AlgoMinMax {
         copieTab.replace(new Pair<>(j, i), new BoxModel(true, player));
         return copieTab;
     }
-
     public Map<Pair<Integer>, BoxModel> copie(Map<Pair<Integer>, BoxModel> tab) {
         Map<Pair<Integer>, BoxModel> copie = new HashMap<>();
         for (int i = 0; i < rows; i++) {

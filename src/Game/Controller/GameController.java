@@ -11,8 +11,6 @@ import javax.swing.*;
 import java.awt.*;
 import java.util.*;
 
-import static Game.Model.DataGrid.rows;
-
 public class GameController extends Observable implements Observer {
     private int player;
     private boolean ia;
@@ -30,7 +28,7 @@ public class GameController extends Observable implements Observer {
     }
     private void createGrid(){
         grid = new HashMap<>();
-        for (int i = 0; i < rows; i++) {
+        for (int i = 0; i < DataGrid.rows; i++) {
             for (int j = 0; j < DataGrid.col; j++) {
                 BoxView box = new BoxView(new BoxModel(false, this));
                 grid.put(new Pair<>(i, j), box.getBoxModel());
@@ -39,7 +37,7 @@ public class GameController extends Observable implements Observer {
             }
         }
         for (int j = 0; j < DataGrid.col; j++) {
-            grid.put(new Pair<>(rows, j), new BoxModel(true));
+            grid.put(new Pair<>(DataGrid.rows, j), new BoxModel(true));
         }
     }
     public boolean isIa(){
@@ -80,7 +78,7 @@ public class GameController extends Observable implements Observer {
     }
     public boolean winCondition(int player) {
         boolean isWin = false;
-        for (int i = 0; i < rows; i++) { // line conditions
+        for (int i = 0; i < DataGrid.rows; i++) { // line conditions
             for (int j = 0; j < DataGrid.col - 3; j++) {
                 if (check(i ,j, player) && check(i, j + 1, player) && check(i, j + 2, player) && check(i, j + 3, player)) {
                     isWin = true;
@@ -88,7 +86,7 @@ public class GameController extends Observable implements Observer {
             }
         }
 
-        for (int i = 0; i < rows - 3; i++) { // col conditions
+        for (int i = 0; i < DataGrid.rows - 3; i++) { // col conditions
             for (int j = 0; j < DataGrid.col; j++) {
                 if (check(i ,j, player) && check(i + 1,j, player) && check(i + 2,j, player) && check(i + 3,j, player)) {
                     isWin = true;
@@ -97,14 +95,14 @@ public class GameController extends Observable implements Observer {
             }
         }
 
-        for (int i = 0; i < rows - 3; i++) { // diagonale 1 conditions
+        for (int i = 0; i < DataGrid.rows - 3; i++) { // diagonale 1 conditions
             for (int j = 0; j < DataGrid.col - 3; j++) {
                 if (check(i ,j, player) && check(i + 1,j + 1, player) && check(i + 2,j + 2, player) && check(i + 3,j + 3, player)) {
                     isWin = true;
                 }
             }
         }
-        for (int i = 3; i < rows; i++) { // diagonale 2 conditions
+        for (int i = 3; i < DataGrid.rows; i++) { // diagonale 2 conditions
             for (int j = 0; j < DataGrid.col - 3; j++) {
                 if (check(i ,j, player) && check(i - 1,j + 1, player) && check(i - 2,j + 2, player) && check(i - 3,j + 3, player)) {
                     isWin = true;
@@ -117,14 +115,7 @@ public class GameController extends Observable implements Observer {
         BoxModel boxModel = new BoxModel(false);
         return !grid.containsValue(boxModel);
     }
-    @Override
-    public void update(Observable o, Object arg) {
-        System.out.println("Updating");
-
-        /*if (arg instanceof Pair<?>) {
-            grid.get(arg).setPlayer(player);
-        }*/
-
+    public void isEnd(){
         if (winCondition(player)) {
             SwingUtilities.getWindowAncestor(gridView).dispose();
             new Win();
@@ -137,13 +128,19 @@ public class GameController extends Observable implements Observer {
 
             JOptionPane.showMessageDialog(gridView, "full grid, no one win");
         }
-        else if (ia) {
+    }
+    @Override
+    public void update(Observable o, Object arg) {
+        System.out.println("Updating");
+
+        isEnd();
+        if (ia) {
             player = 0;
             setChanged();
             notifyObservers("IA");
             Pair<Integer> pair = algoMinMax.algoMinMAx(3, grid);
             System.out.println(pair);
-            int number = rows * pair.getFirst() + pair.getSecond();
+            int number = DataGrid.col * pair.getFirst() + pair.getSecond();
             System.out.println(number);
 
             BoxView boxView = (BoxView) gridView.getComponent(number);
