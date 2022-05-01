@@ -25,6 +25,7 @@ public class ConnectionMultiplayer implements ActionListener {
     JPasswordField pass = new JPasswordField();
     Icon connectionImage = new ImageIcon("..\\Puissance4java\\src\\image\\connexionBoutonAccount.png");
     JButton buttonconnection = new JButton(connectionImage);
+    JButton buttonconnectionback = new JButton("Back");
     private final Player player;
 
     ConnectionMultiplayer(Player player) {
@@ -69,6 +70,11 @@ public class ConnectionMultiplayer implements ActionListener {
         buttonconnection.setFocusable(false);
         buttonconnection.addActionListener(this);
         frame.add(buttonconnection);
+        buttonconnectionback.setBounds(500,500,200,40);
+        buttonconnectionback.setContentAreaFilled(false);
+        buttonconnectionback.setFocusable(false);
+        buttonconnectionback.addActionListener(this);
+        frame.add(buttonconnectionback);
 
         //tout
         frame.setSize(800,500);
@@ -84,10 +90,14 @@ public class ConnectionMultiplayer implements ActionListener {
         if(e.getSource()==buttonconnection) {
             //if connection possible
             frame.dispose();
-            //new BoardGame();
+            new WelcomePlayer2(player);
             //else
             //frame.add(error);
 
+        }
+        if (e.getSource() == buttonconnectionback) {
+            frame.dispose();
+            new Multiplayer(player);
         }
     }
 }

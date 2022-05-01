@@ -150,6 +150,7 @@ public class CreateAccountMultiplayer implements ActionListener {
             // if connection existe
             //new BoardGame();
             frame.dispose();
+            new WelcomePlayer2(player);
             //else :
             //frame.add(error);
         }
