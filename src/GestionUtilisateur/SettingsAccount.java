@@ -16,8 +16,11 @@ public class SettingsAccount implements ActionListener {
     public Color colorText =new Color(162,170,214);
     JFrame frame = new JFrame();
 
-    JButton changePass = new JButton("Change Password");
-    JButton back = new JButton("Back");
+    Icon changePassword = new ImageIcon("..\\Puissance4java\\src\\image\\changePasswordBouton.png");
+    Icon backImage = new ImageIcon("..\\Puissance4java\\src\\image\\bigbackBouton.png");
+
+    JButton changePass = new JButton(changePassword);
+    JButton back = new JButton(backImage);
     //regles?
 
     JLabel hello = new JLabel("Welcome in Settings");
@@ -30,7 +33,12 @@ public class SettingsAccount implements ActionListener {
         // final JTextField text = new JTextField();
 
         this.player = player;
-
+        try {
+            BufferedImage background = ImageIO.read(new File("..\\Puissance4java\\src\\image\\background7.jpg"));
+            frame.setContentPane(new BackGround(background));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         hello.setBounds(270, -50, 600, 300);
         hello.setFont(new Font("Arial",Font.BOLD,20));
