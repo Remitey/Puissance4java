@@ -16,12 +16,14 @@ public class ShowMenu implements ActionListener{
     Icon playImage = new ImageIcon("..\\Puissance4java\\src\\image\\playBouton.png");
     Icon dataImage = new ImageIcon("..\\Puissance4java\\src\\image\\dataBouton.png");
     Icon creditsImage = new ImageIcon("..\\Puissance4java\\src\\image\\creditsBouton.png");
+    Icon disconnectImage = new ImageIcon("..\\Puissance4java\\src\\image\\disconnectBouton.png");
+    Icon settingsImage = new ImageIcon("..\\Puissance4java\\src\\image\\settingsBouton.png");
 
     JButton play = new JButton(playImage);
         JButton data = new JButton(dataImage);
         JButton credits = new JButton(creditsImage);
-        JButton disconnect = new JButton();
-        JButton settings = new JButton();
+        JButton disconnect = new JButton(disconnectImage);
+        JButton settings = new JButton(settingsImage);
         JPanel panel = new JPanel();
         JLabel welcome = new JLabel("Welcome" ); //+ username
 
