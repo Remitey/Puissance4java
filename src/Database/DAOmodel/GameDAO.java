@@ -120,6 +120,22 @@ public class GameDAO extends DAO<Game> {
         }
         return obj;
     }
+    public Game updateIA(Game obj) {
+        try {
+            this.connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE).executeUpdate("UPDATE game " +
+                    "SET player_1 = '" + obj.getPlayer_1().getId() +
+                    "', player_2 = '" + obj.getCpu().getId() +
+                    "', grid_size_row ='" + obj.getGrid_size_row() +
+                    "', grid_size_col ='" + obj.getGrid_size_col() +
+                    "', result ='" + obj.getResult() +
+                    "', Datetime_Start ='" + obj.getTime() +
+                    "', Duration ='" + obj.getDuration() +
+                    "' WHERE id = " + obj.getId());
+        } catch (SQLException exception) {
+            exception.printStackTrace();
+        }
+        return obj;
+    }
     @Override
     public void delete(Game obj) {
         try{

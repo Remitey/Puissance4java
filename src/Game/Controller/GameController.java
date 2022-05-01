@@ -22,37 +22,27 @@ public class GameController extends Observable implements Observer {
     private String player;
     private final boolean ia;
     private Map<Pair<Integer>, BoxModel> grid;
-    private final AlgoMinMax algoMinMax;
+    private AlgoMinMax algoMinMax;
     private final GridView gridView;
     private final Game game;
     private final PlayerDAO playerDAO;
     private final GameDAO gameDAO;
     private final TurnDAO turnDAO;
-    private final CpuDAO cpuDAO;
+    private CpuDAO cpuDAO;
+    private Cpu cpu;
     private final Date date;
-    public GameController(boolean ia, GridView gridView){
+    public GameController(GridView gridView){
         date = new Date();
         playerDAO = new PlayerDAO();
         gameDAO = new GameDAO();
         turnDAO = new TurnDAO();
-        cpuDAO = new CpuDAO();
-        Cpu cpu = new Cpu();
 
-       if (!ia){
-           game = new Game(0, playerDAO.findPlayer(DataGrid.Nameplayer1), playerDAO.findPlayer(DataGrid.Nameplayer2), 6, 7, null, date.getTime(),0);
-           gameDAO.create(game);
-       } else{
-           game = new Game(0,playerDAO.findPlayer(DataGrid.Nameplayer1),cpuDAO.find(1),6,7,null,date.getTime(),0);
-           gameDAO.create(game);
-       }
+        game = new Game(0, playerDAO.findPlayer(DataGrid.Nameplayer1), playerDAO.findPlayer(DataGrid.Nameplayer2), 6, 7, null, date.getTime(),0);
+        gameDAO.create(game);
 
-
-
-
-        this.ia = ia;
+        this.ia = false;
         this.gridView = gridView;
 
-        algoMinMax = new AlgoMinMax(DataGrid.Nameplayer2);
         Random random = new Random();
         if (random.nextInt(2) == 0){
             player = DataGrid.Nameplayer1;
@@ -60,6 +50,31 @@ public class GameController extends Observable implements Observer {
         else{
             player = DataGrid.Nameplayer1;
         }
+        createGrid();
+    }
+    public GameController(String difficulty, GridView gridView){
+        date = new Date();
+        playerDAO = new PlayerDAO();
+        gameDAO = new GameDAO();
+        turnDAO = new TurnDAO();
+        cpuDAO = new CpuDAO();
+
+        if (difficulty.equals("easy")){
+            cpu = new Cpu(0, difficulty, 2);
+        }
+        else if (difficulty.equals("hard")){
+            cpu = new Cpu(0, difficulty, 4);
+        }
+
+        game = new Game(0,playerDAO.findPlayer(DataGrid.Nameplayer1), cpuDAO.create(cpu),6,7,null,date.getTime(),0);
+        game.setCpu(cpuDAO.findId(game, cpu));
+        gameDAO.create(game);
+
+        this.ia = true;
+        this.gridView = gridView;
+
+        algoMinMax = new AlgoMinMax(DataGrid.Nameplayer2);
+        player = DataGrid.Nameplayer1;
         createGrid();
     }
     private void createGrid(){
@@ -76,9 +91,6 @@ public class GameController extends Observable implements Observer {
             grid.put(new Pair<>(DataGrid.rows, j), new BoxModel(true));
         }
     }
-    public boolean isIa(){
-        return ia;
-    }
     public void changeCase(int x, int y){
         grid.get(new Pair<>(x, y)).setUsed(true);
         grid.get(new Pair<>(x, y)).setPlayer(player);
@@ -89,9 +101,6 @@ public class GameController extends Observable implements Observer {
     public boolean check(int i, int j, String player){
         return grid.get(new Pair<>(i, j)).isUsed() && grid.get(new Pair<>(i, j)).getPlayer().equals(player);
     }
-    public Map<Pair<Integer>, BoxModel> getGrid(){
-        return grid;
-    }
     public boolean isUsed(int i, int j){
         return grid.get(new Pair<>(i, j)).isUsed();
     }
@@ -100,15 +109,7 @@ public class GameController extends Observable implements Observer {
             System.out.println("ca pose pas");
             return false;
         }else{
-            //Pair<Integer> location = new Pair<>(x, y);
-
             System.out.println("ca pose");
-
-            /*grid.get(location).setUsed(true);
-
-            if(!isIA){
-                grid.get(location).update(location);
-            }*/
             return true;
         }
     }
@@ -160,13 +161,16 @@ public class GameController extends Observable implements Observer {
 
             if (player.equals(playerDAO.findPlayer(DataGrid.Nameplayer1).getUsername())){
                 game.setResult(playerDAO.findPlayer(DataGrid.Nameplayer1).getId());
+                gameDAO.update(gameDAO.findForId(game));
+            }
+            else if (ia){
+                game.setResult(cpuDAO.findId(game, cpu).getId());
+                gameDAO.updateIA(gameDAO.findForId(game));
             }
             else {
                 game.setResult(playerDAO.findPlayer(DataGrid.Nameplayer2).getId());
+                gameDAO.update(gameDAO.findForId(game));
             }
-
-            gameDAO.update(gameDAO.findForId(game));
-
             JOptionPane.showMessageDialog(gridView, "joueur " + player + " a win");
         }
         else if (isFull()){
@@ -220,7 +224,7 @@ public class GameController extends Observable implements Observer {
             boxView.base = new Color(236,55,131);
             boxView.paintComponent(boxView.getGraphics());
             System.out.println(boxView.base);
-
+            isEnd();
             player = otherPlayer(player);
         } else {
             player = otherPlayer(player);

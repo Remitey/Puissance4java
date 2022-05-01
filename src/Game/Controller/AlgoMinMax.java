@@ -80,7 +80,7 @@ public class AlgoMinMax {
         int count = 1;
         int i = pair.getFirst();
         int j = pair.getSecond();
-        while (grid.containsKey(new Pair<>(i + lineAlignment, j + colAlignment)) && grid.get(new Pair<>(i + lineAlignment, j + colAlignment)).getPlayer().equals(player)){
+        while (grid.containsKey(new Pair<>(i + lineAlignment, j + colAlignment)) && grid.get(new Pair<>(i + lineAlignment, j + colAlignment)).getPlayer() != null && grid.get(new Pair<>(i + lineAlignment, j + colAlignment)).getPlayer().equals(player)){
             i += lineAlignment;
             j += colAlignment;
             count ++;
@@ -92,7 +92,7 @@ public class AlgoMinMax {
             return 25 * count;
         }
         if (count >= 4){
-            return 250 * count;
+            return 2500 * count;
         }
         return count;
     }

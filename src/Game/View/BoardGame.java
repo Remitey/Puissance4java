@@ -24,7 +24,7 @@ public class BoardGame extends JFrame{
         PlayerView playerView = new PlayerView(player1,player2);
         GridView gridView = new GridView();
 
-        GameController gameController = new GameController(false, gridView);
+        GameController gameController = new GameController(gridView);
         gameController.addObserver(playerView);
 
         add(gameController.getGridView(), "Center");
@@ -46,7 +46,7 @@ public class BoardGame extends JFrame{
         PlayerView playerView = new PlayerView(player);
         GridView gridView = new GridView();
 
-        GameController gameController = new GameController(true, gridView);
+        GameController gameController = new GameController("easy", gridView);
         gameController.addObserver(playerView);
 
         add(gameController.getGridView(), "Center");

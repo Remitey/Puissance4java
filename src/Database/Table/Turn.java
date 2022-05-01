@@ -13,10 +13,7 @@ public class Turn {
 
     private Integer y;
 
-    public Turn(){
-
-    }
-
+    public Turn(){}
     public Turn(Integer game, Integer turn, Player player, Integer x, Integer y){
         this.game = game;
         this.turn = turn;
