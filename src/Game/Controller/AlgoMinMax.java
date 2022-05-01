@@ -1,21 +1,21 @@
-package Game;
+package Game.Controller;
 
-import Util.Pair;
+import Game.Model.BoxModel;
+import Game.Model.Pair;
 
 import java.util.*;
 
+import static Game.Model.DataGrid.col;
+import static Game.Model.DataGrid.rows;
+
 public class AlgoMinMax {
-    private final int rows;
-    private final int col;
     private int player;
 
-    public AlgoMinMax(int rows, int col) {
-        this.rows = rows;
-        this.col = col;
+    public AlgoMinMax(int player) {
+        this.player = player;
     }
 
-    public Pair<Integer> algoMinMAx(int depth, Map<Pair<Integer>, DataGameBox> grid, int player){
-        this.player = player;
+    public Pair<Integer> algoMinMAx(int depth, Map<Pair<Integer>, BoxModel> grid){
         //Random rand = new Random();
         int column = 0;// = rand.nextInt(col);
         int currentChanceToWin;
@@ -23,7 +23,7 @@ public class AlgoMinMax {
 
         for (int i = 0; i < col; i++) {
             if (!grid.get(new Pair<>(0, i)).isUsed()){
-                Map<Pair<Integer>, DataGameBox> copieGrid = copie(grid);
+                Map<Pair<Integer>, BoxModel> copieGrid = copie(grid);
                 copieGrid = play(copieGrid, i, player);
                 currentChanceToWin = algo(depth, copieGrid, player);
                 if (currentChanceToWin > chanceToWin){
@@ -35,7 +35,7 @@ public class AlgoMinMax {
         return new Pair<>(getLine(grid, column), column);
     }
 
-    public int getLine(Map<Pair<Integer>, DataGameBox> grid, int col){
+    public int getLine(Map<Pair<Integer>, BoxModel> grid, int col){
         int j = rows;
         while (grid.get(new Pair<>(j, col)).isUsed()) { //check the line to play
             j--;
@@ -70,14 +70,14 @@ public class AlgoMinMax {
         }
         return value;
     }*/
-    public int algo(int depth, Map<Pair<Integer>, DataGameBox> grid, int player){
-        if(depth <= 0 || !grid.containsValue(new DataGameBox(false))){
+    public int algo(int depth, Map<Pair<Integer>, BoxModel> grid, int player){
+        if(depth <= 0 || !grid.containsValue(new BoxModel(false))){
             return heuristic(grid, player);
         }
         List<Integer> list = new ArrayList<>(col);
         for (int i = 0; i < col; i++) {
             if (!grid.get(new Pair<>(0, i)).isUsed()){ // check if the column is not full
-                Map<Pair<Integer>, DataGameBox> copieGrid = copie(grid);
+                Map<Pair<Integer>, BoxModel> copieGrid = copie(grid);
                 copieGrid = play(copieGrid, i, player);
 
                 list.add(algo(depth--, copieGrid, otherPlayer(player)));
@@ -92,11 +92,11 @@ public class AlgoMinMax {
         }
     }
 
-    public int heuristic(Map<Pair<Integer>, DataGameBox> grid, int player){
+    public int heuristic(Map<Pair<Integer>, BoxModel> grid, int player){
         return countAlignToken(grid, player);
     }
 
-    public int countAlignToken(Map<Pair<Integer>, DataGameBox> grid, int player){
+    public int countAlignToken(Map<Pair<Integer>, BoxModel> grid, int player){
         int value = 0;
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < col; j++) {
@@ -109,7 +109,7 @@ public class AlgoMinMax {
         return value;
     }
 
-    public int findCountAlignToken(Map<Pair<Integer>, DataGameBox> grid, Pair<Integer> pair, int lineAlignment, int colAlignment, int player){
+    public int findCountAlignToken(Map<Pair<Integer>, BoxModel> grid, Pair<Integer> pair, int lineAlignment, int colAlignment, int player){
         int count = 1;
         int i = pair.getFirst();
         int j = pair.getSecond();
@@ -137,26 +137,26 @@ public class AlgoMinMax {
         return 0;
     }
 
-    public Map<Pair<Integer>, DataGameBox> play(Map<Pair<Integer>, DataGameBox> tab, int i, int player) {
-        Map<Pair<Integer>, DataGameBox> copieTab = copie(tab);
+    public Map<Pair<Integer>, BoxModel> play(Map<Pair<Integer>, BoxModel> tab, int i, int player) {
+        Map<Pair<Integer>, BoxModel> copieTab = copie(tab);
 
         int j = rows - 1;
         while (copieTab.get(new Pair<>(j, i)).isUsed()) { //check the line to play
             j--;
         }
 
-        copieTab.replace(new Pair<>(j, i), new DataGameBox(true, player));
+        copieTab.replace(new Pair<>(j, i), new BoxModel(true, player));
         return copieTab;
     }
 
-    public Map<Pair<Integer>, DataGameBox> copie(Map<Pair<Integer>, DataGameBox> tab) {
-        Map<Pair<Integer>, DataGameBox> copie = new HashMap<>();
+    public Map<Pair<Integer>, BoxModel> copie(Map<Pair<Integer>, BoxModel> tab) {
+        Map<Pair<Integer>, BoxModel> copie = new HashMap<>();
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < col; j++) {
                 Pair<Integer> pair = new Pair<>(i, j);
-                DataGameBox dataGameBox = new DataGameBox(tab.get(pair).isUsed());
-                dataGameBox.setPlayer(tab.get(pair).getPlayer());
-                copie.put(pair, dataGameBox);
+                BoxModel boxModel = new BoxModel(tab.get(pair).isUsed());
+                boxModel.setPlayer(tab.get(pair).getPlayer());
+                copie.put(pair, boxModel);
             }
         }
         return copie;

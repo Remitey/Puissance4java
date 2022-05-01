@@ -1,23 +1,22 @@
-package Game;
+package Game.View;
 
-import Util.Pair;
+import Game.Model.BoxModel;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.Map;
 
-public class BoardGameBox extends JPanel implements MouseListener {
-
-    private final Map<Pair<Integer>, DataGameBox> tab;
+public class BoxView extends JPanel implements MouseListener {
     public Color base = null;
-
-    public BoardGameBox(Map<Pair<Integer>, DataGameBox> tab){
-        this.tab = tab;
+    private final BoxModel boxModel;
+    public BoxView(BoxModel boxModel){
+        this.boxModel = boxModel;
         addMouseListener(this);
     }
-
+    public BoxModel getBoxModel(){
+        return boxModel;
+    }
     @Override
     public void paintComponent(Graphics g){
         if (base == null){
@@ -36,52 +35,28 @@ public class BoardGameBox extends JPanel implements MouseListener {
                 g.fillOval(4,4, getSize().height - 5, getSize().height - 5);
             }
         }
-
     }
+    @Override
+    public void mouseClicked(MouseEvent e){
+        int y = (int) getLocation().getX() / getWidth();
+        int x = (int) getLocation().getY() / getHeight();
 
-    public void verifyAndDraw(int x, int y, boolean isIA){
-        if (!tab.get(new Pair<>(y+1, x)).isUsed() || tab.get(new Pair<>(y, x)).isUsed()){
-            System.out.println("ca pose pas");
-        }else{
-            Pair<Integer> location = new Pair<>(y, x);
-
-            System.out.println("ca pose");
-
-            tab.get(location).setUsed(true);
-
-            if(!isIA){
-                tab.get(location).update(location);
-            }
-
-            if(tab.get(location).getPlayer() == 0){
+        if(boxModel.checkPosition(x, y)){
+            if(boxModel.getPlayer() == 0){
                 base = Color.red;
             }else {
                 base = Color.yellow;
             }
-
             paintComponent(getGraphics());
         }
+        boxModel.update(x, y);
     }
-
-    @Override
-    public void mouseClicked(MouseEvent e){
-        int x = (int) getLocation().getX() / getWidth();
-        int y = (int) getLocation().getY() / getHeight();
-
-        verifyAndDraw(x, y, false);
-    }
-
     @Override
     public void mousePressed(MouseEvent e) {}
-
     @Override
     public void mouseReleased(MouseEvent e) {}
-
     @Override
-    public void mouseEntered(MouseEvent e) {
-    }
-
+    public void mouseEntered(MouseEvent e) {}
     @Override
-    public void mouseExited(MouseEvent e) {
-    }
+    public void mouseExited(MouseEvent e) {}
 }

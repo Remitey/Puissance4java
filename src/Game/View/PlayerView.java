@@ -1,13 +1,13 @@
-package Game;
+package Game.View;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.Observable;
 import java.util.Observer;
 
-public class DataPlayer extends JPanel implements Observer {
+public class PlayerView extends JPanel implements Observer {
 
-    public DataPlayer(){
+    public PlayerView(){
         BoxLayout boxLayout = new BoxLayout(this, BoxLayout.Y_AXIS);
         setLayout(boxLayout);
         JLabel labelTextNamePlayer1 = new JLabel("Premier Joueur :");
@@ -26,6 +26,6 @@ public class DataPlayer extends JPanel implements Observer {
     @Override
     public void update(Observable o, Object arg) {
         Window window = SwingUtilities.windowForComponent(this);
-        JOptionPane.showMessageDialog(window, "c'est au tour de " + arg.toString());
+        //JOptionPane.showMessageDialog(window, "c'est au tour de " + arg.toString());
     }
 }
