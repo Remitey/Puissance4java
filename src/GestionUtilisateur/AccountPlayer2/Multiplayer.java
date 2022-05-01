@@ -13,6 +13,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 public class Multiplayer implements ActionListener {
     private final Player player;
@@ -108,7 +109,11 @@ public class Multiplayer implements ActionListener {
 
             if (newplayer == null) {
                 JOptionPane.showMessageDialog(jPanel, "Wrong Username & Password");
-            }else {
+            }
+            if (Objects.equals(newplayer.getUsername(), player.getUsername())){
+                JOptionPane.showMessageDialog(jPanel, "c le meme joueur chacal");
+            }
+            else {
                 new WelcomePlayer2(player,newplayer);
                 frame.dispose();
 
