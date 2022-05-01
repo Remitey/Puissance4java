@@ -3,6 +3,7 @@ package Game.Controller;
 import Database.DAOmodel.GameDAO;
 import Database.DAOmodel.PlayerDAO;
 import Database.DAOmodel.TurnDAO;
+import Database.Table.Cpu;
 import Database.Table.Game;
 import Database.Table.Turn;
 import Game.Model.BoxModel;
@@ -33,6 +34,7 @@ public class GameController extends Observable implements Observer {
         playerDAO = new PlayerDAO();
         gameDAO = new GameDAO();
         turnDAO = new TurnDAO();
+        Cpu cpu = new Cpu();
         game = new Game(0, playerDAO.findPlayer(DataGrid.Nameplayer1), playerDAO.findPlayer(DataGrid.Nameplayer2), 6, 7, null, date.getTime(),0);
 
         gameDAO.create(game);
@@ -40,7 +42,7 @@ public class GameController extends Observable implements Observer {
         this.ia = ia;
         this.gridView = gridView;
 
-        algoMinMax = new AlgoMinMax(DataGrid.Nameplayer1);
+        algoMinMax = new AlgoMinMax(DataGrid.Nameplayer2);
         Random random = new Random();
         if (random.nextInt(2) == 0){
             player = DataGrid.Nameplayer1;

@@ -34,4 +34,26 @@ public class BoardGame extends JFrame{
         setLocationRelativeTo(null);
         this.setVisible(true);
     }
+    public BoardGame(Player player, String difficulty){
+        int rows = 6;
+        int col = 7;
+
+        new DataGrid(rows, col, player);
+
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setLayout(new BorderLayout());
+
+        PlayerView playerView = new PlayerView();
+        GridView gridView = new GridView();
+
+        GameController gameController = new GameController(true, gridView);
+        gameController.addObserver(playerView);
+
+        add(gameController.getGridView(), "Center");
+        add(playerView, "East");
+
+        this.setSize(600, 600);
+        setLocationRelativeTo(null);
+        this.setVisible(true);
+    }
 }

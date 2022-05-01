@@ -8,9 +8,7 @@ public class Cpu {
 
     private Integer depth;
 
-    public Cpu(){
-
-    }
+    public Cpu(){}
 
     public Cpu(Integer id, String description, Integer depth){
         this.id = id;

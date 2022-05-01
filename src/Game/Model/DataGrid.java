@@ -14,4 +14,10 @@ public class DataGrid {
         DataGrid.Nameplayer1 = player1.getUsername();
         DataGrid.Nameplayer2 = player2.getUsername();
     }
+    public DataGrid(int rows, int col, Player player){
+        DataGrid.rows = rows;
+        DataGrid.col = col;
+        DataGrid.Nameplayer1 = player.getUsername();
+        DataGrid.Nameplayer2 = "IA";
+    }
 }

@@ -54,7 +54,7 @@ public class AlgoMinMax {
             }
         }
 
-        if(player == this.player){
+        if(player.equals(this.player)){
             return Collections.max(list);
         }
         else{
@@ -80,7 +80,7 @@ public class AlgoMinMax {
         int count = 1;
         int i = pair.getFirst();
         int j = pair.getSecond();
-        while (grid.containsKey(new Pair<>(i + lineAlignment, j + colAlignment)) && grid.get(new Pair<>(i + lineAlignment, j + colAlignment)).getPlayer() == player){
+        while (grid.containsKey(new Pair<>(i + lineAlignment, j + colAlignment)) && grid.get(new Pair<>(i + lineAlignment, j + colAlignment)).getPlayer().equals(player)){
             i += lineAlignment;
             j += colAlignment;
             count ++;
