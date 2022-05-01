@@ -1,8 +1,10 @@
-package BaseDeDonnee;
+package Database.DAOmodel;
+
+import Database.Table.Cpu;
 
 import java.sql.*;
 
-public class CpuDAO extends DAO<Cpu>{
+public class CpuDAO extends DAO<Cpu> {
 
 
     @Override

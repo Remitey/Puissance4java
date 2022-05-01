@@ -1,7 +1,7 @@
 package GestionUtilisateur;
 
 
-import BaseDeDonnee.PlayerDAO;
+import Database.DAOmodel.PlayerDAO;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

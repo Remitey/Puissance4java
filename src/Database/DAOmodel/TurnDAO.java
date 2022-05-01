@@ -1,4 +1,7 @@
-package BaseDeDonnee;
+package Database.DAOmodel;
+
+import Database.Table.Player;
+import Database.Table.Turn;
 
 import java.sql.*;
 

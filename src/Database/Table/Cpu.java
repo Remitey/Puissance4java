@@ -1,4 +1,4 @@
-package BaseDeDonnee;
+package Database.Table;
 
 public class Cpu {
 

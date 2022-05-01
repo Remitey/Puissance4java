@@ -1,8 +1,5 @@
-package BaseDeDonnee;
+package Database.Table;
 
-import GestionUtilisateur.Play;
-
-import java.time.*;
 import java.util.Date;
 
 public class Game {

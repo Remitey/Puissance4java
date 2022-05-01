@@ -1,10 +1,12 @@
-package BaseDeDonnee;
+package Database.DAOmodel;
+
+import Database.Table.Cpu;
+import Database.Table.Game;
+import Database.Table.Player;
 
 import java.sql.*;
-import java.time.Duration;
-import java.time.LocalDateTime;
 
-public class GameDAO extends DAO<Game>{
+public class GameDAO extends DAO<Game> {
 
     @Override
     public Game find(Integer id) {

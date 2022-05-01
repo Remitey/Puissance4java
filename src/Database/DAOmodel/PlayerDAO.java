@@ -1,8 +1,10 @@
-package BaseDeDonnee;
+package Database.DAOmodel;
+
+import Database.Table.Player;
 
 import java.sql.*;
 
-public class PlayerDAO extends DAO<Player>{
+public class PlayerDAO extends DAO<Player> {
 
 
 

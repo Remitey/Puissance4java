@@ -1,20 +1,19 @@
-package BaseDeDonnee;
+package Database.DAOmodel;
 
 
-import java.io.UnsupportedEncodingException;
-import java.security.NoSuchAlgorithmException;
-import java.sql.Date;
+import Database.Table.Player;
 
 public class MainDAO {
     public static void main(String[] args) {
 
-        Player player1 = new Player(1, "Thotho", "lad@yahhoo.fr", "123456", 2);
+        Player player1 = new Player(1, "oakajf", "lad@yahhoo.fr", "123456", 2);
 
 
 
 
         PlayerDAO playerDAO = new PlayerDAO();
-        playerDAO.create(player1);
+        //playerDAO.create(player1);
+        playerDAO.update(player1);
 
 
 

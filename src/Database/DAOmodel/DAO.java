@@ -1,4 +1,6 @@
-package BaseDeDonnee;
+package Database.DAOmodel;
+
+import Database.ConnectionBDD;
 
 import java.sql.*;
 
