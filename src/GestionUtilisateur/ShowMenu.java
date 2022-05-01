@@ -108,7 +108,7 @@ public class ShowMenu implements ActionListener{
             }
             if (e.getSource()== disconnect) {
                 frame.dispose();
-                new Connection(player);
+                new BorderLayout(player);
             }
         }
     }
