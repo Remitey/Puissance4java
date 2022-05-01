@@ -1,5 +1,7 @@
 package GestionUtilisateur;
 
+import Database.Table.Player;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -19,8 +21,9 @@ public class Credits implements ActionListener {
     JLabel titi = new JLabel("Et le dernier le Thithri celui qui a tout fait");
     Icon backImage = new ImageIcon("..\\Puissance4java\\src\\image\\backBoutonAccount.png");
     JButton buttonBack = new JButton(backImage);
-
-    Credits() {
+    private final Player player;
+    Credits(Player player) {
+        this.player = player;
 
 
         try {
@@ -69,7 +72,7 @@ public class Credits implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==buttonBack) {
             //if connection possible
-            ShowMenu shomenu = new ShowMenu();
+            ShowMenu shomenu = new ShowMenu(player);
             frame.dispose();
         }
     }

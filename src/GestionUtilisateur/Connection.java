@@ -2,6 +2,7 @@ package GestionUtilisateur;
 
 
 import Database.DAOmodel.PlayerDAO;
+import Database.Table.Player;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -14,6 +15,7 @@ import java.io.IOException;
 
 public class Connection implements ActionListener {
 
+    private final Player player;
     public Color colorText = new Color(162, 170, 214);
     public Font fontText = new Font(null, Font.PLAIN, 17);
     JFrame frame = new JFrame();
@@ -27,7 +29,8 @@ public class Connection implements ActionListener {
     JButton buttonconnection = new JButton(connectionImage);
     JPanel jPanel= new JPanel();
 
-    Connection() {
+    Connection(Player player) {
+        this.player = player;
 
         //phrase
         connect.setBounds(250, -50, 500, 300);
@@ -95,7 +98,7 @@ public class Connection implements ActionListener {
                 if (playerDAO.findPlayer(userName,password) == null) {
                     JOptionPane.showMessageDialog(jPanel, "Wrong Username & Password");
                 } else {
-                    ShowMenu shomenu = new ShowMenu();
+                    ShowMenu shomenu = new ShowMenu(player);
                     frame.dispose();
 
                     //if (playerDAO==admin)

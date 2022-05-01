@@ -1,5 +1,7 @@
 package GestionUtilisateur;
 
+import Database.Table.Player;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -20,12 +22,12 @@ public class Oneplayer implements ActionListener {
     JButton back = new JButton(backImage);
     JLabel difficulty = new JLabel("Difficulty : ");
     JLabel sentence = new JLabel("Please choose :");
-
+    private final Player player;
 
     JPanel panel = new JPanel();
 
-    Oneplayer() {
-
+    Oneplayer(Player player) {
+        this.player = player;
         try {
             BufferedImage background = ImageIO.read(new File("..\\Puissance4java\\src\\image\\background7.jpg"));
             frame.setContentPane(new BackGround(background));
@@ -76,7 +78,7 @@ public class Oneplayer implements ActionListener {
 
         if (e.getSource() == back) {
             frame.dispose();
-            Play play = new Play();
+            Play play = new Play(player);
         }
     }
 }

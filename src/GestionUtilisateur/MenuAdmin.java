@@ -1,5 +1,7 @@
 package GestionUtilisateur;
 
+import Database.Table.Player;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -10,7 +12,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class MenuAdmin implements ActionListener{
-
+    private final Player player;
 
     JFrame frame = new JFrame();
     Icon playImage = new ImageIcon("..\\Puissance4java\\src\\image\\playBouton.png");
@@ -24,10 +26,10 @@ public class MenuAdmin implements ActionListener{
     JLabel welcome = new JLabel("Welcome" ); //+ username
 
 
-    public MenuAdmin(){
+    public MenuAdmin(Player player){
 
         // this.setLayout(new FlowLayout());
-
+        this.player = player;
         try {
             BufferedImage background = ImageIO.read(new File("..\\Puissance4java\\src\\image\\background4.jpg"));
             frame.setContentPane(new BackGround(background));
@@ -68,7 +70,7 @@ public class MenuAdmin implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()== play){
             frame.dispose();
-            Play play = new Play();
+            Play play = new Play(player);
         }
         if (e.getSource()== data) {
             frame.dispose();
@@ -77,7 +79,7 @@ public class MenuAdmin implements ActionListener{
         }
         if (e.getSource()== dataBase) {
             frame.dispose();
-           new DataBase();
+           new DataBase(player);
         }
     }
 }

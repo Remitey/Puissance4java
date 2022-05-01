@@ -61,10 +61,7 @@ public class ChangePassword implements ActionListener {
         if (e.getSource() == buttonChangePass) {
             PlayerDAO playerDAO =new PlayerDAO();
             playerDAO.findPlayer(player.getUsername(),player.getPassword());
-
-
-
-
+            playerDAO.update(player);
 
             }
         }

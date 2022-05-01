@@ -1,5 +1,7 @@
 package GestionUtilisateur;
 
+import Database.Table.Player;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -10,14 +12,14 @@ import java.io.File;
 import java.io.IOException;
 
 public class DataBase implements ActionListener {
-
+    private final Player player;
     JFrame frame = new JFrame();
     public Color colorText = new Color(162,170,214);
     Icon backImage = new ImageIcon("..\\Puissance4java\\src\\image\\backBoutonAccount.png");
     JButton buttonBack = new JButton(backImage);
 
-    DataBase() {
-
+    DataBase(Player player) {
+        this.player = player;
 
         try {
             BufferedImage background = ImageIO.read(new File("..\\Puissance4java\\src\\image\\background2.jpg"));
@@ -48,7 +50,7 @@ public class DataBase implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==buttonBack) {
             //if connection possible
-            new MenuAdmin();
+            new MenuAdmin(player);
             frame.dispose();
         }
     }

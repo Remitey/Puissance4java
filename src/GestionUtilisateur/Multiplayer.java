@@ -1,5 +1,6 @@
 package GestionUtilisateur;
 
+import Database.Table.Player;
 import Game.View.BoardGame;
 
 import javax.imageio.ImageIO;
@@ -12,7 +13,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class Multiplayer implements ActionListener {
-
+    private final Player player;
     JFrame frame = new JFrame();
     public Color colorText =new Color(162,170,214);
     public Font fontText= new Font(null, Font.PLAIN,17);
@@ -28,9 +29,9 @@ public class Multiplayer implements ActionListener {
     JButton buttonconnection = new JButton(connectionImage);
     JButton createaccountguest = new JButton(createImage);
 
-    Multiplayer() {
+    Multiplayer(Player player) {
 
-
+        this.player = player;
         try {
             BufferedImage background = ImageIO.read(new File("..\\Puissance4java\\src\\image\\background6.jpg"));
             frame.setContentPane(new BackGround(background));

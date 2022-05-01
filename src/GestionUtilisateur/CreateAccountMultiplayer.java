@@ -1,4 +1,5 @@
 package GestionUtilisateur;
+import Database.Table.Player;
 import Game.View.BoardGame;
 
 import javax.imageio.ImageIO;
@@ -11,7 +12,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class CreateAccountMultiplayer implements ActionListener {
-
+    private final Player player;
     JFrame frame = new JFrame();
     public Color colorText = new Color(162,170,214);
     public Font fontText =new Font(null, Font.PLAIN,15);
@@ -40,7 +41,8 @@ public class CreateAccountMultiplayer implements ActionListener {
     JButton buttonconnection = new JButton(connectionImage);
     JButton buttonconnectionback = new JButton(backImage);
 
-    CreateAccountMultiplayer() {
+    CreateAccountMultiplayer(Player player) {
+        this.player = player;
 
 
         try {
@@ -153,7 +155,7 @@ public class CreateAccountMultiplayer implements ActionListener {
         }
         if (e.getSource() == buttonconnectionback) {
             frame.dispose();
-            new Multiplayer();
+            new Multiplayer(player);
         }
     }
 }

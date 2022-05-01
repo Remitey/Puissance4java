@@ -85,7 +85,7 @@ public class ShowMenu implements ActionListener{
         public void actionPerformed(ActionEvent e) {
             if (e.getSource()== play){
                 frame.dispose();
-                 Play play = new Play();
+                 Play play = new Play(player);
             }
             if (e.getSource()== settings){
                 frame.dispose();
@@ -98,11 +98,11 @@ public class ShowMenu implements ActionListener{
             }
             if (e.getSource()== credits) {
                 frame.dispose();
-                Credits credits = new Credits();
+                Credits credits = new Credits(player);
             }
             if (e.getSource()== disconnect) {
                 frame.dispose();
-                new Connection();
+                new Connection(player);
             }
         }
     }

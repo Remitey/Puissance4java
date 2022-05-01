@@ -1,4 +1,6 @@
 package GestionUtilisateur;
+import Database.Table.Player;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -9,7 +11,7 @@ import java.io.File;
 import java.io.IOException;
 
 public class CreateAccount implements ActionListener {
-
+    private final Player player;
     JFrame frame = new JFrame();
     public Color colorText = new Color(162,170,214);
     public Font fontText =new Font(null, Font.PLAIN,15);
@@ -39,7 +41,8 @@ public class CreateAccount implements ActionListener {
     JButton buttonconnection = new JButton(connectionImage);
     JButton buttonconnectionback = new JButton(backImage);
 
-    CreateAccount() {
+    CreateAccount(Player player) {
+        this.player = player;
 
         try {
             BufferedImage background = ImageIO.read(new File("..\\Puissance4java\\src\\image\\background11bis.jpg"));
@@ -145,7 +148,7 @@ public class CreateAccount implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==buttonconnection) {
             // if connection existe
-            ShowMenu showmenu = new ShowMenu();
+            ShowMenu showmenu = new ShowMenu(player);
             frame.dispose();
             //else :
             //frame.add(error);

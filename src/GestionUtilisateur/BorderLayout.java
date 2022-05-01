@@ -1,5 +1,7 @@
 package GestionUtilisateur;
 
+import Database.Table.Player;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,9 +23,10 @@ public class BorderLayout implements ActionListener {
 
     JLabel hello = new JLabel("Welcome to the game");
     JPanel panel = new JPanel();
+    private final Player player;
 
-
-    BorderLayout() {
+    BorderLayout(Player player) {
+        this.player = player;
 
         // final JTextField text = new JTextField();
 
@@ -68,11 +71,11 @@ public class BorderLayout implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == connexion) {
             frame.dispose();
-            Connection connection = new Connection();
+            Connection connection = new Connection(player);
         }
         if (e.getSource() == createaccount) {
             frame.dispose();
-            CreateAccount createAccount = new CreateAccount();
+            CreateAccount createAccount = new CreateAccount(player);
         }
     }
 }

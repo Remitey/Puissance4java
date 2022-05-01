@@ -1,5 +1,6 @@
 package GestionUtilisateur;
 
+import Database.Table.Player;
 import Game.View.BoardGame;
 
 import javax.imageio.ImageIO;
@@ -24,8 +25,10 @@ public class ConnectionMultiplayer implements ActionListener {
     JPasswordField pass = new JPasswordField();
     Icon connectionImage = new ImageIcon("..\\Puissance4java\\src\\image\\connexionBoutonAccount.png");
     JButton buttonconnection = new JButton(connectionImage);
+    private final Player player;
 
-    ConnectionMultiplayer() {
+    ConnectionMultiplayer(Player player) {
+        this.player = player;
 
         //phrase
         connect.setBounds(250,-50,500,300);
