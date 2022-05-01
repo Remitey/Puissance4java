@@ -58,9 +58,10 @@ public class PlayerDAO extends DAO<Player> {
         try{
             this.connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE).executeUpdate("UPDATE player SET username = '" + obj.getUsername() +
                     "',"+ " email = '" + obj.getEmail() +
-                    "',"+"password ='" + obj.getPassword() +
-                    "',"+ "permission ='" + obj.getPermission()
+                    "',"+"password = sha1('" + obj.getPassword() +
+                    "'),"+ "permission ='" + obj.getPermission()
                     +"'"+ "WHERE id = " + obj.getId());
+                System.out.println(obj);
         }catch (SQLException exception){
             exception.printStackTrace();
         }
