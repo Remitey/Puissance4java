@@ -1,4 +1,5 @@
 package GestionUtilisateur;
+import Database.DAOmodel.PlayerDAO;
 import Database.Table.Player;
 
 import javax.imageio.ImageIO;
@@ -154,6 +155,8 @@ public class CreateAccount implements ActionListener {
             //frame.add(error);
         }
         if (e.getSource() == buttonconnectionback) {
+            PlayerDAO playerDAO = new PlayerDAO();
+            playerDAO.create(player);
             frame.dispose();
             new BorderLayout(player);
         }
