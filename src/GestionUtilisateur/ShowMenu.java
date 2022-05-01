@@ -28,7 +28,8 @@ public class ShowMenu implements ActionListener{
         JButton disconnect = new JButton(disconnectImage);
         JButton settings = new JButton(settingsImage);
         JPanel panel = new JPanel();
-        JLabel welcome = new JLabel("Welcome" ); //+ username
+        //JLabel welcome = new JLabel("Welcome");
+    //+ username
 
 
         private final Player player;
@@ -37,7 +38,10 @@ public class ShowMenu implements ActionListener{
 
            // this.setLayout(new FlowLayout());
 
+
             this.player = player;
+
+           JLabel welcome = new JLabel("Welcome " + player.getUsername());
             try {
                 BufferedImage background = ImageIO.read(new File("..\\Puissance4java\\src\\image\\background4.jpg"));
                 frame.setContentPane(new BackGround(background));

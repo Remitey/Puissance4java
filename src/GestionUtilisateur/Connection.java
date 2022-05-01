@@ -16,6 +16,7 @@ import java.io.IOException;
 public class Connection implements ActionListener {
 
     private final Player player;
+
     public Color colorText = new Color(162, 170, 214);
     public Font fontText = new Font(null, Font.PLAIN, 17);
     JFrame frame = new JFrame();
@@ -29,7 +30,7 @@ public class Connection implements ActionListener {
     JButton buttonconnection = new JButton(connectionImage);
     JPanel jPanel= new JPanel();
 
-    Connection(Player player) {
+    public Connection(Player player) {
         this.player = player;
 
         //phrase
@@ -94,11 +95,12 @@ public class Connection implements ActionListener {
 
 
                 PlayerDAO playerDAO = new PlayerDAO();
+                Player player = playerDAO.findPlayer(userName,password);
 
-                if (playerDAO.findPlayer(userName,password) == null) {
+                if (player == null) {
                     JOptionPane.showMessageDialog(jPanel, "Wrong Username & Password");
                 } else {
-                    ShowMenu shomenu = new ShowMenu(player);
+                    new ShowMenu(player);
                     frame.dispose();
 
                     //if (playerDAO==admin)
