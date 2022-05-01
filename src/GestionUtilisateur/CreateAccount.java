@@ -42,6 +42,8 @@ public class CreateAccount implements ActionListener {
     JButton buttonconnection = new JButton(connectionImage);
     JButton buttonconnectionback = new JButton(backImage);
 
+    JPanel jPanel= new JPanel();
+
     CreateAccount(Player player) {
         this.player = player;
 
@@ -145,21 +147,27 @@ public class CreateAccount implements ActionListener {
 
     }
 
+    public JPanel getPanel() {
+        return jPanel;
+    }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         String pasword = String.valueOf(pass.getPassword());
         String username = usernamee.getText();
         String recupemail = emaill.getText();
         if(e.getSource()==buttonconnection) {
-            // if connection existe
-            PlayerDAO playerDAO = new PlayerDAO();
-            Player player1 = new Player();
-            player1 = new Player(1,username,recupemail, pasword, 2);
-            playerDAO.create(player1);
-            ShowMenu showmenu = new ShowMenu(player1);
-            frame.dispose();
-            //else :
-            //frame.add(error);
+            if (username!= null || recupemail!=null || pasword!=null) {
+                PlayerDAO playerDAO = new PlayerDAO();
+                Player player1 = new Player();
+                player1 = new Player(1,username,recupemail, pasword, 2);
+                playerDAO.create(player1);
+                new ShowMenu(player1);
+                frame.dispose();
+            }
+            else{
+                JOptionPane.showMessageDialog(jPanel, "Please enter Wrong Username & Password");
+            }
         }
         if (e.getSource() == buttonconnectionback) {
             frame.dispose();
