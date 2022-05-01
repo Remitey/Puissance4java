@@ -1,0 +1,68 @@
+package GestionUtilisateur;
+
+
+import BaseDeDonnee.PlayerDAO;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class ChangePassword implements ActionListener {
+
+    public Color colorText = new Color(162, 170, 214);
+    public Font fontText = new Font(null, Font.PLAIN, 17);
+    JFrame frame = new JFrame();
+    JLabel connect = new JLabel(" please enter your new password");
+
+
+    JTextField user = new JTextField();
+
+    JButton buttonChangePass = new JButton("Change");
+    JPanel jPanel= new JPanel();
+
+    ChangePassword() {
+
+        //phrase
+        connect.setBounds(200, 0, 500, 300);
+        connect.setForeground(colorText);
+        frame.add(connect);
+
+        //ecriture
+        user.setBounds(450, 200, 200, 30);
+        frame.add(user);
+
+
+        //text
+
+
+
+        //button
+        buttonChangePass.setBounds(300, 400, 200, 40);
+        buttonChangePass.setContentAreaFilled(false);
+        buttonChangePass.setFocusable(false);
+        buttonChangePass.addActionListener(this);
+        frame.add(buttonChangePass);
+
+        //tout
+        frame.setSize(700, 200);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setLayout(null);
+        frame.setLocationRelativeTo(null);
+        frame.setVisible(true);
+
+    }
+
+    public JPanel getPanel() {
+        return jPanel;
+    }
+
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
+        if (e.getSource() == buttonChangePass) {
+            new PlayerDAO();
+
+            }
+        }
+    }
