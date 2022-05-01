@@ -10,10 +10,10 @@ public class Game {
     private Integer grid_size_row ;
     private Integer grid_size_col;
     private Integer result;
-    private long time;
-    private Date duration;
+    private Long time;
+    private Long duration;
     public Game() {}
-    public Game(Integer id, Player player_1, Player player_2, Integer grid_size_row, Integer grid_size_col, Integer result, long time, Date duration) {
+    public Game(Integer id, Player player_1, Player player_2, Integer grid_size_row, Integer grid_size_col, Integer result, long time, long duration) {
         this.id = id;
         this.player_1 = player_1;
         this.player_2 = player_2;
@@ -24,7 +24,7 @@ public class Game {
         this.duration = duration;
     }
 
-   public Game(Integer id, Player player_1,Cpu cpu, Integer grid_size_row, Integer grid_size_col, Integer result, long time, Date duration){
+   public Game(Integer id, Player player_1,Cpu cpu, Integer grid_size_row, Integer grid_size_col, Integer result, long time, long duration){
         this.id = id;
         this.player_1 = player_1;
         this.cpu = cpu;
@@ -100,11 +100,11 @@ public class Game {
         this.time = time;
     }
 
-    public Date getDuration() {
+    public long getDuration() {
         return duration;
     }
 
-    public void setDuration(Date duration) {
+    public void setDuration(long duration) {
         this.duration = duration;
     }
 

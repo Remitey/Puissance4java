@@ -1,6 +1,7 @@
 package Game.Controller;
 
 import Game.Model.BoxModel;
+import Game.Model.DataGrid;
 import Game.Model.Pair;
 
 import java.util.*;
@@ -9,8 +10,8 @@ import static Game.Model.DataGrid.col;
 import static Game.Model.DataGrid.rows;
 
 public class AlgoMinMax {
-    private int player;
-    public AlgoMinMax(int player) {
+    private String player;
+    public AlgoMinMax(String player) {
         this.player = player;
     }
     public Pair<Integer> algoMinMAx(int depth, Map<Pair<Integer>, BoxModel> grid){
@@ -39,7 +40,7 @@ public class AlgoMinMax {
         }
         return j;
     }
-    public int algo(int depth, Map<Pair<Integer>, BoxModel> grid, int player){
+    public int algo(int depth, Map<Pair<Integer>, BoxModel> grid, String player){
         if(depth <= 0 || !grid.containsValue(new BoxModel(false))){
             return heuristic(grid, player);
         }
@@ -60,10 +61,10 @@ public class AlgoMinMax {
             return Collections.min(list);
         }
     }
-    public int heuristic(Map<Pair<Integer>, BoxModel> grid, int player){
+    public int heuristic(Map<Pair<Integer>, BoxModel> grid, String player){
         return countAlignToken(grid, player);
     }
-    public int countAlignToken(Map<Pair<Integer>, BoxModel> grid, int player){
+    public int countAlignToken(Map<Pair<Integer>, BoxModel> grid, String player){
         int value = 0;
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < col; j++) {
@@ -75,7 +76,7 @@ public class AlgoMinMax {
         }
         return value;
     }
-    public int findCountAlignToken(Map<Pair<Integer>, BoxModel> grid, Pair<Integer> pair, int lineAlignment, int colAlignment, int player){
+    public int findCountAlignToken(Map<Pair<Integer>, BoxModel> grid, Pair<Integer> pair, int lineAlignment, int colAlignment, String player){
         int count = 1;
         int i = pair.getFirst();
         int j = pair.getSecond();
@@ -95,13 +96,13 @@ public class AlgoMinMax {
         }
         return count;
     }
-    public int otherPlayer(int player) {
-        if (player == 0) {
-            return 1;
+    public String otherPlayer(String player) {
+        if (player.equals(DataGrid.Nameplayer1)) {
+            return DataGrid.Nameplayer2;
         }
-        return 0;
+        return DataGrid.Nameplayer1;
     }
-    public Map<Pair<Integer>, BoxModel> play(Map<Pair<Integer>, BoxModel> tab, int i, int player) {
+    public Map<Pair<Integer>, BoxModel> play(Map<Pair<Integer>, BoxModel> tab, int i, String player) {
         Map<Pair<Integer>, BoxModel> copieTab = copie(tab);
 
         int j = rows - 1;

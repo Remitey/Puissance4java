@@ -7,7 +7,7 @@ import java.util.Observable;
 
 public class BoxModel extends Observable {
     private boolean isUsed;
-    private int player;
+    private String player;
     private GameController gameController;
     public BoxModel(boolean isUsed, GameController gameController){
         this.isUsed = isUsed;
@@ -15,9 +15,8 @@ public class BoxModel extends Observable {
     }
     public BoxModel(boolean isUsed){
         this.isUsed = isUsed;
-        player = 0;
     }
-    public BoxModel(boolean isUsed, int player){
+    public BoxModel(boolean isUsed, String player){
         this.isUsed = isUsed;
         this.player = player;
     }
@@ -27,10 +26,10 @@ public class BoxModel extends Observable {
     public void setUsed(boolean used) {
         isUsed = used;
     }
-    public int getPlayer() {
+    public String getPlayer() {
         return player;
     }
-    public void setPlayer(int player) {
+    public void setPlayer(String player) {
         this.player = player;
     }
     public void update(int x, int y){
@@ -38,7 +37,7 @@ public class BoxModel extends Observable {
         notifyObservers(new Pair<>(x, y));
     }
     public boolean checkPosition(int x, int y){
-        if (gameController.verifyPosition(x, y, gameController.isIa())){
+        if (gameController.verifyPosition(x, y)){
             gameController.changeCase(x, y);
             return true;
         }

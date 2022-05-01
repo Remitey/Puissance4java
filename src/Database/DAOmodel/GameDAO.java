@@ -28,7 +28,7 @@ public class GameDAO extends DAO<Game> {
                             resultPlayer2.getString("password"), resultPlayer2.getInt("permission"));
 
                     game = new Game(id, player1, player2, result.getInt("grid_size_row"), result.getInt("grid_size_col"),
-                            result.getInt("result"), result.getLong("Datetime_start"), result.getDate("duration"));
+                            result.getInt("result"), result.getLong("Datetime_start"), result.getLong("duration"));
                 }
                 else if (resultPlayer1.first() && resultCpu.first()){
 
@@ -38,7 +38,7 @@ public class GameDAO extends DAO<Game> {
                     Cpu cpu = new Cpu(resultCpu.getInt("id"), resultCpu.getString("description"), resultCpu.getInt("depth"));
 
                     game = new Game(id,player1,cpu,result.getInt("grid_size_row"), result.getInt("grid_size_col"),
-                            result.getInt("result"), result.getLong("Datetime_start"), result.getDate("duration"));
+                            result.getInt("result"), result.getLong("Datetime_start"), result.getLong("duration"));
 
                 }
 
@@ -47,6 +47,22 @@ public class GameDAO extends DAO<Game> {
             exception.printStackTrace();
         }
         return game;
+    }
+    public Game findForId(Game game){
+        try{
+            ResultSet result = this.connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM game WHERE datetime_start =" + game.getTime());
+            if(result.first()){
+
+                ResultSet resultCpu = this.connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT  * FROM cpu WHERE id = " + result.getInt("cpu"));
+
+                game.setId(result.getInt("id"));
+
+            }
+        }catch (SQLException exception){
+            exception.printStackTrace();
+        }
+        return game;
+
     }
 
     @Override
@@ -89,18 +105,16 @@ public class GameDAO extends DAO<Game> {
 
     @Override
     public Game update(Game obj) {
-
-
         try {
-            this.connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE).executeUpdate("UPDATE game SET player_1 = '" + obj.getPlayer_1() +
-                    "'," + " player_2 = '" + obj.getPlayer_2() +
-                    "'," + "cpu ='" + obj.getCpu() +
-                    "'," + "grid_size_row ='" + obj.getGrid_size_row() +
-                    "'," + "grid_size_col ='" + obj.getGrid_size_col() +
-                    "'," + "result ='" + obj.getResult() +
-                    "'," + "Datetime_Start ='" + obj.getTime() +
-                    "'," + "Duration ='" + obj.getDuration() +
-                    "'" + "WHERE id = " + obj.getId());
+            this.connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE).executeUpdate("UPDATE game " +
+                    "SET player_1 = '" + obj.getPlayer_1().getId() +
+                    "', player_2 = '" + obj.getPlayer_2().getId() +
+                    "', grid_size_row ='" + obj.getGrid_size_row() +
+                    "', grid_size_col ='" + obj.getGrid_size_col() +
+                    "', result ='" + obj.getResult() +
+                    "', Datetime_Start ='" + obj.getTime() +
+                    "', Duration ='" + obj.getDuration() +
+                    "' WHERE id = " + obj.getId());
         } catch (SQLException exception) {
             exception.printStackTrace();
         }

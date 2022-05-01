@@ -5,9 +5,6 @@ import Database.Table.Player;
 import java.sql.*;
 
 public class PlayerDAO extends DAO<Player> {
-
-
-
     public Player findPlayer(String username,String password) {
 
         Player player = new Player();
@@ -26,6 +23,25 @@ public class PlayerDAO extends DAO<Player> {
         if (player.getUsername() == null)
             return null;
     return player;
+    }
+    public Player findPlayer(String username) {
+
+        Player player = new Player();
+
+        try{
+
+            ResultSet result =this.connection.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT * FROM player WHERE username ='" + username + "'");
+
+            if (result.first()){
+
+                player = new Player(result.getInt("id"),username,result.getString("email"),result.getString("password"),result.getInt("permission"));
+            }
+        }catch (SQLException exception){
+            exception.printStackTrace();
+        }
+        if (player.getUsername() == null)
+            return null;
+        return player;
     }
 
 

@@ -1,6 +1,8 @@
 package Game.View;
 
 import Game.Model.BoxModel;
+import Game.Model.DataGrid;
+import GestionUtilisateur.Data;
 
 import javax.swing.*;
 import java.awt.*;
@@ -42,7 +44,7 @@ public class BoxView extends JPanel implements MouseListener {
         int x = (int) getLocation().getY() / getHeight();
 
         if(boxModel.checkPosition(x, y)){
-            if(boxModel.getPlayer() == 0){
+            if(boxModel.getPlayer() == DataGrid.Nameplayer1){
                 base = new Color(236,55,131);
             }else {
                 base = new Color(116,242,147);

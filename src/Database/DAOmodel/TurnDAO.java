@@ -39,13 +39,12 @@ public class TurnDAO extends DAO<Turn> {
     public Turn create(Turn obj) {
 
         try {
-            PreparedStatement prepare = this.connection.prepareStatement("INSERT INTO turn(game_id, turn, player_id, x, y)" + "VALUES (?,?,?,?,?)");
+            PreparedStatement prepare = this.connection.prepareStatement("INSERT INTO turn(game_id, player_id, x, y)" + "VALUES (?,?,?,?)");
 
             prepare.setInt(1, obj.getGame());
-            prepare.setInt(2, obj.getTurn());
-            prepare.setInt(3, obj.getPlayer_id().getId());
-            prepare.setInt(4, obj.getX());
-            prepare.setInt(5, obj.getY());
+            prepare.setInt(2, obj.getPlayer_id().getId());
+            prepare.setInt(3, obj.getX());
+            prepare.setInt(4, obj.getY());
 
             prepare.executeUpdate();
 
