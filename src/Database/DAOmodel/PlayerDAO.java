@@ -28,16 +28,6 @@ public class PlayerDAO extends DAO<Player> {
     return player;
     }
 
-    public String updatePassword(String password) {
-        try{
-            this.connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE).executeUpdate("UPDATE player(password) SET password ="  + password);
-
-        }catch (SQLException exception){
-            exception.printStackTrace();
-        }
-        return password;
-    }
-
 
     @Override
     public Player find(Integer id){

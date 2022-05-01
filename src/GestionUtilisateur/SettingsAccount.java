@@ -27,11 +27,9 @@ public class SettingsAccount implements ActionListener {
 
     SettingsAccount(Player player) {
 
-
-        this.player = player;
         // final JTextField text = new JTextField();
 
-
+        this.player = player;
 
 
         hello.setBounds(270, -50, 600, 300);

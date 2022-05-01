@@ -152,16 +152,16 @@ public class CreateAccount implements ActionListener {
         String recupemail = emaill.getText();
         if(e.getSource()==buttonconnection) {
             // if connection existe
-            ShowMenu showmenu = new ShowMenu(player);
+            PlayerDAO playerDAO = new PlayerDAO();
+            Player player1 = new Player();
+            player1 = new Player(1,username,recupemail, pasword, 2);
+            playerDAO.create(player1);
+            ShowMenu showmenu = new ShowMenu(player1);
             frame.dispose();
             //else :
             //frame.add(error);
         }
         if (e.getSource() == buttonconnectionback) {
-            PlayerDAO playerDAO = new PlayerDAO();
-            Player player1 = new Player();
-            player1 = new Player(2,username,recupemail, pasword, 2);
-            playerDAO.create(player1);
             frame.dispose();
             new BorderLayout(player);
         }

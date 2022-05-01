@@ -10,7 +10,7 @@ public class MainDAO {
     public static void main(String[] args) {
 
         Player player1 = new Player(1, "thotho", "lad@yahhoo.fr", "123456", 2);
-        Player player2 = new Player(1, "dhodho", "lad@yahhoo.fr", "123456", 2);
+        Player player2 = new Player( 1,"dhodho", "lad@yahhoo.fr", "123456", 2);
         Date date = new Date();
         System.out.println(date.getTime());
 

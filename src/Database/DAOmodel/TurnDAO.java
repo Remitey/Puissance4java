@@ -57,6 +57,11 @@ public class TurnDAO extends DAO<Turn> {
         return obj;
     }
 
+    public void data(Turn obj){
+
+    }
+
+
     @Override
     public Turn update(Turn obj) {
         return null;
@@ -69,5 +74,7 @@ public class TurnDAO extends DAO<Turn> {
             this.connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE).executeUpdate("DELETE  FROM turn where ")
         }
     }*/
+
+
 
 }

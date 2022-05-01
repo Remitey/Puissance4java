@@ -13,7 +13,7 @@ import java.io.IOException;
 
 public class ShowMenu implements ActionListener{
 
-    private final Player player;
+
 
         JFrame frame = new JFrame();
     Icon playImage = new ImageIcon("..\\Puissance4java\\src\\image\\playBouton.png");
@@ -31,10 +31,12 @@ public class ShowMenu implements ActionListener{
         JLabel welcome = new JLabel("Welcome" ); //+ username
 
 
+        private final Player player;
 
         public ShowMenu(Player player){
 
            // this.setLayout(new FlowLayout());
+
             this.player = player;
             try {
                 BufferedImage background = ImageIO.read(new File("..\\Puissance4java\\src\\image\\background4.jpg"));
