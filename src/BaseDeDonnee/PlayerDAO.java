@@ -20,8 +20,9 @@ public class PlayerDAO extends DAO<Player>{
             }
         }catch (SQLException exception){
             exception.printStackTrace();
-            return null;
         }
+        if (player.getUsername() == null)
+            return null;
     return player;
     }
 

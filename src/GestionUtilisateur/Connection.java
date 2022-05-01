@@ -92,7 +92,7 @@ public class Connection implements ActionListener {
 
                 PlayerDAO playerDAO = new PlayerDAO();
 
-                if (playerDAO.findPlayer(user.getText(), String.valueOf(pass.getPassword())) == null) {
+                if (playerDAO.findPlayer(userName,password) == null) {
                     JOptionPane.showMessageDialog(jPanel, "Wrong Username & Password");
                 } else {
                     ShowMenu shomenu = new ShowMenu();

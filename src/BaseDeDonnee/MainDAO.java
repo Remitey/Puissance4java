@@ -6,21 +6,19 @@ import java.security.NoSuchAlgorithmException;
 import java.sql.Date;
 
 public class MainDAO {
-    public static void main(String[] args) throws UnsupportedEncodingException, NoSuchAlgorithmException {
+    public static void main(String[] args) {
 
-        Player player1 = new Player(10, "Thotho", "lad@yahhoo.fr", "123456", 2);
-        Player player8 = new Player(8, "Thotho", "lad@yahhoo.fr", "123456", 2);
-        Player player3 = new Player(3, "shessh", "lad@yahhoo.fr", "okaoak", 2);
-        Player player4 = new Player(6, "unedingz", "lad@yahhoo.fr", "thrugzg", 2);
+        Player player1 = new Player(1, "Thotho", "lad@yahhoo.fr", "123456", 2);
+
 
 
 
         PlayerDAO playerDAO = new PlayerDAO();
-        playerDAO.create(player4);
+        playerDAO.create(player1);
 
 
 
-       System.out.println(playerDAO.findPlayer("unedingz","thrugzg"));
+      // System.out.println(playerDAO.findPlayer("unedingz","thrugzg"));
 
        // System.out.println( playerDAO.findPlayer("ok","nik zebi"));
         //System.out.println( playerDAO.findPlayer("nice","tu cocos"));
