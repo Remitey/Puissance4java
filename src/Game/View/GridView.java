@@ -9,7 +9,7 @@ public class GridView extends JPanel{
         new JPanel();
 
         setLayout(new GridLayout(rows, col));
-        setBackground(Color.blue);
+        setBackground(new Color(0,9,55));
 
         setVisible(true);
     }

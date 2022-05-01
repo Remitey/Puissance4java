@@ -20,7 +20,7 @@ public class BoxView extends JPanel implements MouseListener {
     @Override
     public void paintComponent(Graphics g){
         if (base == null){
-            base = Color.white;
+            base = new Color(162,170,214);
             g.setColor(base);
             if(getSize().height > getSize().width){
                 g.fillOval(5,5, getSize().width - 10, getSize().width - 10);
@@ -43,9 +43,9 @@ public class BoxView extends JPanel implements MouseListener {
 
         if(boxModel.checkPosition(x, y)){
             if(boxModel.getPlayer() == 0){
-                base = Color.red;
+                base = new Color(236,55,131);
             }else {
-                base = Color.yellow;
+                base = new Color(116,242,147);
             }
             paintComponent(getGraphics());
         }

@@ -148,7 +148,7 @@ public class GameController extends Observable implements Observer {
             grid.get(pair).setUsed(true);
             grid.get(pair).setPlayer(player);
 
-            boxView.base = Color.red;
+            boxView.base = new Color(236,55,131);
             boxView.paintComponent(boxView.getGraphics());
             System.out.println(boxView.base);
 
