@@ -16,7 +16,7 @@ public class WelcomePlayer2 implements ActionListener{
 
 
     Icon playImage = new ImageIcon("..\\Puissance4java\\src\\image\\playBouton.png");
-    Icon backImage = new ImageIcon("..\\Puissance4java\\src\\image\\backBouton.png");
+    Icon backImage = new ImageIcon("..\\Puissance4java\\src\\image\\bigbackBouton.png");
     Icon disconnectImage = new ImageIcon("..\\Puissance4java\\src\\image\\disconnectBouton.png");
 
     JFrame frame = new JFrame();
@@ -54,7 +54,7 @@ public class WelcomePlayer2 implements ActionListener{
         } catch (IOException e) {
             e.printStackTrace();
         }
-        welcome.setBounds(255,-50,400,200);
+        welcome.setBounds(200,-50,400,200);
         welcome.setFont(new Font(null, Font.BOLD,20));
         welcome.setForeground(new Color(162,170,214));
         frame.add(welcome);
