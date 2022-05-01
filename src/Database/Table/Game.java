@@ -3,33 +3,17 @@ package Database.Table;
 import java.util.Date;
 
 public class Game {
-
     private Integer id;
-
     private Player player_1;
-
     private Player player_2;
-
     private Cpu cpu ;
-
     private Integer grid_size_row ;
-
     private Integer grid_size_col;
-
     private Integer result;
-
-    private Date time;
-
+    private long time;
     private Date duration;
-
-
-    // stockage du time pour DURATION ET DATETIME_START ??
-
-    public Game() {
-
-    }
-
-    public Game(Integer id, Player player_1, Player player_2, Integer grid_size_row, Integer grid_size_col, Integer result, Date time, Date duration) {
+    public Game() {}
+    public Game(Integer id, Player player_1, Player player_2, Integer grid_size_row, Integer grid_size_col, Integer result, long time, Date duration) {
         this.id = id;
         this.player_1 = player_1;
         this.player_2 = player_2;
@@ -40,7 +24,7 @@ public class Game {
         this.duration = duration;
     }
 
-   public Game(Integer id, Player player_1,Cpu cpu, Integer grid_size_row, Integer grid_size_col, Integer result, Date time, Date duration){
+   public Game(Integer id, Player player_1,Cpu cpu, Integer grid_size_row, Integer grid_size_col, Integer result, long time, Date duration){
         this.id = id;
         this.player_1 = player_1;
         this.cpu = cpu;
@@ -108,11 +92,11 @@ public class Game {
         this.result = result;
     }
 
-    public Date getTime() {
+    public long getTime() {
         return time;
     }
 
-    public void setTime(Date time) {
+    public void setTime(long time) {
         this.time = time;
     }
 

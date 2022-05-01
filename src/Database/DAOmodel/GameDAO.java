@@ -28,7 +28,7 @@ public class GameDAO extends DAO<Game> {
                             resultPlayer2.getString("password"), resultPlayer2.getInt("permission"));
 
                     game = new Game(id, player1, player2, result.getInt("grid_size_row"), result.getInt("grid_size_col"),
-                            result.getInt("result"), result.getDate("Datetime_start"), result.getDate("duration"));
+                            result.getInt("result"), result.getLong("Datetime_start"), result.getDate("duration"));
                 }
                 else if (resultPlayer1.first() && resultCpu.first()){
 
@@ -38,7 +38,7 @@ public class GameDAO extends DAO<Game> {
                     Cpu cpu = new Cpu(resultCpu.getInt("id"), resultCpu.getString("description"), resultCpu.getInt("depth"));
 
                     game = new Game(id,player1,cpu,result.getInt("grid_size_row"), result.getInt("grid_size_col"),
-                            result.getInt("result"), result.getDate("Datetime_start"), result.getDate("duration"));
+                            result.getInt("result"), result.getLong("Datetime_start"), result.getDate("duration"));
 
                 }
 
@@ -54,28 +54,26 @@ public class GameDAO extends DAO<Game> {
 
         try{
             if (obj.getCpu() == null){
-                PreparedStatement prepare = this.connection.prepareStatement("INSERT INTO game(id, player_1, player_2, grid_size_row, grid_size_col,DATETIME_START)" + "VALUES (?,?,?,?,?,?)");
+                PreparedStatement prepare = this.connection.prepareStatement("INSERT INTO game(player_1, player_2, grid_size_row, grid_size_col,DATETIME_START)" + "VALUES (?,?,?,?,?)");
 
-                prepare.setInt(1,obj.getId());
-                prepare.setInt(2,obj.getPlayer_1().getId());
-                prepare.setInt(3,obj.getPlayer_2().getId());
-                prepare.setInt(4,obj.getGrid_size_row());
-                prepare.setInt(5,obj.getGrid_size_col());
-                prepare.setLong(6,obj.getTime().getTime());
+                prepare.setInt(1,obj.getPlayer_1().getId());
+                prepare.setInt(2,obj.getPlayer_2().getId());
+                prepare.setInt(3,obj.getGrid_size_row());
+                prepare.setInt(4,obj.getGrid_size_col());
+                prepare.setLong(5,obj.getTime());
 
 
                 prepare.executeUpdate();
 
                 obj = this.find(obj.getId());
             } else {
-                PreparedStatement prepare = this.connection.prepareStatement("INSERT INTO game(id,player_1,cpu,GRID_SIZE_row,grid_size_col,DATETIME_START)" + "VALUES (?,?,?,?,?,?)");
+                PreparedStatement prepare = this.connection.prepareStatement("INSERT INTO game(player_1,cpu,GRID_SIZE_row,grid_size_col,DATETIME_START)" + "VALUES (?,?,?,?,?)");
 
-                prepare.setInt(1,obj.getId());
-                prepare.setInt(2,obj.getPlayer_1().getId());
-                prepare.setInt(3,obj.getCpu().getId());
-                prepare.setInt(4,obj.getGrid_size_row());
-                prepare.setInt(5,obj.getGrid_size_col());
-                prepare.setLong(6,obj.getTime().getTime());
+                prepare.setInt(1,obj.getPlayer_1().getId());
+                prepare.setInt(2,obj.getCpu().getId());
+                prepare.setInt(3,obj.getGrid_size_row());
+                prepare.setInt(4,obj.getGrid_size_col());
+                prepare.setLong(5,obj.getTime());
 
                 prepare.executeUpdate();
 
