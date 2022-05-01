@@ -19,7 +19,7 @@ public class DataBase implements ActionListener {
     Icon backImage = new ImageIcon("..\\Puissance4java\\src\\image\\backBoutonAccount.png");
     JButton buttonBack = new JButton(backImage);
 
-    DataBase(Player player) {
+    public DataBase(Player player) {
         this.player = player;
 
         try {

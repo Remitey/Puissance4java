@@ -171,7 +171,7 @@ public class GameController extends Observable implements Observer {
                 game.setResult(playerDAO.findPlayer(DataGrid.Nameplayer2).getId());
                 gameDAO.update(gameDAO.findForId(game));
             }
-            JOptionPane.showMessageDialog(gridView, "joueur " + player + " a win");
+            JOptionPane.showMessageDialog(gridView, "player " + player + " win");
         }
         else if (isFull()){
             SwingUtilities.getWindowAncestor(gridView).dispose();

@@ -111,7 +111,7 @@ public class Multiplayer implements ActionListener {
                 JOptionPane.showMessageDialog(jPanel, "Wrong Username & Password");
             }
             if (Objects.equals(newplayer.getUsername(), player.getUsername())){
-                JOptionPane.showMessageDialog(jPanel, "le joueur est deja connecté");
+                JOptionPane.showMessageDialog(jPanel, "Player is already connected");
             }
             else {
                 new WelcomePlayer2(player,newplayer);

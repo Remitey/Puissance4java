@@ -20,7 +20,7 @@ public class PlayerView extends JPanel implements Observer {
         BoxLayout boxLayout = new BoxLayout(this, BoxLayout.Y_AXIS);
 
         setLayout(boxLayout);
-        JLabel labelTextNamePlayer1 = new JLabel("Premier Joueur :");
+        JLabel labelTextNamePlayer1 = new JLabel("First Player :");
         labelTextNamePlayer1.setFont(fontText1);
         labelTextNamePlayer1.setForeground(colorText);
         add(labelTextNamePlayer1);
@@ -28,7 +28,7 @@ public class PlayerView extends JPanel implements Observer {
         labelNamePlayer1.setFont(fontText2);
         labelNamePlayer1.setForeground(colorText);
         add(labelNamePlayer1);
-        JLabel labelTextNamePlayer2 = new JLabel("Deuxième Joueur :", JLabel.CENTER);
+        JLabel labelTextNamePlayer2 = new JLabel("Second Player :", JLabel.CENTER);
         labelTextNamePlayer2.setFont(fontText1);
         labelTextNamePlayer2.setForeground(colorText);
         add(labelTextNamePlayer2);
@@ -51,7 +51,7 @@ public class PlayerView extends JPanel implements Observer {
         BoxLayout boxLayout = new BoxLayout(this, BoxLayout.Y_AXIS);
 
         setLayout(boxLayout);
-        JLabel labelTextNamePlayer1 = new JLabel("Premier Joueur :");
+        JLabel labelTextNamePlayer1 = new JLabel("First Player :");
         labelTextNamePlayer1.setFont(fontText1);
         labelTextNamePlayer1.setForeground(colorText);
         add(labelTextNamePlayer1);
@@ -63,7 +63,7 @@ public class PlayerView extends JPanel implements Observer {
         labelTextNamePlayer2.setFont(fontText1);
         labelTextNamePlayer2.setForeground(colorText);
         add(labelTextNamePlayer2);
-        JLabel labelNamePlayer2 = new JLabel("grave chaud", JLabel.CENTER);
+        JLabel labelNamePlayer2 = new JLabel("Smart", JLabel.CENTER);
         labelNamePlayer2.setFont(fontText2);
         labelNamePlayer2.setForeground(colorText);
         add(labelNamePlayer2);

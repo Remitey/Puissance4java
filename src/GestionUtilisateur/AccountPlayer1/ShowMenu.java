@@ -1,6 +1,7 @@
 package GestionUtilisateur.AccountPlayer1;
 
 import Database.Table.Player;
+import GestionUtilisateur.Administrator.DataBase;
 import GestionUtilisateur.UserManagement.BackGround;
 import GestionUtilisateur.UserManagement.BorderLayout;
 
@@ -101,12 +102,12 @@ public class ShowMenu implements ActionListener{
             }
             if (e.getSource()== data) {
                 frame.dispose();
-               // Data data = new Data();
+                new DataBase(player);
 
             }
             if (e.getSource()== credits) {
                 frame.dispose();
-                Credits credits = new Credits(player);
+                new Credits(player);
             }
             if (e.getSource()== disconnect) {
                 frame.dispose();
