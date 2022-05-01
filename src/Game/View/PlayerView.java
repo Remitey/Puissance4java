@@ -1,5 +1,7 @@
 package Game.View;
 
+import Game.Model.DataGrid;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.Observable;
@@ -12,11 +14,11 @@ public class PlayerView extends JPanel implements Observer {
         setLayout(boxLayout);
         JLabel labelTextNamePlayer1 = new JLabel("Premier Joueur :");
         add(labelTextNamePlayer1);
-        JLabel labelNamePlayer1 = new JLabel("Nom Joueur 1", JLabel.CENTER);
+        JLabel labelNamePlayer1 = new JLabel("Nom Joueur 1 : " + DataGrid.Nameplayer1, JLabel.CENTER);
         add(labelNamePlayer1);
         JLabel labelTextNamePlayer2 = new JLabel("Deuxième Joueur :", JLabel.CENTER);
         add(labelTextNamePlayer2);
-        JLabel labelNamePlayer2 = new JLabel("Nom Joueur 2", JLabel.CENTER);
+        JLabel labelNamePlayer2 = new JLabel("Nom Joueur 2 : " + DataGrid.Nameplayer2, JLabel.CENTER);
         add(labelNamePlayer2);
 
         setSize(100, 500);

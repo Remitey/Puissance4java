@@ -148,7 +148,7 @@ public class CreateAccountMultiplayer implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==buttonconnection) {
             // if connection existe
-            new BoardGame();
+            //new BoardGame();
             frame.dispose();
             //else :
             //frame.add(error);

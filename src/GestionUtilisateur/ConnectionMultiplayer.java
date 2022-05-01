@@ -84,7 +84,7 @@ public class ConnectionMultiplayer implements ActionListener {
         if(e.getSource()==buttonconnection) {
             //if connection possible
             frame.dispose();
-            new BoardGame();
+            //new BoardGame();
             //else
             //frame.add(error);
 

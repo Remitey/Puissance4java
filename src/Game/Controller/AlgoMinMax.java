@@ -39,33 +39,6 @@ public class AlgoMinMax {
         }
         return j;
     }
-    /*public int algo(int depth, int value, Map<Pair<Integer>, DataGameBox> grid, int player){
-        if(depth <= 0 || !grid.containsValue(new DataGameBox(false))){
-            return heuristic(grid, player);
-        }
-        for (int i = 0; i < col; i++) {
-            if (!grid.get(new Pair<>(0, i)).isUsed()){ // check if the column is not full
-
-                Map<Pair<Integer>, DataGameBox> copieGrid = copie(grid);
-                copieGrid = play(copieGrid, i, player);
-                int buffer;
-
-                if(player == this.player){
-                    buffer = 1000;
-                    value = Math.max(buffer, algo(depth--, value, copieGrid, otherPlayer(player)));
-                }
-                else{
-                    buffer = -1000;
-                    value = Math.min(value, algo(depth--, value, copieGrid, otherPlayer(player)));
-                }
-
-                if (buffer > value){
-                    value = buffer;
-                }
-            }
-        }
-        return value;
-    }*/
     public int algo(int depth, Map<Pair<Integer>, BoxModel> grid, int player){
         if(depth <= 0 || !grid.containsValue(new BoxModel(false))){
             return heuristic(grid, player);
