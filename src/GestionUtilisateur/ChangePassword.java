@@ -1,7 +1,8 @@
 package GestionUtilisateur;
 
 
-import BaseDeDonnee.PlayerDAO;
+import Database.DAOmodel.PlayerDAO;
+import Database.Table.Player;
 
 import javax.swing.*;
 import java.awt.*;
@@ -20,9 +21,11 @@ public class ChangePassword implements ActionListener {
 
     JButton buttonChangePass = new JButton("Change");
     JPanel jPanel= new JPanel();
+    private final Player player;
 
-    ChangePassword() {
+    ChangePassword(Player player) {
 
+        this.player = player;
         //phrase
         connect.setBounds(100, -105, 500, 300);
         connect.setForeground(colorText);
@@ -56,7 +59,12 @@ public class ChangePassword implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 
         if (e.getSource() == buttonChangePass) {
-            new PlayerDAO();
+            PlayerDAO playerDAO =new PlayerDAO();
+            playerDAO.findPlayer(player.getUsername(),player.getPassword());
+
+
+
+
 
             }
         }

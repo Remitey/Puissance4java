@@ -1,5 +1,7 @@
 package GestionUtilisateur;
 
+import Database.Table.Player;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,10 +23,14 @@ public class SettingsAccount implements ActionListener {
     JLabel hello = new JLabel("Welcome in Settings");
     JPanel panel = new JPanel();
 
+    private final Player player;
 
-    SettingsAccount() {
+    SettingsAccount(Player player) {
 
+
+        this.player = player;
         // final JTextField text = new JTextField();
+
 
 
 
@@ -60,11 +66,11 @@ public class SettingsAccount implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == changePass) {
-            new ChangePassword();
+            new ChangePassword(player);
         }
         if (e.getSource() == back) {
             frame.dispose();
-            new ShowMenu();
+            new ShowMenu(player);
         }
     }
 }

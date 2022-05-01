@@ -1,5 +1,7 @@
 package GestionUtilisateur;
 
+import Database.Table.Player;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -11,6 +13,7 @@ import java.io.IOException;
 
 public class ShowMenu implements ActionListener{
 
+    private final Player player;
 
         JFrame frame = new JFrame();
     Icon playImage = new ImageIcon("..\\Puissance4java\\src\\image\\playBouton.png");
@@ -28,10 +31,11 @@ public class ShowMenu implements ActionListener{
         JLabel welcome = new JLabel("Welcome" ); //+ username
 
 
-        public ShowMenu(){
+
+        public ShowMenu(Player player){
 
            // this.setLayout(new FlowLayout());
-
+            this.player = player;
             try {
                 BufferedImage background = ImageIO.read(new File("..\\Puissance4java\\src\\image\\background4.jpg"));
                 frame.setContentPane(new BackGround(background));
@@ -85,7 +89,7 @@ public class ShowMenu implements ActionListener{
             }
             if (e.getSource()== settings){
                 frame.dispose();
-                new SettingsAccount();
+                new SettingsAccount(player);
             }
             if (e.getSource()== data) {
                 frame.dispose();

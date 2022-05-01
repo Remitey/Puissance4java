@@ -13,7 +13,8 @@ public class MainDAO {
 
         PlayerDAO playerDAO = new PlayerDAO();
         //playerDAO.create(player1);
-        playerDAO.update(player1);
+       // playerDAO.update(player1);
+        playerDAO.updatePassword("nice_ca");
 
 
 

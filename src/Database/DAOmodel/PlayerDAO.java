@@ -28,6 +28,17 @@ public class PlayerDAO extends DAO<Player> {
     return player;
     }
 
+    public String updatePassword(String password) {
+        try{
+            this.connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE).executeUpdate("UPDATE player(password) SET password ="  + password);
+
+        }catch (SQLException exception){
+            exception.printStackTrace();
+        }
+        return password;
+    }
+
+
     @Override
     public Player find(Integer id){
         return null;
@@ -79,6 +90,16 @@ public class PlayerDAO extends DAO<Player> {
     public void delete(Player obj) {
         try{
             this.connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_UPDATABLE).executeUpdate("DELETE FROM player WHERE id = " + obj.getId());
+        }catch (SQLException exception){
+            exception.printStackTrace();
+        }
+}
+
+
+    public void data(Player obj){
+        try{
+            this.connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,ResultSet.CONCUR_READ_ONLY).executeQuery("SELECT *,game FROM player INNER JOIN game ON player.username = game.player_1");
+
         }catch (SQLException exception){
             exception.printStackTrace();
         }
