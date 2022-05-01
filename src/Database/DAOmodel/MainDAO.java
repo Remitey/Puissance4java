@@ -1,17 +1,25 @@
 package Database.DAOmodel;
 
 
+import Database.Table.Game;
 import Database.Table.Player;
+
+import java.util.Date;
 
 public class MainDAO {
     public static void main(String[] args) {
 
         Player player1 = new Player(1, "thotho", "lad@yahhoo.fr", "123456", 2);
         Player player2 = new Player(1, "dhodho", "lad@yahhoo.fr", "123456", 2);
+        Date date = new Date();
+        System.out.println(date.getTime());
 
         PlayerDAO playerDAO = new PlayerDAO();
-        playerDAO.create(player2);
+        GameDAO gameDAO = new GameDAO();
+        //playerDAO.create(player2);
+        Game game = new Game(0, playerDAO.findPlayer(player1.getUsername(), player1.getPassword()), playerDAO.findPlayer(player2.getUsername(), player2.getPassword()), 6, 7, null, date.getTime(),null);
 
+        gameDAO.create(game);
 
         //playerDAO.create(player1);
        // playerDAO.update(player1);
