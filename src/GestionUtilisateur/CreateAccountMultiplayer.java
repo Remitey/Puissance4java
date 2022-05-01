@@ -1,4 +1,5 @@
 package GestionUtilisateur;
+import Database.DAOmodel.PlayerDAO;
 import Database.Table.Player;
 import Game.View.BoardGame;
 
@@ -10,6 +11,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 public class CreateAccountMultiplayer implements ActionListener {
     private final Player player;
@@ -40,6 +42,8 @@ public class CreateAccountMultiplayer implements ActionListener {
     Icon backImage = new ImageIcon("..\\Puissance4java\\src\\image\\backBoutonAccount.png");
     JButton buttonconnection = new JButton(connectionImage);
     JButton buttonconnectionback = new JButton(backImage);
+
+    JPanel jPanel= new JPanel();
 
     CreateAccountMultiplayer(Player player) {
         this.player = player;
@@ -144,15 +148,27 @@ public class CreateAccountMultiplayer implements ActionListener {
 
     }
 
+    public JPanel getPanel() {
+        return jPanel;
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
+        String pasword = String.valueOf(pass.getPassword());
+        String username = usernamee.getText();
+        String recupemail = emaill.getText();
+
         if(e.getSource()==buttonconnection) {
-            // if connection existe
-            //new BoardGame();
-            frame.dispose();
-            new WelcomePlayer2(player);
-            //else :
-            //frame.add(error);
+            if (!Objects.equals(username, "") && !Objects.equals(recupemail, "") && !pasword.equals("")) {
+                PlayerDAO playerDAO = new PlayerDAO();
+                Player newplayer = new Player();
+                newplayer = new Player(1,username,recupemail, pasword, 2);
+                playerDAO.create(newplayer);
+                new WelcomePlayer2(player,newplayer);
+                frame.dispose();
+            }
+            else{
+                JOptionPane.showMessageDialog(jPanel, "Please enter Wrong Username & Password");
+            }
         }
         if (e.getSource() == buttonconnectionback) {
             frame.dispose();

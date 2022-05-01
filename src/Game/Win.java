@@ -1,5 +1,7 @@
 package Game;
 
+import Database.DAOmodel.PlayerDAO;
+import Database.Table.Player;
 import GestionUtilisateur.*;
 
 import javax.imageio.ImageIO;
@@ -20,10 +22,13 @@ public class Win implements ActionListener {
     JButton data = new JButton(dataImage);
     JButton menu = new JButton(menuImage);
     JPanel panel = new JPanel();
-    JLabel welcome = new JLabel("Player X has won the game"); //+ username
 
+    private final String player;
 
-    public Win() {
+    public Win(String player) {
+
+        this.player = player;
+        JLabel welcome = new JLabel( player + " has won the game"); //+ username
 
         try {
             BufferedImage background = ImageIO.read(new File("..\\Puissance4java\\src\\image\\background7.jpg"));
@@ -60,13 +65,21 @@ public class Win implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+
+
+        PlayerDAO playerDAO = new PlayerDAO();
+        Player player1 = playerDAO.findPlayer(player);
+
+
+        player1 = new Player(1,player,player1.getEmail(),player1.getPassword(),player1.getPermission());
+
         if (e.getSource() == data) {
             frame.dispose();
             //new Play();
         }
         if (e.getSource() == menu) {
             frame.dispose();
-            //new ShowMenu();
+            new ShowMenu(player1);
             // Data data = new Data();
         }
     }

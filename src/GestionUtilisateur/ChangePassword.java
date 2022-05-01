@@ -9,6 +9,8 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import static java.lang.Thread.sleep;
+
 public class ChangePassword implements ActionListener {
 
     public Color colorText = new Color(162, 170, 214);
@@ -17,7 +19,7 @@ public class ChangePassword implements ActionListener {
     JLabel connect = new JLabel(" please enter your new password : ");
 
 
-    JTextField user = new JTextField();
+    JPasswordField user = new JPasswordField();
 
     JButton buttonChangePass = new JButton("Change");
     JPanel jPanel= new JPanel();
@@ -58,11 +60,21 @@ public class ChangePassword implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if (e.getSource() == buttonChangePass) {
-            PlayerDAO playerDAO =new PlayerDAO();
-            playerDAO.findPlayer(player.getUsername(),player.getPassword());
-            playerDAO.update(player);
+        String password = String.valueOf(user.getPassword());
 
-            }
+        System.out.println(String.valueOf(user.getPassword()));
+
+        if (e.getSource() == buttonChangePass) {
+
+            PlayerDAO playerDAO =new PlayerDAO();
+            Player player1 = new Player();
+            player1 = new Player(playerDAO.findPlayer(player.getUsername()).getId(),player.getUsername(),player.getEmail(),password,2);
+            System.out.println(player1);
+
+            playerDAO.update(player1);
+            frame.dispose();
+            new ShowMenu(player1);
+
+        }
         }
     }

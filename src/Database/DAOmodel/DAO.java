@@ -4,7 +4,7 @@ import Database.ConnectionBDD;
 
 import java.sql.*;
 
-public abstract class DAO<T> {
+public abstract class DAO<T> { //https://cyrille-herby.developpez.com/tutoriels/java/mapper-sa-base-donnees-avec-pattern-dao/
 
 
     public Connection connection = ConnectionBDD.getInstance();

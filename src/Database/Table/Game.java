@@ -13,6 +13,7 @@ public class Game {
     private Long time;
     private Long duration;
     public Game() {}
+
     public Game(Integer id, Player player_1, Player player_2, Integer grid_size_row, Integer grid_size_col, Integer result, long time, long duration) {
         this.id = id;
         this.player_1 = player_1;

@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 public class CreateAccount implements ActionListener {
     private final Player player;
@@ -157,7 +158,7 @@ public class CreateAccount implements ActionListener {
         String username = usernamee.getText();
         String recupemail = emaill.getText();
         if(e.getSource()==buttonconnection) {
-            if (username!= null || recupemail!=null || pasword!=null) {
+            if (!Objects.equals(username, "") && !Objects.equals(recupemail, "") && !pasword.equals("")) {
                 PlayerDAO playerDAO = new PlayerDAO();
                 Player player1 = new Player();
                 player1 = new Player(1,username,recupemail, pasword, 2);

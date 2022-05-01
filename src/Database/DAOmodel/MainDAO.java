@@ -13,12 +13,20 @@ public class MainDAO {
 
         Player player1 = new Player(1, "thotho", "lad@yahhoo.fr", "123456", 2);
         Player player2 = new Player( 1,"dhodho", "lad@yahhoo.fr", "123456", 2);
-        Date date = new Date();
-        System.out.println(date.getTime());
 
-        PlayerDAO playerDAO = new PlayerDAO();
-        playerDAO.create(player1);
-        playerDAO.create(player2);
+        Cpu cpu1 = new Cpu(1,"easy",5);
+        Cpu cpu2 = new Cpu(2,"hard",5);
+
+        CpuDAO cpuDAO = new CpuDAO();
+
+       // cpuDAO.create(cpu1);
+        //.create(cpu2);
+      //  Date date = new Date();
+        //System.out.println(date.getTime());
+
+        //PlayerDAO playerDAO = new PlayerDAO();
+        //playerDAO.create(player1);
+        //playerDAO.create(player2);
         /*GameDAO gameDAO = new GameDAO();
         TurnDAO turnDAO = new TurnDAO();
 

@@ -1,5 +1,6 @@
 package Game.View;
 
+import Database.Table.Player;
 import GestionUtilisateur.BackGround;
 
 import javax.imageio.ImageIO;
@@ -17,7 +18,7 @@ public class PlayerView extends JPanel implements Observer {
     Font fontText1 =new Font(null, Font.BOLD,17);
     Font fontText2 =new Font(null, Font.PLAIN,15);
 
-    public PlayerView() {
+    public PlayerView(Player player1,Player player2) {
 
         setBackground(new Color(0,9,55));
 
@@ -28,7 +29,7 @@ public class PlayerView extends JPanel implements Observer {
         labelTextNamePlayer1.setFont(fontText1);
         labelTextNamePlayer1.setForeground(colorText);
         add(labelTextNamePlayer1);
-        JLabel labelNamePlayer1 = new JLabel("Nom Joueur 1 " , JLabel.CENTER);
+        JLabel labelNamePlayer1 = new JLabel(player1.getUsername() , JLabel.CENTER);
         labelNamePlayer1.setFont(fontText2);
         labelNamePlayer1.setForeground(colorText);
         add(labelNamePlayer1);
@@ -36,7 +37,38 @@ public class PlayerView extends JPanel implements Observer {
         labelTextNamePlayer2.setFont(fontText1);
         labelTextNamePlayer2.setForeground(colorText);
         add(labelTextNamePlayer2);
-        JLabel labelNamePlayer2 = new JLabel("Nom Joueur 2", JLabel.CENTER);
+        JLabel labelNamePlayer2 = new JLabel(player2.getUsername(), JLabel.CENTER);
+        labelNamePlayer2.setFont(fontText2);
+        labelNamePlayer2.setForeground(colorText);
+        add(labelNamePlayer2);
+
+
+
+        setSize(200, 500);
+
+        setVisible(true);
+    }
+
+    public PlayerView(Player player1) {
+
+        setBackground(new Color(0,9,55));
+
+        BoxLayout boxLayout = new BoxLayout(this, BoxLayout.Y_AXIS);
+
+        setLayout(boxLayout);
+        JLabel labelTextNamePlayer1 = new JLabel("Premier Joueur :");
+        labelTextNamePlayer1.setFont(fontText1);
+        labelTextNamePlayer1.setForeground(colorText);
+        add(labelTextNamePlayer1);
+        JLabel labelNamePlayer1 = new JLabel(player1.getUsername() , JLabel.CENTER);
+        labelNamePlayer1.setFont(fontText2);
+        labelNamePlayer1.setForeground(colorText);
+        add(labelNamePlayer1);
+        JLabel labelTextNamePlayer2 = new JLabel("Cpu :", JLabel.CENTER);
+        labelTextNamePlayer2.setFont(fontText1);
+        labelTextNamePlayer2.setForeground(colorText);
+        add(labelTextNamePlayer2);
+        JLabel labelNamePlayer2 = new JLabel("grave chaud", JLabel.CENTER);
         labelNamePlayer2.setFont(fontText2);
         labelNamePlayer2.setForeground(colorText);
         add(labelNamePlayer2);

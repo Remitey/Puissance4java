@@ -1,5 +1,6 @@
 package GestionUtilisateur;
 
+import Database.DAOmodel.PlayerDAO;
 import Database.Table.Player;
 import Game.View.BoardGame;
 
@@ -11,6 +12,7 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.util.Objects;
 
 public class Multiplayer implements ActionListener {
     private final Player player;
@@ -28,6 +30,7 @@ public class Multiplayer implements ActionListener {
     Icon createImage = new ImageIcon("..\\Puissance4java\\src\\image\\createBoutonMultiplayer.png");
     JButton buttonconnection = new JButton(connectionImage);
     JButton createaccountguest = new JButton(createImage);
+    JPanel jPanel= new JPanel();
 
     Multiplayer(Player player) {
 
@@ -90,12 +93,29 @@ public class Multiplayer implements ActionListener {
 
     }
 
+    public JPanel getPanel() {
+        return jPanel;
+    }
     @Override
     public void actionPerformed(ActionEvent e) {
+        String userName = user.getText();
+        String password = String.valueOf(pass.getPassword());
+
         if(e.getSource()==buttonconnection) {
+
+            PlayerDAO playerDAO = new PlayerDAO();
+            Player newplayer = playerDAO.findPlayer(userName,password);
+
+            if (newplayer == null) {
+                JOptionPane.showMessageDialog(jPanel, "Wrong Username & Password");
+            }else {
+                new WelcomePlayer2(player,newplayer);
+                frame.dispose();
+
+
+            }
             //if connection possible
-            //new BoardGame();
-            frame.dispose();
+
             //else
             //frame.add(error);
 

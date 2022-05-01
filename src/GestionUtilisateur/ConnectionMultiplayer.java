@@ -90,7 +90,7 @@ public class ConnectionMultiplayer implements ActionListener {
         if(e.getSource()==buttonconnection) {
             //if connection possible
             frame.dispose();
-            new WelcomePlayer2(player);
+            //new WelcomePlayer2(player);
             //else
             //frame.add(error);
 

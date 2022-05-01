@@ -1,6 +1,7 @@
 package GestionUtilisateur;
 
 import Database.Table.Player;
+import Game.View.BoardGame;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -40,9 +41,9 @@ public class Oneplayer implements ActionListener {
        // String[] list = {"--Select Difficulty--", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
         String[] list = {"--Select Difficulty--", "Easy", "Hard"};
         JComboBox cbg = new JComboBox<>(list);
-        String[] listraw = {"4", "5", "6", "7", "8", "9", "10", "11"};
+        String[] listraw = {"6", "7", "8", "9", "10", "11"};
         JComboBox cbgraw = new JComboBox<>(listraw);
-        String[] listcol = {"4", "5", "6", "7", "8", "9", "10", "11"};
+        String[] listcol = {"6", "7", "8", "9", "10", "11"};
         JComboBox cbg2 = new JComboBox<>(listcol);
 
         difficulty.setFont(new Font(null, Font.PLAIN, 15));
@@ -95,7 +96,7 @@ public class Oneplayer implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == game) {
             frame.dispose();
-            //Game game = new Game();
+            new BoardGame(player,"easy");
         }
 
         if (e.getSource() == back) {

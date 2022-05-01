@@ -1,6 +1,7 @@
 package GestionUtilisateur;
 
 import Database.Table.Player;
+import Game.View.BoardGame;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -30,28 +31,30 @@ public class WelcomePlayer2 implements ActionListener{
     //+ username
 
 
-    private final Player player;
+    private final Player player1;
+    private final Player player2;
 
-    public WelcomePlayer2(Player player){
+    public WelcomePlayer2(Player player1, Player player2){
 
         // this.setLayout(new FlowLayout());
 
 
-        this.player = player;
+        this.player1 = player1;
+        this.player2 = player2;
 
-        String[] list = {"4", "5", "6", "7", "8", "9", "10", "11"};
+        String[] list = { "6", "7", "8", "9", "10", "11"};
         JComboBox cbg1 = new JComboBox<>(list);
-        String[] listcol = {"4", "5", "6", "7", "8", "9", "10", "11"};
+        String[] listcol = {"6", "7", "8", "9", "10", "11"};
         JComboBox cbg2 = new JComboBox<>(listcol);
 
-        JLabel welcome = new JLabel("Welcome " );   //ici player 2
+        JLabel welcome = new JLabel("Welcome " +"J1 : " + player1.getUsername() +" AND J2 : "+ player2.getUsername());   //ici player 2
         try {
             BufferedImage background = ImageIO.read(new File("..\\Puissance4java\\src\\image\\background4.jpg"));
             frame.setContentPane(new BackGround(background));
         } catch (IOException e) {
             e.printStackTrace();
         }
-        welcome.setBounds(325,-50,200,200);
+        welcome.setBounds(255,-50,400,200);
         welcome.setFont(new Font(null, Font.BOLD,20));
         welcome.setForeground(new Color(162,170,214));
         frame.add(welcome);
@@ -104,15 +107,15 @@ public class WelcomePlayer2 implements ActionListener{
     public void actionPerformed(ActionEvent e) {
         if (e.getSource()== play){
             frame.dispose();
-            // new Game()
+            new BoardGame(player1,player2);
         }
         if (e.getSource()== back) {
             frame.dispose();
-            new Multiplayer(player);
+            new Multiplayer(player1);
         }
         if (e.getSource()== disconnect) {
             frame.dispose();
-            new BorderLayout(player);
+            new BorderLayout(player1);
         }
     }
 }

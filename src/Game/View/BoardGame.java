@@ -21,7 +21,7 @@ public class BoardGame extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        PlayerView playerView = new PlayerView();
+        PlayerView playerView = new PlayerView(player1,player2);
         GridView gridView = new GridView();
 
         GameController gameController = new GameController(false, gridView);
@@ -43,7 +43,7 @@ public class BoardGame extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());
 
-        PlayerView playerView = new PlayerView();
+        PlayerView playerView = new PlayerView(player);
         GridView gridView = new GridView();
 
         GameController gameController = new GameController(true, gridView);

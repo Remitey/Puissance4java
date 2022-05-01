@@ -1,5 +1,6 @@
 package Game.Controller;
 
+import Database.DAOmodel.CpuDAO;
 import Database.DAOmodel.GameDAO;
 import Database.DAOmodel.PlayerDAO;
 import Database.DAOmodel.TurnDAO;
@@ -28,16 +29,26 @@ public class GameController extends Observable implements Observer {
     private final PlayerDAO playerDAO;
     private final GameDAO gameDAO;
     private final TurnDAO turnDAO;
+    private final CpuDAO cpuDAO;
     private final Date date;
     public GameController(boolean ia, GridView gridView){
         date = new Date();
         playerDAO = new PlayerDAO();
         gameDAO = new GameDAO();
         turnDAO = new TurnDAO();
+        cpuDAO = new CpuDAO();
         Cpu cpu = new Cpu();
-        game = new Game(0, playerDAO.findPlayer(DataGrid.Nameplayer1), playerDAO.findPlayer(DataGrid.Nameplayer2), 6, 7, null, date.getTime(),0);
 
-        gameDAO.create(game);
+       if (!ia){
+           game = new Game(0, playerDAO.findPlayer(DataGrid.Nameplayer1), playerDAO.findPlayer(DataGrid.Nameplayer2), 6, 7, null, date.getTime(),0);
+           gameDAO.create(game);
+       } else{
+           game = new Game(0,playerDAO.findPlayer(DataGrid.Nameplayer1),cpuDAO.find(1),6,7,null,date.getTime(),0);
+           gameDAO.create(game);
+       }
+
+
+
 
         this.ia = ia;
         this.gridView = gridView;
@@ -144,7 +155,7 @@ public class GameController extends Observable implements Observer {
     public void isEnd(){
         if (winCondition(player)) {
             SwingUtilities.getWindowAncestor(gridView).dispose();
-            new Win();
+            new Win(player);
             Date date = new Date();
             game.setDuration(date.getTime());
 
@@ -161,7 +172,7 @@ public class GameController extends Observable implements Observer {
         }
         else if (isFull()){
             SwingUtilities.getWindowAncestor(gridView).dispose();
-            new Win();
+            new Win(player);
 
             game.setDuration(date.getTime());
             gameDAO.update(game);
