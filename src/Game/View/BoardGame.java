@@ -30,6 +30,7 @@ public class BoardGame extends JFrame{
         add(playerView, "East");
 
         this.setSize(600, 600);
+        setLocationRelativeTo(null);
         this.setVisible(true);
     }
 }
