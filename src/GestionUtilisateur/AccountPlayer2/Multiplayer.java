@@ -1,8 +1,9 @@
-package GestionUtilisateur;
+package GestionUtilisateur.AccountPlayer2;
 
 import Database.DAOmodel.PlayerDAO;
 import Database.Table.Player;
-import Game.View.BoardGame;
+import GestionUtilisateur.AccountPlayer2.WelcomePlayer2;
+import GestionUtilisateur.UserManagement.BackGround;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -12,7 +13,6 @@ import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
-import java.util.Objects;
 
 public class Multiplayer implements ActionListener {
     private final Player player;
@@ -32,7 +32,7 @@ public class Multiplayer implements ActionListener {
     JButton createaccountguest = new JButton(createImage);
     JPanel jPanel= new JPanel();
 
-    Multiplayer(Player player) {
+    public Multiplayer(Player player) {
 
         this.player = player;
         try {

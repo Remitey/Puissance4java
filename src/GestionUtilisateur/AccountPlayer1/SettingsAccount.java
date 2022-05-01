@@ -1,6 +1,7 @@
-package GestionUtilisateur;
+package GestionUtilisateur.AccountPlayer1;
 
 import Database.Table.Player;
+import GestionUtilisateur.UserManagement.BackGround;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

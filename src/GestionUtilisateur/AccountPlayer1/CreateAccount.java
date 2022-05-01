@@ -1,6 +1,9 @@
-package GestionUtilisateur;
+package GestionUtilisateur.AccountPlayer1;
+
 import Database.DAOmodel.PlayerDAO;
 import Database.Table.Player;
+import GestionUtilisateur.UserManagement.BackGround;
+import GestionUtilisateur.UserManagement.BorderLayout;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -45,7 +48,7 @@ public class CreateAccount implements ActionListener {
 
     JPanel jPanel= new JPanel();
 
-    CreateAccount(Player player) {
+    public CreateAccount(Player player) {
         this.player = player;
 
         try {

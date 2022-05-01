@@ -1,7 +1,9 @@
-package GestionUtilisateur;
+package GestionUtilisateur.AccountPlayer2;
 
 import Database.Table.Player;
 import Game.View.BoardGame;
+import GestionUtilisateur.UserManagement.BackGround;
+import GestionUtilisateur.UserManagement.BorderLayout;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

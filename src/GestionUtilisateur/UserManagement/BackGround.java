@@ -1,4 +1,4 @@
-package GestionUtilisateur;
+package GestionUtilisateur.UserManagement;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

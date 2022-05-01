@@ -2,7 +2,8 @@ package Game;
 
 import Database.DAOmodel.PlayerDAO;
 import Database.Table.Player;
-import GestionUtilisateur.*;
+import GestionUtilisateur.AccountPlayer1.ShowMenu;
+import GestionUtilisateur.UserManagement.BackGround;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

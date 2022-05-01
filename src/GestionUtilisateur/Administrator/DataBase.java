@@ -1,6 +1,7 @@
-package GestionUtilisateur;
+package GestionUtilisateur.Administrator;
 
 import Database.Table.Player;
+import GestionUtilisateur.UserManagement.BackGround;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -11,20 +12,15 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class Credits implements ActionListener {
-
+public class DataBase implements ActionListener {
+    private final Player player;
     JFrame frame = new JFrame();
     public Color colorText = new Color(162,170,214);
-    JLabel presentation = new JLabel(" Game has been made by thotho, rere , dodo et thithi");
-    JLabel equipe = new JLabel(" Notre graphiste international Rere le meilleur, le Gestionnaire de la base de données internationale ThoTHhhhhhhhhhhhho ");
-    JLabel dodo = new JLabel("L'homme qui a fait le moins mais qu'on aime quand meme DOdDO");
-    JLabel titi = new JLabel("Et le dernier le Thithri celui qui a tout fait");
     Icon backImage = new ImageIcon("..\\Puissance4java\\src\\image\\backBoutonAccount.png");
     JButton buttonBack = new JButton(backImage);
-    private final Player player;
-    Credits(Player player) {
-        this.player = player;
 
+    DataBase(Player player) {
+        this.player = player;
 
         try {
             BufferedImage background = ImageIO.read(new File("..\\Puissance4java\\src\\image\\background2.jpg"));
@@ -32,23 +28,6 @@ public class Credits implements ActionListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        //phrase
-        presentation.setBounds(250,-50,500,300);
-        presentation.setForeground(colorText);
-        frame.add(presentation);
-
-        //text
-        dodo.setBounds(150,110,700,400);
-        dodo.setForeground(colorText);
-
-        frame.add(dodo);
-        equipe.setBounds(150,50,700,400);
-        equipe.setForeground(colorText);
-
-        frame.add(equipe);
-        titi.setBounds(150,160,700,400);
-        titi.setForeground(colorText);
-        frame.add(titi);
 
 
 
@@ -72,7 +51,7 @@ public class Credits implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==buttonBack) {
             //if connection possible
-            ShowMenu shomenu = new ShowMenu(player);
+            new MenuAdmin(player);
             frame.dispose();
         }
     }

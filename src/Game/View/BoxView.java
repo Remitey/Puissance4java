@@ -2,7 +2,6 @@ package Game.View;
 
 import Game.Model.BoxModel;
 import Game.Model.DataGrid;
-import GestionUtilisateur.Data;
 
 import javax.swing.*;
 import java.awt.*;

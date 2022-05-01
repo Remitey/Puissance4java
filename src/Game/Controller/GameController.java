@@ -13,7 +13,6 @@ import Game.Model.Pair;
 import Game.View.BoxView;
 import Game.View.GridView;
 import Game.Win;
-import GestionUtilisateur.Data;
 
 import javax.swing.*;
 import java.awt.*;

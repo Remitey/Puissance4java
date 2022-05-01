@@ -1,8 +1,9 @@
-package GestionUtilisateur;
+package GestionUtilisateur.AccountPlayer1;
 
 
 import Database.DAOmodel.PlayerDAO;
 import Database.Table.Player;
+import GestionUtilisateur.AccountPlayer1.ShowMenu;
 
 import javax.swing.*;
 import java.awt.*;

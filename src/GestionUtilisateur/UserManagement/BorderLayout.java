@@ -1,6 +1,8 @@
-package GestionUtilisateur;
+package GestionUtilisateur.UserManagement;
 
 import Database.Table.Player;
+import GestionUtilisateur.AccountPlayer1.Connection;
+import GestionUtilisateur.AccountPlayer1.CreateAccount;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -25,7 +27,7 @@ public class BorderLayout implements ActionListener {
     JPanel panel = new JPanel();
     private final Player player;
 
-    BorderLayout(Player player) {
+    public BorderLayout(Player player) {
         this.player = player;
 
         // final JTextField text = new JTextField();

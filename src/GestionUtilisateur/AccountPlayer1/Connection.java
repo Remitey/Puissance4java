@@ -1,8 +1,9 @@
-package GestionUtilisateur;
+package GestionUtilisateur.AccountPlayer1;
 
 
 import Database.DAOmodel.PlayerDAO;
 import Database.Table.Player;
+import GestionUtilisateur.UserManagement.BackGround;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

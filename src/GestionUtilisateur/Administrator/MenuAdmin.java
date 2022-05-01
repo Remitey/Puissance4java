@@ -1,6 +1,9 @@
-package GestionUtilisateur;
+package GestionUtilisateur.Administrator;
 
 import Database.Table.Player;
+import GestionUtilisateur.AccountPlayer1.Play;
+import GestionUtilisateur.Administrator.DataBase;
+import GestionUtilisateur.UserManagement.BackGround;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;

@@ -1,6 +1,7 @@
-package GestionUtilisateur;
+package GestionUtilisateur.UserManagement;
 
 import Database.Table.Player;
+import GestionUtilisateur.UserManagement.BorderLayout;
 
 
 public class GestionUtilisateur {

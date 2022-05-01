@@ -1,14 +1,9 @@
 package Game.View;
 
 import Database.Table.Player;
-import GestionUtilisateur.BackGround;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.Observable;
 import java.util.Observer;
 

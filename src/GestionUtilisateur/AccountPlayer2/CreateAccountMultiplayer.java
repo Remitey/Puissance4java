@@ -1,7 +1,9 @@
-package GestionUtilisateur;
+package GestionUtilisateur.AccountPlayer2;
 import Database.DAOmodel.PlayerDAO;
 import Database.Table.Player;
-import Game.View.BoardGame;
+import GestionUtilisateur.AccountPlayer2.WelcomePlayer2;
+import GestionUtilisateur.UserManagement.BackGround;
+import GestionUtilisateur.AccountPlayer2.Multiplayer;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
