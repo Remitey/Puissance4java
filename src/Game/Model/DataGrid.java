@@ -1,6 +1,7 @@
 package Game.Model;
 
-import BaseDeDonnee.Player;
+
+import Database.Table.Player;
 
 public class DataGrid {
     public static int rows;

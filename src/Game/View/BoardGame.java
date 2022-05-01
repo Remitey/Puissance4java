@@ -1,6 +1,7 @@
 package Game.View;
 
-import BaseDeDonnee.Player;
+//import BaseDeDonnee.Player;
+import Database.Table.Player;
 import Game.Model.DataGrid;
 import Game.Controller.GameController;
 import GestionUtilisateur.Play;
@@ -12,7 +13,7 @@ public class BoardGame extends JFrame{
     public BoardGame(Player player1, Player player2){
         int rows = 6;
         int col = 7;
-        new DataGrid(rows, col, player1, player2);
+        //new DataGrid(rows, col, player1, player2);
 
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(new BorderLayout());

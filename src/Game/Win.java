@@ -62,11 +62,11 @@ public class Win implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == data) {
             frame.dispose();
-            new Play();
+            //new Play();
         }
         if (e.getSource() == menu) {
             frame.dispose();
-            new ShowMenu();
+            //new ShowMenu();
             // Data data = new Data();
         }
     }

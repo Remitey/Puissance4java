@@ -6,15 +6,16 @@ import Database.Table.Player;
 public class MainDAO {
     public static void main(String[] args) {
 
-        Player player1 = new Player(1, "oakajf", "lad@yahhoo.fr", "123456", 2);
-
-
-
+        Player player1 = new Player(1, "thotho", "lad@yahhoo.fr", "123456", 2);
+        Player player2 = new Player(1, "dhodho", "lad@yahhoo.fr", "123456", 2);
 
         PlayerDAO playerDAO = new PlayerDAO();
+        playerDAO.create(player2);
+
+
         //playerDAO.create(player1);
        // playerDAO.update(player1);
-        playerDAO.updatePassword("nice_ca");
+        //playerDAO.updatePassword("nice_ca");
 
 
 

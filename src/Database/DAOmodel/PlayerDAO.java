@@ -48,24 +48,15 @@ public class PlayerDAO extends DAO<Player> {
     public Player create(Player obj) {
         try{
 
-                 PreparedStatement prepare = this.connection.prepareStatement("INSERT INTO player(id,username,email,password,permission)" + "VALUES (?,?,?,sha1(?),?)");
+                 PreparedStatement prepare = this.connection.prepareStatement("INSERT INTO player(username,email,password,permission)" + "VALUES (?,?,sha1(?),?)");
 
-                 //byte[] password = hashbyte(obj.getPassword());
-                 //String password2 = (String.copyValueOf(getChartkt(password)));
-
-                // System.out.println(password);
-                //System.out.println(getChartkt(password));
-
-                 prepare.setInt(1,obj.getId());
-                 prepare.setString(2,obj.getUsername());
-                 prepare.setString(3, obj.getEmail());
-                 prepare.setString(4, obj.getPassword());
-                 prepare.setInt(5,obj.getPermission());
+                 prepare.setString(1,obj.getUsername());
+                 prepare.setString(2, obj.getEmail());
+                 prepare.setString(3, obj.getPassword());
+                 prepare.setInt(4,obj.getPermission());
 
 
                  prepare.executeUpdate();
-                 obj = this.find(obj.getId());
-
         } catch  (SQLException exception){
             exception.printStackTrace();
         }

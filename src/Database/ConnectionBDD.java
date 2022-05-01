@@ -7,7 +7,7 @@ public class ConnectionBDD {
     private static final String DATABASE_URL = "jdbc:mysql://127.0.0.1:3306/puissance4";
 
     private static final String USERNAME = "root";
-    private static final String PASSWORD = null;
+    private static final String PASSWORD = "123soleil";
 
     private static Connection connection;
 
