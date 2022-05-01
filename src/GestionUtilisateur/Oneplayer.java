@@ -32,7 +32,8 @@ public class Oneplayer implements ActionListener {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        String[] list = {"--Select Difficulty--", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+       // String[] list = {"--Select Difficulty--", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
+        String[] list = {"--Select Difficulty--", "Easy", "Hard"};
         JComboBox cbg = new JComboBox<>(list);
         difficulty.setFont(new Font(null, Font.PLAIN, 15));
 

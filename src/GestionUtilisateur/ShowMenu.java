@@ -20,6 +20,7 @@ public class ShowMenu implements ActionListener{
     JButton play = new JButton(playImage);
         JButton data = new JButton(dataImage);
         JButton credits = new JButton(creditsImage);
+        JButton disconnect = new JButton();
         JPanel panel = new JPanel();
         JLabel welcome = new JLabel("Welcome" ); //+ username
 
@@ -45,7 +46,10 @@ public class ShowMenu implements ActionListener{
             data.setContentAreaFilled(false);
             credits.setBounds(270,300,200,75);
             credits.setContentAreaFilled(false);
+            disconnect.setBounds(525,300,200,75);
+            disconnect.setContentAreaFilled(false);
 
+            frame.add(disconnect);
             frame.add(credits);
             frame.add(data);
             frame.add(play);
@@ -53,6 +57,7 @@ public class ShowMenu implements ActionListener{
             play.addActionListener(this);
             data.addActionListener(this);
             credits.addActionListener(this);
+            disconnect.addActionListener(this);
 
             play.setFocusable(false);
 
@@ -78,6 +83,10 @@ public class ShowMenu implements ActionListener{
             if (e.getSource()== credits) {
                 frame.dispose();
                 Credits credits = new Credits();
+            }
+            if (e.getSource()== disconnect) {
+                frame.dispose();
+                new Connection();
             }
         }
     }
