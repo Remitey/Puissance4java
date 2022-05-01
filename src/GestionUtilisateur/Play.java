@@ -67,7 +67,7 @@ public class Play implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == oneplayer) {
             frame.dispose();
-           new Oneplayer(player);
+            new Oneplayer(player);
         }
         if (e.getSource() == multipayer) {
             frame.dispose();

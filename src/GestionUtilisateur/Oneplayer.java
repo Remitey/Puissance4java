@@ -22,6 +22,9 @@ public class Oneplayer implements ActionListener {
     JButton back = new JButton(backImage);
     JLabel difficulty = new JLabel("Difficulty : ");
     JLabel sentence = new JLabel("Please choose :");
+
+    JLabel sizeRaws = new JLabel("Choose size raws : ");
+    JLabel sizeCols = new JLabel("Choose size columns : ");
     private final Player player;
 
     JPanel panel = new JPanel();
@@ -37,23 +40,42 @@ public class Oneplayer implements ActionListener {
        // String[] list = {"--Select Difficulty--", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"};
         String[] list = {"--Select Difficulty--", "Easy", "Hard"};
         JComboBox cbg = new JComboBox<>(list);
+        String[] listraw = {"4", "5", "6", "7", "8", "9", "10", "11"};
+        JComboBox cbgraw = new JComboBox<>(listraw);
+        String[] listcol = {"4", "5", "6", "7", "8", "9", "10", "11"};
+        JComboBox cbg2 = new JComboBox<>(listcol);
+
         difficulty.setFont(new Font(null, Font.PLAIN, 15));
 
-        sentence.setBounds(270, 120, 100, 100);
+
+        sentence.setBounds(270, 60, 100, 100);
         sentence.setForeground(colorText);
-        difficulty.setBounds(150, 165, 100, 100);
+        difficulty.setBounds(150, 70, 100, 100);
         difficulty.setForeground(colorText);
         game.setBounds(270, 300, 200, 75);
         game.setContentAreaFilled(false);
         back.setBounds(320, 400, 100, 37); //https://www.javatpoint.com/java-jbutton
         back.setContentAreaFilled(false);
-        cbg.setBounds(270, 200, 200, 30);
+
+        sizeCols.setBounds(90, 208, 200, 100);
+        sizeCols.setForeground(colorText);
+        sizeRaws.setBounds(110, 153, 200, 100);
+        sizeRaws.setForeground(colorText);
+
+        cbg.setBounds(270, 105, 200, 30);
+        cbgraw.setBounds(270, 185, 200, 30);
+        cbg2.setBounds(270, 240, 200, 30);
+
 
         frame.add(sentence);
         frame.add(back);
         frame.add(game);
         frame.add(difficulty);
         frame.add(cbg);
+        frame.add(sizeRaws);
+        frame.add(sizeCols);
+        frame.add(cbgraw);
+        frame.add(cbg2);
 
         game.addActionListener(this);
         back.addActionListener(this);
