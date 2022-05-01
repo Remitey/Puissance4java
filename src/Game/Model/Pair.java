@@ -1,33 +1,30 @@
-package Util;
+package Game.Model;
 
-import javax.swing.*;
 import java.util.Objects;
 
+/**
+ *
+ * @param <T>
+ */
 public class Pair <T> {
     private T first;
     private T second;
-
     public Pair(T first, T second){
         this.first = first;
         this.second = second;
     }
-
     public T getFirst() {
         return first;
     }
-
     public void setFirst(T first) {
         this.first = first;
     }
-
     public T getSecond() {
         return second;
     }
-
     public void setSecond(T second) {
         this.second = second;
     }
-
     @Override
     public String toString() {
         return "Pair{" +
@@ -35,7 +32,6 @@ public class Pair <T> {
                 ", second=" + second +
                 '}';
     }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -43,7 +39,6 @@ public class Pair <T> {
         Pair<?> pair = (Pair<?>) o;
         return first.equals(pair.first) && second.equals(pair.second);
     }
-
     @Override
     public int hashCode() {
         return Objects.hash(first, second);

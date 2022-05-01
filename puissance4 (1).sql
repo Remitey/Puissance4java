@@ -58,12 +58,12 @@ CREATE TABLE `game` (
 --
 
 CREATE TABLE `player` (
-  `ID` int(10) NOT NULL,
-  `USERNAME` varchar(15) DEFAULT NULL,
-  `EMAIL` varchar(50) DEFAULT NULL,
-  `PASSWORD` varchar(20) DEFAULT NULL,
-  `PERMISSION` int(3) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+   id INT(5) PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  USERNAME varchar(15) DEFAULT NULL,
+  EMAIL varchar(50) DEFAULT NULL,
+  PASSWORD varchar(20) DEFAULT NULL,
+  PERMISSION int(3) DEFAULT NULL
+);
 
 -- --------------------------------------------------------
 

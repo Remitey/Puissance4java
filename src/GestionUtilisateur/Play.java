@@ -1,7 +1,5 @@
 package GestionUtilisateur;
 
-import Game.BoardGame;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.event.ActionEvent;

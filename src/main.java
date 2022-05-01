@@ -1,6 +1,4 @@
-import Game.BoardGame;
-
-import java.sql.*;
+import Game.View.BoardGame;
 
 public class main {
     public static void main(String[] args) {

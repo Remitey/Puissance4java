@@ -1,6 +1,6 @@
 package GestionUtilisateur;
 
-import Game.BoardGame;
+import Game.View.BoardGame;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
