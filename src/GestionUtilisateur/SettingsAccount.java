@@ -60,8 +60,7 @@ public class SettingsAccount implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == changePass) {
-            frame.dispose();
-            Connection connection = new Connection();
+            new ChangePassword();
         }
         if (e.getSource() == back) {
             frame.dispose();
